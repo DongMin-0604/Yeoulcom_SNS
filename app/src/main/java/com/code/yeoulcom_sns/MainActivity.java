@@ -1,8 +1,10 @@
-package com.example.yeoulcom_sns;
+package com.code.yeoulcom_sns;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.yeoulcom_sns.R;
 
 public class MainActivity extends AppCompatActivity {
 
