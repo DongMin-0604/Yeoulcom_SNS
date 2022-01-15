@@ -3,10 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/mythe/Yeoulcom_SNS2/app/src/main/res/layout/activity_input_information.xml" value="0.15653495440729484" />
-        <entry key="..\:/Users/mythe/Yeoulcom_SNS2/app/src/main/res/layout/activity_intro.xml" value="0.15653495440729484" />
-        <entry key="..\:/Users/mythe/Yeoulcom_SNS2/app/src/main/res/layout/activity_main.xml" value="0.2346014492753623" />
-        <entry key="..\:/Users/mythe/Yeoulcom_SNS2/app/src/main/res/layout/activity_waiting_okay.xml" value="0.15653495440729484" />
+        <entry key="..\:/Users/user/AndroidStudioProjects_flutter/Yeoulcom_SNS/app/src/main/res/drawable/edge.xml" value="0.13425925925925927" />
+        <entry key="..\:/Users/user/AndroidStudioProjects_flutter/Yeoulcom_SNS/app/src/main/res/drawable/edge2.xml" value="0.3888888888888889" />
+        <entry key="..\:/Users/user/AndroidStudioProjects_flutter/Yeoulcom_SNS/app/src/main/res/layout/activity_main.xml" value="0.49074074074074076" />
       </map>
     </option>
   </component>

@@ -4,11 +4,213 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.code.yeoulcom_sns.MainActivity">
-<!--  메인 화면  -->
-<!--  1차 기획(FrameLayout 으로 달력,정보 수정, 투표 화면,팀 화면, 회장 전용 창 모두 여기서 구현) -->
+
+    <!-- 상단 ui 만들기-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black" >
+
+        <!-- header 노란 배경 -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="250dp"
+            android:background="@drawable/profile" />
+
+        <!-- 로고, 알림 알려주는 Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Yeoulcom" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="100dp"
+            android:text=" 회원님,\n 오늘 2건의 알림이\n 있습니다."
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <!-- 더보기 플러스 버튼 이미지 (저작권으로 변경해야함) -->
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/plusbtn"
+            android:layout_gravity="right"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp" />
+
+    </FrameLayout>
+
+    <!-- 카테고리 ui 만들기 -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-20dp"
+        android:background="@drawable/edge">
+
+        <!-- 카테고리 nav바 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:textStyle="bold"
+            android:textColor="#005566"
+            android:text="게시물" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="100dp"
+            android:text="컨퍼런스" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="180dp"
+            android:text="투표" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="240dp"
+            android:text="동아리 일정" />
+
+        <!-- 현재 선택되있는 nav바에 밑줄 -->
+        <View
+            android:layout_width="50dp"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="25dp"
+            android:background="#4682B4" />
+
+        <!-- 게시물(main) Design -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- 게시물 1-->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="70dp"
+                android:src="@drawable/mainimg" />
+
+            <!-- 게시물1 제목 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="260dp"
+                android:text="여울컴 14기 공지사항..."
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <!-- 게시물1 작성자 이름 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="280dp"
+                android:text="최지민/12기"
+                android:textColor="@color/black" />
+
+            <!-- 게시물 2-->
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="230dp"
+                android:layout_marginTop="70dp"
+                android:src="@drawable/mainimg" />
+
+            <!-- 게시물2 제목 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230dp"
+                android:layout_marginTop="260dp"
+                android:text="여울컴 신입생 환영회 공지"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <!-- 게시물2 작성자 이름 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230dp"
+                android:layout_marginTop="280dp"
+                android:text="최지민/12기"
+                android:textColor="@color/black" />
 
 
+            <!-- 게시물 3-->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="310dp"
+                android:src="@drawable/mainimg" />
 
+            <!-- 게시물3 제목 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="260dp"
+                android:text="여울컴 14기 공지사항..."
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
+            <!-- 게시물3 작성자 이름 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="280dp"
+                android:text="최지민/12기"
+                android:textColor="@color/black" />
+
+            <!-- 게시물 4-->
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="230dp"
+                android:layout_marginTop="310dp"
+                android:src="@drawable/mainimg" />
+
+            <!-- 게시물4 제목 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230dp"
+                android:layout_marginTop="260dp"
+                android:text="여울컴 신입생 환영회 공지"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <!-- 게시물4 작성자 이름 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230dp"
+                android:layout_marginTop="280dp"
+                android:text="최지민/12기"
+                android:textColor="@color/black" />
+
+        </FrameLayout>
+    </FrameLayout>
 </LinearLayout>
