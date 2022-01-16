@@ -10,8 +10,7 @@
     <!-- 상단 ui 만들기-->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/black" >
+        android:layout_height="wrap_content">
 
         <!-- header 노란 배경 -->
         <ImageView
