@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "755801749504",
+    "project_id": "yeoulcom-sns",
+    "storage_bucket": "yeoulcom-sns.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755801749504:android:200d1ecd0bd2c417e100e5",
+        "android_client_info": {
+          "package_name": "com.code.yeoulcom_sns"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "755801749504-cs1pnff99fhhin95ffr2d49mus51d5cm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.code.yeoulcom_sns",
+            "certificate_hash": "926d384b40a64f99266640c098a5695176b6f5c5"
+          }
+        },
+        {
+          "client_id": "755801749504-2nlqsn2t54bk851jto2sbr13j5k7le8k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1m4jFhOtTnZRCDpQfNLN352TneLKXVKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755801749504-2nlqsn2t54bk851jto2sbr13j5k7le8k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

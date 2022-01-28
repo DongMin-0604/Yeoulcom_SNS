@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--스피너 안에 리스트 값들-->
+<resources>
+    <string-array name="generation">
+        <item>13기</item>
+        <item>12기</item>
+        <item>11기</item>
+        <item>10기</item>
+        <item>9기</item>
+        <item>8기</item>
+        <item>7기</item>
+        <item>6기</item>
+        <item>5기</item>
+        <item>4기</item>
+        <item>3기</item>
+        <item>2기</item>
+        <item>1기</item>
+
+    </string-array>
+
+</resources>
