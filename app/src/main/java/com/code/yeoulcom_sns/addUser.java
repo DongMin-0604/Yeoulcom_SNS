@@ -1,6 +1,7 @@
 package com.code.yeoulcom_sns;
 
 public class addUser{
+    //파이어베이스에 유저 정보 업데이트를 위한 자바
     String name;
     String generation;
 
@@ -22,7 +23,7 @@ public class addUser{
         this.generation = generation;
     }
 
-    //값을 추가할 때때 쓸 함수
+    //값을 추가할 때 쓸 함수
    public addUser(String name, String generation){
         this.name = name;
         this.generation = generation;

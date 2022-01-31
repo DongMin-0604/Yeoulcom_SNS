@@ -23,6 +23,7 @@
         <activity android:name="com.code.yeoulcom_sns.WaitingOkayActivity"/>
         <activity android:name="com.code.yeoulcom_sns.conference"/>
         <activity android:name="com.code.yeoulcom_sns.vote"/>
+        <activity android:name="com.code.yeoulcom_sns.WritePostActivity"/>
     </application>
 
 </manifest>
