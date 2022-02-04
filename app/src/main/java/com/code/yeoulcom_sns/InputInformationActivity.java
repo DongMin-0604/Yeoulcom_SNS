@@ -42,13 +42,13 @@ public class InputInformationActivity extends AppCompatActivity {
         //기본 세팅 메소드
 
         sp_generation = findViewById(R.id.sp_generation);
-
         //Spinner 관련 세팅
         List<String> array_generation = Arrays.asList(getResources().getStringArray(R.array.generation));
         ArrayAdapter<String> adapter_generation = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_spinner, array_generation);
         adapter_generation.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         sp_generation.setAdapter(adapter_generation);
 
+        //xml 요소 연결
         bt_Apply = findViewById(R.id.bt_Apply);
         et_name = findViewById(R.id.et_name);
     }
@@ -58,9 +58,15 @@ public class InputInformationActivity extends AppCompatActivity {
         bt_Apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addUser(st_name = et_name.getText().toString(), st_generation = sp_generation.getSelectedItem().toString());
-                //화면 전환
+                //이름,기수 변수에 값 넣어주기
+                st_name = et_name.getText().toString();
+                st_generation = sp_generation.getSelectedItem().toString();
+
+//               addUser(st_name,st_generation); 게시물 테스트를 위한 잠깐 막아놓기
+                //화면 전환, 기수,이름 다음 엑티비티로 넘기기
                 Intent intent_view_change = new Intent(getApplicationContext(),MainActivity.class);
+                intent_view_change.putExtra("generation",st_generation);
+                intent_view_change.putExtra("name", st_name);
                 startActivity(intent_view_change);
                 
             }

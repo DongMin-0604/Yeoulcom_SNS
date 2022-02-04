@@ -48,6 +48,17 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/plusbtn" />
 
+        <Button
+            android:id="@+id/bt_write_post"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|right"
+            android:text="게시물 작성"
+            android:gravity="center"
+            android:layout_marginBottom="25dp"
+            android:background="#ffffff"
+            />
+
         <androidx.viewpager2.widget.ViewPager2
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
@@ -121,23 +132,23 @@
                 <ImageView
                     android:layout_width="250px"
                     android:layout_height="250px"
-                    android:background="@drawable/image3"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/image3" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="5dp">
+                    android:layout_marginLeft="5dp"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
                         android:text="여울컴 긴급공지"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
-                        android:layout_marginBottom="5dp"/>
+                        android:textSize="20dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
