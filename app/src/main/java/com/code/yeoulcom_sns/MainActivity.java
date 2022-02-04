@@ -1,13 +1,16 @@
 package com.code.yeoulcom_sns;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -29,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
     Button postBtn,conferenceBtn,voteBtn,bt_write_post;
     String name,generation;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
         onclick();
-
     }
 
     public void init(){
@@ -52,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
         generation = intent.getStringExtra("generation");
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+    }
+
     public void onclick() {
         //onclick 모아 놓는 함수
         // 컨퍼런스 클릭 시 이동
@@ -60,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), conference.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         });
 
@@ -69,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), vote.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         });
         //게시물 작성 클릭 시 이동
@@ -81,5 +91,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent_view_change);
             }
         });
+
+        // 새로고침 기능
+
     }
 }

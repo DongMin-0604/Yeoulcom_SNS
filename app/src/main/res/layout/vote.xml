@@ -103,121 +103,173 @@
             android:background="#4682B4" />
 
         <!-- 게시물(main) Design -->
-        <FrameLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <!-- 게시물 1-->
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="200dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="70dp"
-                android:src="@drawable/mainimg" />
+            <!-- 1 번째 게시물-->
+            <LinearLayout
+                android:layout_width="900px"
+                android:layout_height="250px"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="85dp">
 
-            <!-- 게시물1 제목 -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="260dp"
-                android:text="여울컴 14기 공지사항..."
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="250px"
+                    android:layout_height="250px"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/image3" />
 
-            <!-- 게시물1 작성자 이름 -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="280dp"
-                android:text="최지민/12기"
-                android:textColor="@color/black" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
 
-            <!-- 게시물 2-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="13기 회장 부회장 투표"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="25px"
+                        android:textSize="20dp" />
 
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="200dp"
-                android:layout_marginLeft="230dp"
-                android:layout_marginTop="70dp"
-                android:src="@drawable/mainimg" />
+                    <!-- 찬성 반대 투표 버튼 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="30px">
+                    <Button
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:background="#80FF00"
+                        android:text="찬성하기" />
 
-            <!-- 게시물2 제목 -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="230dp"
-                android:layout_marginTop="260dp"
-                android:text="여울컴 신입생 환영회 공지"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                    <Button
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:background="#ff0000"
+                        android:layout_marginLeft="50px"
+                        android:textColor="@color/white"
+                        android:text="반대하기" />
+                    </LinearLayout>
 
-            <!-- 게시물2 작성자 이름 -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="230dp"
-                android:layout_marginTop="280dp"
-                android:text="최지민/12기"
-                android:textColor="@color/black" />
+                </LinearLayout>
 
+            </LinearLayout>
 
-            <!-- 게시물 3-->
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="200dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="310dp"
-                android:src="@drawable/mainimg" />
+            <!-- 2 번째 게시물-->
+            <LinearLayout
+                android:layout_width="900px"
+                android:layout_height="250px"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp">
 
-            <!-- 게시물3 제목 -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="260dp"
-                android:text="여울컴 14기 공지사항..."
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                <ImageView
+                    android:layout_width="250px"
+                    android:layout_height="250px"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/student" />
 
-            <!-- 게시물3 작성자 이름 -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="280dp"
-                android:text="최지민/12기"
-                android:textColor="@color/black" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
 
-            <!-- 게시물 4-->
-            <ImageView
-                android:layout_width="150dp"
-                android:layout_height="200dp"
-                android:layout_marginLeft="230dp"
-                android:layout_marginTop="310dp"
-                android:src="@drawable/mainimg" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="동아리 발표회 주최 투표"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="25px"
+                        android:textSize="20dp" />
 
-            <!-- 게시물4 제목 -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="230dp"
-                android:layout_marginTop="260dp"
-                android:text="여울컴 신입생 환영회 공지"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
+                    <!-- 찬성 반대 투표 버튼 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="30px">
+                        <Button
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:background="#80FF00"
+                            android:text="찬성하기" />
 
-            <!-- 게시물4 작성자 이름 -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="230dp"
-                android:layout_marginTop="280dp"
-                android:text="최지민/12기"
-                android:textColor="@color/black" />
+                        <Button
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:background="#ff0000"
+                            android:layout_marginLeft="50px"
+                            android:textColor="@color/white"
+                            android:text="반대하기" />
+                    </LinearLayout>
 
-        </FrameLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 3 번째 게시물-->
+
+            <!-- 1 번째 게시물-->
+            <LinearLayout
+                android:layout_width="900px"
+                android:layout_height="250px"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp">
+
+                <ImageView
+                    android:layout_width="250px"
+                    android:layout_height="250px"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/image2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="과동아리 해커톤 참가 유무"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="25px"
+                        android:textSize="20dp" />
+
+                    <!-- 찬성 반대 투표 버튼 -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="30px">
+                    <Button
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:background="#80FF00"
+                        android:text="찬성하기" />
+
+                    <Button
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:background="#ff0000"
+                        android:layout_marginLeft="50px"
+                        android:textColor="@color/white"
+                        android:text="반대하기" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
     </FrameLayout>
 
 </LinearLayout>
