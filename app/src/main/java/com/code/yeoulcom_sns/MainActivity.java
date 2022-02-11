@@ -13,12 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -32,6 +34,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -51,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     Date mDate;
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
         init();
         onclick();
         getPost();
+
+        Spinner monthSpinner = (Spinner)findViewById(R.id.spinner_month);
+        ArrayAdapter monthAdapter = ArrayAdapter.createFromResource(this,
+                R.array.date_month, android.R.layout.simple_spinner_item);
+        monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        monthSpinner.setAdapter(monthAdapter);
     }
 
     public void init(){

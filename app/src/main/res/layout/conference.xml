@@ -39,19 +39,22 @@
             android:textColor="@color/black"
             android:textSize="25dp" />
 
-        <!-- 더보기 플러스 버튼 이미지 (저작권으로 변경해야함) -->
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/plusbtn" />
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="20dp">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
+            <!-- 속성 -->
+            <Spinner
+                android:id="@+id/spinner_month"
+                android:background="@drawable/plusbtn"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:theme="@style/SpinnerTheme"
+                android:layout_weight="1" />
+        </LinearLayout>
     </FrameLayout>
 
     <!-- 카테고리 ui 만들기 -->

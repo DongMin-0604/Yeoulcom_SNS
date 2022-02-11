@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Yeoulcom_SNS">
         <activity
-            android:name="com.code.yeoulcom_sns.InputInformationActivity"
+            android:name="com.code.yeoulcom_sns.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,10 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name="com.code.yeoulcom_sns.IntroActivity"/>
-        <activity android:name="com.code.yeoulcom_sns.MainActivity"/>
+        <activity android:name="com.code.yeoulcom_sns.vote"/>
         <activity android:name="com.code.yeoulcom_sns.WaitingOkayActivity"/>
         <activity android:name="com.code.yeoulcom_sns.conference"/>
-        <activity android:name="com.code.yeoulcom_sns.vote"/>
+        <activity android:name="com.code.yeoulcom_sns.InputInformationActivity"/>
         <activity android:name="com.code.yeoulcom_sns.WritePostActivity"/>
         <activity android:name="com.code.yeoulcom_sns.LeadersActivity"/>
     </application>
