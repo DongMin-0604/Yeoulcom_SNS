@@ -4,8 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -21,17 +19,37 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.example.yeoulcom_sns.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class MainActivity extends AppCompatActivity {
+    //파이어 베이스 연동
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
     Button postBtn,conferenceBtn,voteBtn,bt_write_post;
-    String name,generation;
+    String name,generation,key;
 
+    TextView Post1_title,Post1_main_text;
+    // 게시물 받아오는 클래스 참조
+    getPost getPost;
+
+    //오늘 날짜 가져오기 위한 코드
+    long mNow;
+    Date mDate;
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
         onclick();
+        getPost();
     }
 
     public void init(){
@@ -46,7 +65,9 @@ public class MainActivity extends AppCompatActivity {
         postBtn = (Button) findViewById(R.id.postBtn);
         conferenceBtn= (Button) findViewById(R.id.conferenceBtn);
         voteBtn = (Button) findViewById(R.id.voteBtn);
-        bt_write_post = findViewById(R.id.bt_write_post);
+        bt_write_post = (Button) findViewById(R.id.bt_write_post);
+        Post1_title = (TextView) findViewById(R.id.Post1_title);
+        Post1_main_text = (TextView) findViewById(R.id.post1_main_text);
 
 
         //이전 엑티비티에서 넘어온 기수,이름 받기
@@ -93,6 +114,31 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // 새로고침 기능
+    }
+    private String getTime(){
+        //현재 날짜 받아오기
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
 
+        return format.format(mDate);
+    }
+    public void getPost(){
+        ValueEventListener mValueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot Snapshot: snapshot.getChildren()) {
+                    key = Snapshot.getKey();
+                    getPost = Snapshot.getValue(getPost.class);
+                }
+                Post1_title.setText(getPost.getTitle());
+                Post1_main_text.setText(getPost.getMain_text());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+        databaseReference.child("post_save").child(getTime()).addValueEventListener(mValueEventListener);
     }
 }

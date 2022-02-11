@@ -1,13 +1,14 @@
 package com.code.yeoulcom_sns;
 
-public class addPost {
-    //파이어베이스에 게시물 업데이트를 위한 자바
+public class addPostSave {
+    //포스트 저장공간에 올릴 정보
     String name;
     String generation;
     String title;
     String main_text;
+    String Time;
 
-    public addPost(){}
+    public addPostSave(){}
 
     //파이어베이스에 여러 값을 넣기 위한 getter setter
 
@@ -39,12 +40,20 @@ public class addPost {
         this.main_text = main_text;
     }
 
+    public String getTime(){
+        return Time;
+    }
+    public void setTime(String Time){
+        this.Time = Time;
+    }
+
 
     //값을 추가할 때 쓸 함수
-    public addPost(String name, String generation,String title, String main_text){
+    public addPostSave(String name, String generation, String title, String main_text, String Time){
         this.name = name;
         this.generation = generation;
         this.title = title;
         this.main_text = main_text;
+        this.Time = Time;
     }
 }

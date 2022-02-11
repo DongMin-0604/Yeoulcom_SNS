@@ -24,6 +24,7 @@
         <activity android:name="com.code.yeoulcom_sns.conference"/>
         <activity android:name="com.code.yeoulcom_sns.vote"/>
         <activity android:name="com.code.yeoulcom_sns.WritePostActivity"/>
+        <activity android:name="com.code.yeoulcom_sns.LeadersActivity"/>
     </application>
 
 </manifest>

@@ -74,6 +74,6 @@ public class InputInformationActivity extends AppCompatActivity {
     }
     public void addUser(String name, String generation) {
         //파이어베이스에 업로드
-        databaseReference.child("user").child(st_generation).push().setValue(st_name);
+//        databaseReference.child("user").child(st_generation).push().setValue(st_name);
     }
 }

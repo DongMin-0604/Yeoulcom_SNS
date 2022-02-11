@@ -143,6 +143,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/Post1_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="5dp"
@@ -151,6 +152,7 @@
                         android:textSize="20dp" />
 
                     <TextView
+                        android:id="@+id/post1_main_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="졸업하시는 선배님들께 졸업 선물을\n 드릴 때 롤링페이퍼를 ....... "

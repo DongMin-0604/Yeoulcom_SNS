@@ -61,11 +61,14 @@ public class WritePostActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 write_post(name,generation,et_title.getText().toString(),et_main_text.getText().toString());
+                Intent intent_view_change = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent_view_change);
             }
         });
     }
     public void write_post(String name, String generation, String title, String text){
-        addPost addPost = new addPost(name,generation,title,text);
-        databaseReference.child("post").child(getTime()).child(generation+" "+ name).setValue(addPost);
+        //파이어베이스에 저장하기
+        addPostSave addPostSave = new addPostSave(name,generation,title,text,getTime());
+        databaseReference.child("post_save").child(getTime()).push().setValue(addPostSave);
     }
 }
