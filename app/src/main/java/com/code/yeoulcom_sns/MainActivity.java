@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     long mNow;
     Date mDate;
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
+    int a = 0;
 
 
     @Override
@@ -65,7 +65,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
         onclick();
-        getPost();
+        if (a == 1){
+            getPost();
+        }else {
+            a++;
+        }
+
 
         Spinner monthSpinner = (Spinner)findViewById(R.id.spinner_month);
         ArrayAdapter monthAdapter = ArrayAdapter.createFromResource(this,
@@ -154,5 +159,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         databaseReference.child("post_save").child(getTime()).addValueEventListener(mValueEventListener);
+
     }
 }
