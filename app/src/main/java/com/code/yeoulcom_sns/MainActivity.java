@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.yeoulcom_sns.R;
@@ -65,11 +66,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
         onclick();
-        if (a == 1){
-            getPost();
-        }else {
-            a++;
-        }
+        getPost();
+
 
 
         Spinner monthSpinner = (Spinner)findViewById(R.id.spinner_month);
@@ -148,14 +146,15 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot Snapshot: snapshot.getChildren()) {
                     key = Snapshot.getKey();
                     getPost = Snapshot.getValue(getPost.class);
+                    Post1_title.setText(getPost.getTitle());
+                    Post1_main_text.setText(getPost.getMain_text());
                 }
-                Post1_title.setText(getPost.getTitle());
-                Post1_main_text.setText(getPost.getMain_text());
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(getApplicationContext(), "오류가 발생했습니다.",Toast.LENGTH_SHORT);
             }
         };
         databaseReference.child("post_save").child(getTime()).addValueEventListener(mValueEventListener);
