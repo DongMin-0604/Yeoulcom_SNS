@@ -23,11 +23,11 @@ public class vote extends AppCompatActivity {
         Button conferenceBtn = (Button) findViewById(R.id.conferenceBtn);
         Button voteBtn = (Button) findViewById(R.id.voteBtn);
 
-        Spinner monthSpinner = (Spinner)findViewById(R.id.spinner_month);
-        ArrayAdapter monthAdapter = ArrayAdapter.createFromResource(this,
-                R.array.date_month, android.R.layout.simple_spinner_item);
-        monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        monthSpinner.setAdapter(monthAdapter);
+//        Spinner monthSpinner = (Spinner)findViewById(R.id.spinner_month);
+//        ArrayAdapter monthAdapter = ArrayAdapter.createFromResource(this,
+//                R.array.date_month, android.R.layout.simple_spinner_item);
+//        monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        monthSpinner.setAdapter(monthAdapter);
 
 
         // 게시물 클릭 시 이동

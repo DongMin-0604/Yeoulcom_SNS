@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -47,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
+    // 새로고침
+    private SwipeRefreshLayout swipeRefreshLayout;
+
+    // + 버튼 누르면 버튼 생성
+    Button addBtn, addBtn2, addBtn3;
+
     Button postBtn,conferenceBtn,voteBtn,bt_write_post;
     String name,generation,key,Time;
     String post_title_temp;
@@ -69,11 +76,19 @@ public class MainActivity extends AppCompatActivity {
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     int a = 0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        swipeRefreshLayout = findViewById(R.id.swiperefreshlayout);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         init();
         //기수 이름이 없을 시 첫 화면으로
@@ -85,13 +100,6 @@ public class MainActivity extends AppCompatActivity {
         getPost();
         onclick();
 
-
-
-        Spinner monthSpinner = (Spinner)findViewById(R.id.spinner_month);
-        ArrayAdapter monthAdapter = ArrayAdapter.createFromResource(this,
-                R.array.date_month, android.R.layout.simple_spinner_item);
-        monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        monthSpinner.setAdapter(monthAdapter);
     }
 
     public void init(){
@@ -114,6 +122,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         name = intent.getStringExtra("name");
         generation = intent.getStringExtra("generation");
+
+        // + 버튼 누르면 버튼 생성
+        addBtn = (Button) findViewById(R.id.about_btn);
+        addBtn2 = (Button) findViewById(R.id.about_btn2);
+        addBtn3 = (Button) findViewById(R.id.about_btn3);
     }
 
     public void onclick() {
@@ -147,6 +160,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent_view_change);
             }
         });
+
+
+        // + 버튼 누르면 속성 버튼 생성
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (addBtn2.getVisibility() == View.GONE && addBtn3.getVisibility() == View.GONE) {
+                    addBtn2.setVisibility(View.VISIBLE); // or GONE
+                    addBtn3.setVisibility(View.VISIBLE); // or GONE
+                } else {
+                    addBtn2.setVisibility(View.GONE);
+                    addBtn3.setVisibility(View.GONE);
+                }
+            }});
 
         post_short.setOnTouchListener(new View.OnTouchListener() {
             @Override
