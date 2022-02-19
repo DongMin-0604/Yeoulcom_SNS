@@ -81,15 +81,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        swipeRefreshLayout = findViewById(R.id.swiperefreshlayout);
-
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
-
         init();
         //기수 이름이 없을 시 첫 화면으로
 //        if (name == "" || generation == ""){
@@ -127,6 +118,9 @@ public class MainActivity extends AppCompatActivity {
         addBtn = (Button) findViewById(R.id.about_btn);
         addBtn2 = (Button) findViewById(R.id.about_btn2);
         addBtn3 = (Button) findViewById(R.id.about_btn3);
+
+        //새로고침
+        swipeRefreshLayout = findViewById(R.id.swiperefreshlayout);
     }
 
     public void onclick() {
@@ -195,8 +189,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         // 새로고침 기능
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
     private String getTime(){
         //현재 날짜 받아오기
