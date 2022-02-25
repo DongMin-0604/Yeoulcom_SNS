@@ -187,58 +187,13 @@
                         android:textSize="13dp" />
                 </LinearLayout>
             </LinearLayout>
-            <!-- 2 번째 게시물-->
-
-            <ImageView
-                android:layout_width="250px"
-                android:layout_height="250px"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/student" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="135dp"
-                android:layout_marginTop="-100dp"
-                android:text="졸업생 특별강의!!"
-                android:textColor="@color/black"
-                android:textSize="25dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="135dp"
-                android:layout_marginTop="10dp"
-                android:text="졸업하신 선배분들이 학교오셔서\n 특별히 여울컴 임원애들 ....... "
-                android:textSize="15dp" />
-
-            <!-- 3 번째 게시물-->
-
-            <ImageView
-                android:layout_width="250px"
-                android:layout_height="250px"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/image2" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_marginLeft="135dp"
-                android:layout_marginTop="-100dp"
-                android:text="윤필상 선생님의 조언"
-                android:textColor="@color/black"
-                android:textSize="25dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_marginLeft="135dp"
-                android:layout_marginTop="10dp"
-                android:text="여울컴에서 살아남기 위해서는 내 말에\n 토달지 말고 복종해야해 그리고 ....... "
-                android:textSize="15dp" />
-
+<!--    RecyclerView 로 게시물 영역 구현        -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/main_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+            
         </LinearLayout>
     </FrameLayout>
     </ScrollView>

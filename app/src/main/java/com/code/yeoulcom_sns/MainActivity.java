@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
@@ -36,7 +38,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -75,6 +80,17 @@ public class MainActivity extends AppCompatActivity {
     Date mDate;
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     int a = 0;
+
+    //recyclerView 영역
+    RecyclerView recyclerView;
+    LinearLayoutManager linearLayoutManager;
+
+    private RecyclerAdapter adapter;
+
+    List<String> listTitle;
+    List<String> listMainText;
+    List<Integer> listResld;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +137,17 @@ public class MainActivity extends AppCompatActivity {
 
         //새로고침
         swipeRefreshLayout = findViewById(R.id.swiperefreshlayout);
+
+        //recyclerView 영역
+        recyclerView = findViewById(R.id.main_recyclerview);
+        linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+
+        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter = new RecyclerAdapter();
+        recyclerView.setAdapter(adapter);
+
     }
 
     public void onclick() {
@@ -209,26 +236,42 @@ public class MainActivity extends AppCompatActivity {
         ValueEventListener mValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 for (DataSnapshot Snapshot: snapshot.getChildren()) {
                     key = Snapshot.getKey();
                     getPost = Snapshot.getValue(getPost.class);
-                    Post1_title.setText(getPost.getTitle());
-                    Post1_main_text.setText(getPost.getMain_text());
-                    post_name = getPost.getName();
-                    post_generation = getPost.getGeneration();
-                    Time = getPost.getTime();
+
+                     listTitle = Arrays.asList(getPost.getTitle());
+                     listMainText = Arrays.asList(getPost.getMain_text());
+//                  listResld = Arrays.asList();
+
+                    for (int i = 0; i < listTitle.size(); i++) {
+                        Data data = new Data();
+                        data.setTitle(listTitle.get(i));
+                        data.setMain_text(listMainText.get(i));
+//                    data.setResld();
+
+                        adapter.addItem(data);
+                    }
+                    adapter.notifyDataSetChanged();
                 }
 
-            }
 
+//                for (DataSnapshot Snapshot: snapshot.getChildren()) {
+//                    key = Snapshot.getKey();
+//                    getPost = Snapshot.getValue(getPost.class);
+//                    Post1_title.setText(getPost.getTitle());
+//                    Post1_main_text.setText(getPost.getMain_text());
+//                    post_name = getPost.getName();
+//                    post_generation = getPost.getGeneration();
+//                    Time = getPost.getTime();
+//                }
+                }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(), "오류가 발생했습니다.",Toast.LENGTH_SHORT);
             }
         };
         databaseReference.child("post_save").child(getTime()).addValueEventListener(mValueEventListener);
-
     }
 
     @Override
