@@ -190,9 +190,11 @@ public class MainActivity extends AppCompatActivity {
                 if (addBtn2.getVisibility() == View.GONE && addBtn3.getVisibility() == View.GONE) {
                     addBtn2.setVisibility(View.VISIBLE); // or GONE
                     addBtn3.setVisibility(View.VISIBLE); // or GONE
+                    bt_write_post.setVisibility(View.VISIBLE); // or GONE
                 } else {
                     addBtn2.setVisibility(View.GONE);
                     addBtn3.setVisibility(View.GONE);
+                    bt_write_post.setVisibility(View.GONE);
                 }
             }});
 
