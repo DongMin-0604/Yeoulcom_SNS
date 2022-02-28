@@ -6,54 +6,58 @@ public class addPostSave {
     String generation;
     String title;
     String main_text;
-    String Time;
+//    String Time;
 
-    public addPostSave(){}
+    public addPostSave() {
+    }
 
     //파이어베이스에 여러 값을 넣기 위한 getter setter
 
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getGeneration(){
+    public String getGeneration() {
         return generation;
     }
-    public void setGeneration(String generation){
+
+    public void setGeneration(String generation) {
         this.generation = generation;
     }
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
-    public void setTitle(String title){
+
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public String getMain_text(){
+    public String getMain_text() {
         return main_text;
     }
-    public void setMain_text(String main_text){
+
+    public void setMain_text(String main_text) {
         this.main_text = main_text;
     }
 
-    public String getTime(){
-        return Time;
-    }
-    public void setTime(String Time){
-        this.Time = Time;
-    }
+//    public String getTime(){
+//        return Time;
+//    }
+//    public void setTime(String Time){
+//        this.Time = Time;
+//    }
 
 
     //값을 추가할 때 쓸 함수
-    public addPostSave(String name, String generation, String title, String main_text, String Time){
+    public addPostSave(String name, String generation, String title, String main_text) {
         this.name = name;
         this.generation = generation;
         this.title = title;
         this.main_text = main_text;
-        this.Time = Time;
     }
 }

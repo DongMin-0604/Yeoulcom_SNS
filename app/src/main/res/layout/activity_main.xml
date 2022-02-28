@@ -1,253 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/swiperefreshlayout"
-        tools:context="com.code.yeoulcom_sns.MainActivity" >
-
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-<LinearLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swiperefreshlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    <!-- 상단 ui 만들기-->
+    tools:context="com.code.yeoulcom_sns.MainActivity">
+
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <!-- header 노란 배경 -->
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="250dp"
-            android:background="@drawable/profile" />
-
-        <!-- 로고, 알림 알려주는 Text -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Yeoulcom"
-            android:textColor="@color/white"
-            android:textSize="25dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="100dp"
-            android:text=" 회원님,\n 오늘 2건의 알림이\n 있습니다."
-            android:textColor="@color/black"
-            android:textSize="25dp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="50dp"
-            android:orientation="vertical"
-            android:layout_marginRight="20dp">
-
-            <!-- 속성 버튼 -->
-            <Button
-                android:id="@+id/about_btn"
-                android:background="@drawable/plusbtn"
-                android:layout_width="50dp"
-                android:layout_gravity="right"
-                android:layout_height="40dp" />
-
-            <Button
-                android:id="@+id/about_btn2"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="문의하기"
-                android:visibility="gone" />
-
-            <Button
-                android:id="@+id/about_btn3"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="개발자에게 문의하기"
-                android:visibility="gone" />
-
-            <Button
-                android:id="@+id/bt_write_post"
-                android:layout_width="130dp"
-                android:layout_height="40dp"
-                android:layout_gravity="bottom|right"
-                android:text="게시물 작성"
-                android:gravity="center"
-                android:visibility="gone"
-                android:layout_marginBottom="25dp"
-                android:background="#ffffff"
-                />
-        </LinearLayout>
-
-    </FrameLayout>
-
-    <ScrollView
-        android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <!-- 카테고리 ui 만들기 -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="-20dp"
-        android:background="@drawable/edge">
 
-        <!-- 카테고리 nav바 -->
-        <Button
-            android:id="@+id/postBtn"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:background="#00ff0000"
-            android:text="게시물"
-            android:textColor="#005566"
-            android:textSize="35px"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/conferenceBtn"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="95dp"
-            android:layout_marginTop="20dp"
-            android:background="#00ff0000"
-            android:text="컨퍼런스"
-            android:textSize="35px" />
-
-        <Button
-            android:id="@+id/voteBtn"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="190dp"
-            android:layout_marginTop="20dp"
-            android:background="#00ff0000"
-            android:text="투표"
-            android:textSize="35px" />
-
-        <!-- 현재 선택되있는 nav바에 밑줄 -->
-        <View
-            android:layout_width="50dp"
-            android:layout_height="0.8dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="60dp"
-            android:background="#4682B4" />
-
-        <!-- 게시물(main) Design -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <!-- 상단 ui 만들기-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <!-- 1 번째 게시물-->
-            <LinearLayout
-                android:id="@+id/post_short"
-                android:layout_width="900px"
-                android:layout_height="250px"
-                android:layout_gravity="center"
-                android:layout_marginTop="85dp"
-                android:background="@color/white">
-
+                <!-- header 노란 배경 -->
                 <ImageView
-                    android:layout_width="250px"
-                    android:layout_height="250px"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/image3" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="250dp"
+                    android:background="@drawable/profile" />
+
+                <!-- 로고, 알림 알려주는 Text -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Yeoulcom"
+                    android:textColor="@color/white"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="100dp"
+                    android:text=" 회원님,\n 오늘 2건의 알림이\n 있습니다."
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="20dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/Post1_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:text="여울컴 긴급공지"
-                        android:textColor="@color/black"
-                        android:textSize="20dp" />
+                    <!-- 속성 버튼 -->
+                    <Button
+                        android:id="@+id/about_btn"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:background="@drawable/plusbtn" />
 
-                    <TextView
-                        android:id="@+id/post1_main_text"
-                        android:layout_width="200dp"
+                    <Button
+                        android:id="@+id/about_btn2"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="졸업하시는 선배님들께 졸업 선물을\n 드릴 때 롤링페이퍼를 ....... "
-                        android:textSize="13dp" />
+                        android:text="문의하기"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/about_btn3"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="개발자에게 문의하기"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/bt_write_post"
+                        android:layout_width="130dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="bottom|right"
+                        android:layout_marginBottom="25dp"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text="게시물 작성"
+                        android:visibility="gone" />
                 </LinearLayout>
-            </LinearLayout>
-<!--    RecyclerView 로 게시물 영역 구현        -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/main_recyclerview"
+
+            </FrameLayout>
+            <!-- 카테고리 ui 만들기 -->
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                />
-            
+                android:layout_marginTop="-20dp"
+                android:background="@drawable/edge">
+
+                <!-- 카테고리 nav바 -->
+                <Button
+                    android:id="@+id/postBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#00ff0000"
+                    android:text="게시물"
+                    android:textColor="#005566"
+                    android:textSize="35px"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/conferenceBtn"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="95dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#00ff0000"
+                    android:text="컨퍼런스"
+                    android:textSize="35px" />
+
+                <Button
+                    android:id="@+id/voteBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="190dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#00ff0000"
+                    android:text="투표"
+                    android:textSize="35px" />
+
+                <!-- 현재 선택되있는 nav바에 밑줄 -->
+                <View
+                    android:layout_width="50dp"
+                    android:layout_height="0.8dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="60dp"
+                    android:background="#4682B4" />
+
+                <!-- 게시물(main) Design -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- 1 번째 게시물-->
+                    <LinearLayout
+                        android:id="@+id/post_short"
+                        android:layout_width="900px"
+                        android:layout_height="250px"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="85dp"
+                        android:background="@color/white">
+
+                        <ImageView
+                            android:layout_width="250px"
+                            android:layout_height="250px"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/image3" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/Post1_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="5dp"
+                                android:text="여울컴 긴급공지"
+                                android:textColor="@color/black"
+                                android:textSize="20dp" />
+
+                            <TextView
+                                android:id="@+id/post1_main_text"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:singleLine="true"
+                                android:text="졸업하시는 선배님들께 졸업 선물을\n 드릴 때 롤링페이퍼를 ....... "
+                                android:textSize="13dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <!--    RecyclerView 로 게시물 영역 구현        -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/main_recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+
+        <!--  게시물 클릭 시 켜질 게시물 내용 레이아웃  -->
+        <LinearLayout
+            android:id="@+id/post_long"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/post_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="100dp"
+                android:gravity="center"
+                android:text="제목"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/post_name_generation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="기수,이름"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/post_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:text="시간"
+                android:textColor="#635D5D"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/post_main_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100px"
+                android:text="본문"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+
         </LinearLayout>
     </FrameLayout>
-    </ScrollView>
-</LinearLayout>
-
-<!--  게시물 클릭 시 켜질 게시물 내용 레이아웃  -->
-    <LinearLayout
-        android:id="@+id/post_long"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/white"
-        android:visibility="gone">
-        <TextView
-            android:id="@+id/post_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="제목"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:textSize="25dp"
-            android:layout_marginBottom="100dp"
-            android:textColor="@color/black"/>
-
-        <TextView
-            android:id="@+id/post_name_generation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="기수,이름"
-            android:layout_gravity="right"
-            android:gravity="right"
-            android:textSize="25dp"
-            android:textColor="@color/black"/>
-        <TextView
-            android:id="@+id/post_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="시간"
-            android:layout_gravity="right"
-            android:gravity="right"
-            android:textSize="15dp"
-            android:textColor="#635D5D"/>
-
-        <TextView
-            android:id="@+id/post_main_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="본문"
-            android:layout_marginTop="100px"
-            android:textSize="25dp"
-            android:textColor="@color/black"/>
-
-    </LinearLayout>
-</FrameLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -59,21 +59,21 @@ public class MainActivity extends AppCompatActivity {
     // + 버튼 누르면 버튼 생성
     Button addBtn, addBtn2, addBtn3;
 
-    Button postBtn,conferenceBtn,voteBtn,bt_write_post;
-    String name,generation,key,Time;
+    Button postBtn, conferenceBtn, voteBtn, bt_write_post;
+    String name, generation, key, Time;
     String post_title_temp;
     String post_main_text_temp;
 
-    TextView Post1_title,Post1_main_text;
+    TextView Post1_title, Post1_main_text;
 
     //큰 게시물 TextView
-    TextView post_title,post_main_text,post_name_generation,post_time;
-    String post_name,post_generation;
+    TextView post_title, post_main_text, post_name_generation, post_time;
+    String post_name, post_generation;
     // 게시물 받아오는 클래스 참조
     getPost getPost;
 
     //레이아웃 터치시 큰 화면으로 전환을 위한 레이아웃 정의
-    LinearLayout post_short,post_long;
+    LinearLayout post_short, post_long;
 
     //오늘 날짜 가져오기 위한 코드
     long mNow;
@@ -109,21 +109,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void init(){
+    public void init() {
         //기본 세팅 함수
         postBtn = (Button) findViewById(R.id.postBtn);
-        conferenceBtn= (Button) findViewById(R.id.conferenceBtn);
+        conferenceBtn = (Button) findViewById(R.id.conferenceBtn);
         voteBtn = (Button) findViewById(R.id.voteBtn);
         bt_write_post = (Button) findViewById(R.id.bt_write_post);
         Post1_title = (TextView) findViewById(R.id.Post1_title);
         Post1_main_text = (TextView) findViewById(R.id.post1_main_text);
 
-        post_short = (LinearLayout)findViewById(R.id.post_short);
-        post_long = (LinearLayout)findViewById(R.id.post_long);
-        post_main_text = (TextView)findViewById(R.id.post_main_text);
-        post_name_generation = (TextView)findViewById(R.id.post_name_generation);
-        post_title = (TextView)findViewById(R.id.post_title);
-        post_time = (TextView)findViewById(R.id.post_time);
+        post_short = (LinearLayout) findViewById(R.id.post_short);
+        post_long = (LinearLayout) findViewById(R.id.post_long);
+        post_main_text = (TextView) findViewById(R.id.post_main_text);
+        post_name_generation = (TextView) findViewById(R.id.post_name_generation);
+        post_title = (TextView) findViewById(R.id.post_title);
+        post_time = (TextView) findViewById(R.id.post_time);
 
         //이전 엑티비티에서 넘어온 기수,이름 받기
         Intent intent = getIntent();
@@ -175,8 +175,8 @@ public class MainActivity extends AppCompatActivity {
         bt_write_post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent_view_change = new Intent(getApplicationContext(),WritePostActivity.class);
-                intent_view_change.putExtra("generation",generation);
+                Intent intent_view_change = new Intent(getApplicationContext(), WritePostActivity.class);
+                intent_view_change.putExtra("generation", generation);
                 intent_view_change.putExtra("name", name);
                 startActivity(intent_view_change);
             }
@@ -196,13 +196,14 @@ public class MainActivity extends AppCompatActivity {
                     addBtn3.setVisibility(View.GONE);
                     bt_write_post.setVisibility(View.GONE);
                 }
-            }});
+            }
+        });
 
         post_short.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
-                if (action == MotionEvent.ACTION_UP){
+                if (action == MotionEvent.ACTION_UP) {
                     post_long.setVisibility(View.VISIBLE);
                     //클릭한 게시물에 있는 정보 큰 게시글에 있는 텍스트뷰로 넘기기
                     post_title_temp = Post1_title.getText().toString();
@@ -210,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
 
                     post_title.setText(post_title_temp);
                     post_main_text.setText(post_main_text_temp);
-                    post_name_generation.setText(post_generation +" "+ post_name);
+                    post_name_generation.setText(post_generation + " " + post_name);
                     post_time.setText(Time);
                 }
 
@@ -226,31 +227,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    private String getTime(){
-        //현재 날짜 받아오기
-        mNow = System.currentTimeMillis();
-        mDate = new Date(mNow);
 
-        return format.format(mDate);
-    }
-    public void getPost(){
+//    private String getTime() {
+//        //현재 날짜 받아오기
+//        mNow = System.currentTimeMillis();
+//        mDate = new Date(mNow);
+//
+//        return format.format(mDate);
+//    }
+
+    public void getPost() {
         //게시물 정보 파이어베이스에서 받아오기
         ValueEventListener mValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot Snapshot: snapshot.getChildren()) {
+                for (DataSnapshot Snapshot : snapshot.getChildren()) {
                     key = Snapshot.getKey();
                     getPost = Snapshot.getValue(getPost.class);
 
-                     listTitle = Arrays.asList(getPost.getTitle());
-                     listMainText = Arrays.asList(getPost.getMain_text());
-//                  listResld = Arrays.asList();
+                    listTitle = Arrays.asList(getPost.getTitle());
+                    listMainText = Arrays.asList(getPost.getMain_text());
+//                   listResld = Arrays.asList();
 
                     for (int i = 0; i < listTitle.size(); i++) {
                         Data data = new Data();
                         data.setTitle(listTitle.get(i));
                         data.setMain_text(listMainText.get(i));
-//                    data.setResld();
+//                      data.setResld();
 
                         adapter.addItem(data);
                     }
@@ -267,23 +270,24 @@ public class MainActivity extends AppCompatActivity {
 //                    post_generation = getPost.getGeneration();
 //                    Time = getPost.getTime();
 //                }
-                }
+            }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(), "오류가 발생했습니다.",Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), "오류가 발생했습니다.", Toast.LENGTH_SHORT);
             }
         };
-        databaseReference.child("post_save").child(getTime()).addValueEventListener(mValueEventListener);
+        databaseReference.child("post_save").addValueEventListener(mValueEventListener);
     }
 
     @Override
     public void onBackPressed() {
-        
+
         //만약 게시물 큰 화면이 켜져있다면 뒤로가기 눌렀을때 큰 화면이 꺼지게
         int result = post_long.getVisibility();
-        if (result == View.VISIBLE){
+        if (result == View.VISIBLE) {
             post_long.setVisibility(View.GONE);
-        }else {
+        } else {
             super.onBackPressed();
         }
     }

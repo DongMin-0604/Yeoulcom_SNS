@@ -48,13 +48,13 @@ public class WritePostActivity extends AppCompatActivity {
         bt_write = findViewById(R.id.bt_write);
 
     }
-    private String getTime(){
-        //현재 날짜 받아오기
-        mNow = System.currentTimeMillis();
-        mDate = new Date(mNow);
-
-        return format.format(mDate);
-    }
+//    private String getTime(){
+//        //현재 날짜 받아오기
+//        mNow = System.currentTimeMillis();
+//        mDate = new Date(mNow);
+//
+//        return format.format(mDate);
+//    }
     public void onClick(){
         //onClick 모아놓는 메소드
         bt_write.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +68,7 @@ public class WritePostActivity extends AppCompatActivity {
     }
     public void write_post(String name, String generation, String title, String text){
         //파이어베이스에 저장하기
-        addPostSave addPostSave = new addPostSave(name,generation,title,text,getTime());
-        databaseReference.child("post_save").child(getTime()).push().setValue(addPostSave);
+        addPostSave addPostSave = new addPostSave(name,generation,title,text);
+        databaseReference.child("post_save").push().setValue(addPostSave);
     }
 }
