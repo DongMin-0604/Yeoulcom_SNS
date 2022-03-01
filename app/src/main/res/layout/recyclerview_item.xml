@@ -3,14 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:gravity="center"
     android:layout_marginTop="5dp"
     android:layout_marginLeft="1dp"
     android:layout_marginRight="1dp">
 <!--  간이 게시물 UI  -->
     <LinearLayout
         android:id="@+id/post_short"
-        android:layout_width="match_parent"
+        android:layout_width="1050px"
         android:layout_height="250px"
+        android:layout_gravity="center"
         android:background="@drawable/border_layout">
 
         <ImageView
