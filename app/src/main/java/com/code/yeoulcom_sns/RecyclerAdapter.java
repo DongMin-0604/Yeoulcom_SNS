@@ -37,10 +37,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
         return listData.size();
     }
 
-    void addItem(Data data){
+    void addItem(Data data) {
         listData.add(data);
     }
-
 
 
     class ItemViewHolder extends RecyclerView.ViewHolder{
@@ -48,11 +47,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
         private TextView title, main_text;
 
         private ImageView imageView;
+
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            title = itemView.findViewById(R.id.post_title);
-            main_text = itemView.findViewById(R.id.post_main_text);
+            title = itemView.findViewById(R.id.post_title_item);
+            main_text = itemView.findViewById(R.id.post_main_text_item);
+
         }
 
         void onBind(Data data){

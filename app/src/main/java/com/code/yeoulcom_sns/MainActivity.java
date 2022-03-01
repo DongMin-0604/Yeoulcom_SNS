@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
     List<String> listMainText;
     List<Integer> listResld;
 
+    TextView Post1_title_1, Post1_main_text_1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new RecyclerAdapter();
         recyclerView.setAdapter(adapter);
-
     }
 
     public void onclick() {
@@ -271,7 +271,6 @@ public class MainActivity extends AppCompatActivity {
 //                    Time = getPost.getTime();
 //                }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(), "오류가 발생했습니다.", Toast.LENGTH_SHORT);
