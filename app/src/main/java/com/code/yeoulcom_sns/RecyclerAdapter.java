@@ -12,12 +12,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.yeoulcom_sns.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemViewHolder>{
 
     //리스트에 든 값 RecyclerView에 넣는 자바
 
-    private ArrayList<Data> listData = new ArrayList<>();
+    //온 클릭 지정
+    public interface OnItemClickListener{
+        void onItemClick(View a_v, int position);
+    }
+    public List<Data> mList;
+
+    private OnItemClickListener mListener = null;
+
+    public RecyclerAdapter(List<Data> a_list){
+        mList = a_list;
+    }
+
+    public void setOnClickListener(OnItemClickListener aListener){
+        this.mListener = aListener;
+    }
 
 
     @NonNull
@@ -29,18 +44,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        holder.onBind(listData.get(position));
+        final Data data = mList.get(position);
+        holder.title.setText(data.getTitle());
+        holder.main_text.setText(data.getMain_text());
     }
 
     @Override
     public int getItemCount() {
-        return listData.size();
+        return mList.size();
     }
-
-    void addItem(Data data) {
-        listData.add(data);
-    }
-
 
     class ItemViewHolder extends RecyclerView.ViewHolder{
 
@@ -50,18 +62,23 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
 
         public ItemViewHolder(@NonNull View itemView) {
             super(itemView);
+            // 클릭 메소드 사용
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = getAdapterPosition();
+                    if (pos != RecyclerView.NO_POSITION){
+                        if (mListener != null){
+                            mListener.onItemClick(view, pos);
+                        }
+                    }
+                }
+            });
 
             title = itemView.findViewById(R.id.post_title_item);
             main_text = itemView.findViewById(R.id.post_main_text_item);
 
         }
-
-        void onBind(Data data){
-            title.setText(data.getTitle());
-            main_text.setText(data.getMain_text());
-        }
-
-
     }
 }
 

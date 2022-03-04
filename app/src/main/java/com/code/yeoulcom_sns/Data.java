@@ -8,6 +8,11 @@ public class Data {
     private String main_text;
     private int resld;
 
+    public Data(String a_title, String a_main_text) {
+        title = a_title;
+        main_text = a_main_text;
+    }
+
     public String getTitle() {
         return title;
     }

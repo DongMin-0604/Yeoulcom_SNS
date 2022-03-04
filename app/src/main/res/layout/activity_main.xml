@@ -12,6 +12,8 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/main_layout"
+            android:visibility="visible"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -143,50 +145,11 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <!-- 1 번째 게시물-->
-                    <LinearLayout
-                        android:id="@+id/post_short"
-                        android:layout_width="900px"
-                        android:layout_height="250px"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="85dp"
-                        android:background="@color/white">
-
-                        <ImageView
-                            android:layout_width="250px"
-                            android:layout_height="250px"
-                            android:layout_gravity="center_vertical"
-                            android:background="@drawable/image3" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="5dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/Post1_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:text="여울컴 긴급공지"
-                                android:textColor="@color/black"
-                                android:textSize="20dp" />
-
-                            <TextView
-                                android:id="@+id/post1_main_text"
-                                android:layout_width="200dp"
-                                android:layout_height="wrap_content"
-                                android:singleLine="true"
-                                android:text="졸업하시는 선배님들께 졸업 선물을\n 드릴 때 롤링페이퍼를 ....... "
-                                android:textSize="13dp" />
-                        </LinearLayout>
-                    </LinearLayout>
                     <!--    RecyclerView 로 게시물 영역 구현        -->
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/main_recyclerview"
                         android:layout_width="match_parent"
+                        android:layout_marginTop="75dp"
                         android:layout_height="match_parent" />
 
                 </LinearLayout>
