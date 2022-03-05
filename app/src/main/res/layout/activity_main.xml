@@ -144,14 +144,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-
                     <!--    RecyclerView 로 게시물 영역 구현        -->
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/main_recyclerview"
                         android:layout_width="match_parent"
                         android:layout_marginTop="75dp"
                         android:layout_height="match_parent" />
-
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>

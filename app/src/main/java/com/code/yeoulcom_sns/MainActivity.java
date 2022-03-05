@@ -24,6 +24,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -186,7 +187,22 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+
+                updateLayoutView();
+
                 swipeRefreshLayout.setRefreshing(false);
+            }
+
+            // 새로고침 하면 스피너 창 닫기 변경 영역
+            public void updateLayoutView() {
+                if (addBtn2.getVisibility() + addBtn3.getVisibility() + bt_write_post.getVisibility() == View.VISIBLE) {
+                    addBtn2.setVisibility(View.GONE);
+                    addBtn3.setVisibility(View.GONE);
+                    bt_write_post.setVisibility(View.GONE);
+                }
+                // 게시물 위로 올리기
+                LinearLayoutManager mlayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                recyclerView.smoothScrollToPosition(10); // 개시물의 갯수대로 적어야 최상위로 올라가는 것 같은데 이부분은 조만간 수정해야됨.
             }
         });
     }

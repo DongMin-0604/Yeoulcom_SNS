@@ -1,125 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/view"
+    android:id="@+id/conference"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.code.yeoulcom_sns.MainActivity">
 
-    <!-- 상단 ui 만들기-->
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <!-- header 노란 배경 -->
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="250dp"
-            android:background="@drawable/profile" />
-
-        <!-- 로고, 알림 알려주는 Text -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Yeoulcom"
-            android:textColor="@color/white"
-            android:textSize="25dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="100dp"
-            android:text=" 회원님,\n 오늘 2건의 알림이\n 있습니다."
-            android:textColor="@color/black"
-            android:textSize="25dp" />
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="20dp">
-
-            <!-- 속성 -->
-            <Spinner
-                android:id="@+id/spinner_month"
-                android:background="@drawable/plusbtn"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:theme="@style/SpinnerTheme"
-                android:layout_weight="1" />
-        </LinearLayout>
-    </FrameLayout>
-
-    <!-- 카테고리 ui 만들기 -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="-20dp"
-        android:background="@drawable/edge">
-
-        <!-- 카테고리 nav바 -->
-        <Button
-            android:id="@+id/postBtn"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:text="게시물"
-            android:textSize="35px"
-            android:background="#00ff0000" />
-
-        <Button
-            android:id="@+id/conferenceBtn"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="95dp"
-            android:layout_marginTop="20dp"
-            android:textSize="35px"
-            android:textColor="#005566"
-            android:background="#00ff0000"
-            android:text="컨퍼런스"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/voteBtn"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="190dp"
-            android:layout_marginTop="20dp"
-            android:textSize="35px"
-            android:background="#00ff0000"
-            android:text="투표" />
-
-        <!-- 현재 선택되있는 nav바에 밑줄 -->
-        <View
-            android:layout_width="50dp"
-            android:layout_height="0.8dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginLeft="110dp"
-            android:background="#4682B4" />
-
-        <!-- 달력 UI -->
-
-        <LinearLayout
+            android:id="@+id/main_layout"
+            android:visibility="visible"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="250px">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!-- 상단 ui 만들기-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <CalendarView
-                android:id="@+id/calendarView"
-                android:layout_width="411dp"
-                android:layout_height="389dp"
-                android:layout_gravity="center" />
+                <!-- header 노란 배경 -->
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="250dp"
+                    android:background="@drawable/profile" />
 
+                <!-- 로고, 알림 알려주는 Text -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Yeoulcom"
+                    android:textColor="@color/white"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="100dp"
+                    android:text=" 회원님,\n 오늘 2건의 알림이\n 있습니다."
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical">
+
+                    <!-- 속성 버튼 -->
+                    <Button
+                        android:id="@+id/about_btn"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="right"
+                        android:background="@drawable/plusbtn" />
+
+                    <Button
+                        android:id="@+id/about_btn2"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="문의하기"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/about_btn3"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="개발자에게 문의하기"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+            </FrameLayout>
+            <!-- 카테고리 ui 만들기 -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-20dp"
+                android:background="@drawable/edge">
+
+                <!-- 카테고리 nav바 -->
+                <Button
+                    android:id="@+id/postBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#00ff0000"
+                    android:text="게시물"
+                    android:textSize="35px" />
+
+                <Button
+                    android:id="@+id/conferenceBtn"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="95dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#00ff0000"
+                    android:text="컨퍼런스"
+                    android:textColor="#005566"
+                    android:textStyle="bold"
+                    android:textSize="35px" />
+
+                <Button
+                    android:id="@+id/voteBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="190dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#00ff0000"
+                    android:text="투표"
+                    android:textSize="35px" />
+
+                <!-- 현재 선택되있는 nav바에 밑줄 -->
+                <View
+                    android:layout_width="50dp"
+                    android:layout_height="0.8dp"
+                    android:layout_marginLeft="110dp"
+                    android:layout_marginTop="60dp"
+                    android:background="#4682B4" />
+
+                    <!-- 달력 -->
+                    <CalendarView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/calendar"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="25dp"/>
+
+            </FrameLayout>
         </LinearLayout>
     </FrameLayout>
-
-</LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
