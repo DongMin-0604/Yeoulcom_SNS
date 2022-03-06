@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // 게시물 위로 올리기
                 LinearLayoutManager mlayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
-                recyclerView.smoothScrollToPosition(10); // 개시물의 갯수대로 적어야 최상위로 올라가는 것 같은데 이부분은 조만간 수정해야됨.
+                recyclerView.smoothScrollToPosition(20); // 개시물의 갯수대로 적어야 최상위로 올라가는 것 같은데 이부분은 조만간 수정해야됨.
             }
         });
     }
