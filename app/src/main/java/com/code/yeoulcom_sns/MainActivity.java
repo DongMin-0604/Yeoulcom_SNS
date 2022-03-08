@@ -37,6 +37,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -85,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerAdapter adapter;
     TextView Post1_title_1, Post1_main_text_1;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
         //recyclerView 영역
         recyclerView = findViewById(R.id.main_recyclerview);
+
     }
 
     public void onclick() {

@@ -12,6 +12,7 @@
         android:background="#FFCD4A">
 
         <ImageView
+            android:id="@+id/IV_onBack"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/out"
@@ -53,14 +54,20 @@
             android:singleLine="true"
             android:maxLength="20"
             android:ems="20"/>
+        <ImageView
+            android:id="@+id/img_test"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"/>
     </LinearLayout>
 
     <!-- 게시물 내용 -->
     <EditText
         android:id="@+id/et_main_text"
-        android:layout_width="match_parent"
-        android:layout_height="384dp"
+        android:layout_width="390dp"
+        android:layout_height="300dp"
         android:layout_marginTop="30dp"
+        android:layout_gravity="center"
         android:background="@drawable/border_edit"
         android:ems="500"
         android:gravity="top"
@@ -79,12 +86,12 @@
         android:background="#FFCD4A">
 
         <ImageView
+            android:id="@+id/IV_image_select"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/images"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp" />
-
 
         <Button
             android:id="@+id/bt_write"
