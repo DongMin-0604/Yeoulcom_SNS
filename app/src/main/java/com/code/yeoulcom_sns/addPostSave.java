@@ -6,6 +6,8 @@ public class addPostSave {
     String generation;
     String title;
     String main_text;
+    private String imgURL;
+
 //    String Time;
 
     public addPostSave() {
@@ -45,6 +47,15 @@ public class addPostSave {
         this.main_text = main_text;
     }
 
+
+    public String getImgURL() {
+        return imgURL;
+    }
+
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
+    }
+
 //    public String getTime(){
 //        return Time;
 //    }
@@ -59,5 +70,6 @@ public class addPostSave {
         this.generation = generation;
         this.title = title;
         this.main_text = main_text;
+        this.imgURL = imgURL;
     }
 }

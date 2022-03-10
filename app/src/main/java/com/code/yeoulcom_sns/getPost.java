@@ -6,6 +6,15 @@ public class getPost {
     private String generation;
     private String title;
     private String Time;
+    private String imgURL;
+
+    public String getImgURL() {
+        return imgURL;
+    }
+
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
+    }
 
     public getPost(){}
 
@@ -45,11 +54,12 @@ public class getPost {
     }
 
     //여러 값을 참조해야 할 때
-    public getPost(String name, String main_text,String generation, String title,String Time){
+    public getPost(String name, String main_text,String generation, String title,String Time, String imgURL){
         this.name = name;
         this.main_text = main_text;
         this.generation = generation;
         this.title = title;
         this.Time = Time;
+        this.imgURL = imgURL;
     }
 }

@@ -6,7 +6,7 @@ public class Data {
 
     private String title;
     private String main_text;
-    private int resld;
+    private String imgUrl;
 
     public Data(String a_title, String a_main_text) {
         title = a_title;
@@ -29,11 +29,11 @@ public class Data {
         this.main_text = main_text;
     }
 
-    public int getResld() {
-        return resld;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setResld(int resld) {
-        this.resld = resld;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

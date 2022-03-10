@@ -1,6 +1,7 @@
 package com.code.yeoulcom_sns;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -15,16 +16,22 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.content.CursorLoader;
 
 import com.example.yeoulcom_sns.R;
+import com.google.android.gms.fido.fido2.api.common.RequestOptions;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -34,6 +41,9 @@ public class WritePostActivity extends AppCompatActivity {
     //파이어 베이스 연동
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    //스토리지 접근 권한
+    private FirebaseStorage storage;
+
 
     EditText et_title, et_main_text;
     Button bt_write;
@@ -53,8 +63,6 @@ public class WritePostActivity extends AppCompatActivity {
     //갤러리 접근 권한
     private final int GALLERY_CODE = 10;
 
-    //스토리지 접근 권한
-    private FirebaseStorage storage;
 
 //    게시글 작성 화면 자바
     @Override
@@ -118,6 +126,7 @@ public class WritePostActivity extends AppCompatActivity {
         intent_load.setType(MediaStore.Images.Media.CONTENT_TYPE);
         startActivityForResult(intent_load, GALLERY_CODE);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -126,13 +135,13 @@ public class WritePostActivity extends AppCompatActivity {
             StorageReference storageRef = storage.getReference();
             StorageReference reversRef = storageRef.child("img/"+"img"+ a +".png");
             UploadTask uploadTask = reversRef.putFile(file);
-
             try {
                 InputStream in = getContentResolver().openInputStream(data.getData());
                 Bitmap img = BitmapFactory.decodeStream(in);
                 in.close();
                 img_test.setImageBitmap(img);
             } catch (Exception e) {
+                Toast.makeText(getApplicationContext(),"이미지 선택 안함",Toast.LENGTH_SHORT);
                 e.printStackTrace();
             }
 
