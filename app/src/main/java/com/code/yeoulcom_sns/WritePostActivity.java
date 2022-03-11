@@ -44,6 +44,8 @@ public class WritePostActivity extends AppCompatActivity {
     //스토리지 접근 권한
     private FirebaseStorage storage;
 
+    Uri file;
+
 
     EditText et_title, et_main_text;
     Button bt_write;
@@ -52,6 +54,8 @@ public class WritePostActivity extends AppCompatActivity {
 
     ImageView IV_image_select,img_test;
     ImageView IV_onBack;
+
+    boolean uploadCheck = false;
 
     int a = 1;
 
@@ -102,7 +106,10 @@ public class WritePostActivity extends AppCompatActivity {
         bt_write.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                write_post(name,generation,et_title.getText().toString(),et_main_text.getText().toString());
+                if (img_test.getDrawable() == null){
+                    write_post(name,generation,et_title.getText().toString(),et_main_text.getText().toString());
+                }
+                write_post_img(name,generation,et_title.getText().toString(),et_main_text.getText().toString(),file.toString());
                 Intent intent_view_change = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent_view_change);
             }
@@ -122,18 +129,21 @@ public class WritePostActivity extends AppCompatActivity {
         });
     }
     public void LoadGallery(){
+        //갤러리로 이동
         Intent intent_load = new Intent(Intent.ACTION_PICK);
         intent_load.setType(MediaStore.Images.Media.CONTENT_TYPE);
         startActivityForResult(intent_load, GALLERY_CODE);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        //갤러리에서 선택한 사진 읽어오는 메소드
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GALLERY_CODE){
-            Uri file = data.getData();
+            if (data != null){
+            file = data.getData();
             StorageReference storageRef = storage.getReference();
-            StorageReference reversRef = storageRef.child("img/"+"img"+ a +".png");
+            StorageReference reversRef = storageRef.child("img/"+file.getLastPathSegment());
             UploadTask uploadTask = reversRef.putFile(file);
             try {
                 InputStream in = getContentResolver().openInputStream(data.getData());
@@ -154,15 +164,25 @@ public class WritePostActivity extends AppCompatActivity {
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
                     Toast.makeText(getApplicationContext(), "사진이 정상적으로 업로드 되었습니다.", Toast.LENGTH_SHORT).show();
                 }
             });
+            }
         }
     }
 
     public void write_post(String name, String generation, String title, String text){
         //파이어베이스에 저장하기
-        addPostSave addPostSave = new addPostSave(name,generation,title,text);
-        databaseReference.child("post_save").push().setValue(addPostSave);
+        if (uploadCheck != true){
+            addPostSave addPostSave = new addPostSave(name,generation,title,text);
+            databaseReference.child("post_save").push().setValue(addPostSave);
+        }
+    }
+    public void write_post_img(String name, String generation, String title, String text, String file){
+        //이미지 포함 파이어베이스에 올리는 메소드
+        addPostSaveImg addPostSaveImg = new addPostSaveImg(name,generation,title,text,file);
+        databaseReference.child("post_save").push().setValue(addPostSaveImg);
+        uploadCheck = true;
     }
 }

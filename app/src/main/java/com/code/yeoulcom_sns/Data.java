@@ -6,11 +6,12 @@ public class Data {
 
     private String title;
     private String main_text;
-    private String imgUrl;
+    private String ImgUrl;
 
-    public Data(String a_title, String a_main_text) {
+    public Data(String a_title, String a_main_text, String a_imgURL) {
         title = a_title;
         main_text = a_main_text;
+        ImgUrl = a_imgURL;
     }
 
     public String getTitle() {
@@ -30,10 +31,9 @@ public class Data {
     }
 
     public String getImgUrl() {
-        return imgUrl;
+        return ImgUrl;
     }
-
     public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+        ImgUrl = imgUrl;
     }
 }

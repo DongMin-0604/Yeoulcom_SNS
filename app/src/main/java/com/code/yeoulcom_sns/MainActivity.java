@@ -86,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerAdapter adapter;
     TextView Post1_title_1, Post1_main_text_1;
 
+    //리스트 지정
+    final List<Data> dataList = new ArrayList<>();
+
 
 
     @Override
@@ -206,7 +209,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 // 게시물 위로 올리기
                 LinearLayoutManager mlayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
-                recyclerView.smoothScrollToPosition(20); // 개시물의 갯수대로 적어야 최상위로 올라가는 것 같은데 이부분은 조만간 수정해야됨.
+                recyclerView.smoothScrollToPosition(dataList.size()); // 개시물의 갯수대로 적어야 최상위로 올라가는 것 같은데 이부분은 조만간 수정해야됨.
+                // 03/11(수정완료)
             }
         });
     }
@@ -221,7 +225,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void getPost() {
         //리스트 지정
-        final List<Data> dataList = new ArrayList<>();
 
         //게시물 정보 파이어베이스에서 받아오기
         ValueEventListener mValueEventListener = new ValueEventListener() {
@@ -230,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot Snapshot : snapshot.getChildren()) {
                     key = Snapshot.getKey();
                     getPost = Snapshot.getValue(getPost.class);
-                    dataList.add(new Data(getPost.getTitle(), getPost.getMain_text()));
+                    dataList.add(new Data(getPost.getTitle(), getPost.getMain_text(),getPost.getImgURL()));
 
                     adapter.notifyDataSetChanged();
                 }
