@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:orientation="vertical"
             android:layout_marginRight="20dp">
 
@@ -53,20 +53,28 @@
                 android:background="@drawable/plusbtn"
                 android:layout_width="50dp"
                 android:layout_gravity="right"
-                android:layout_height="40dp" />
+                android:layout_height="50dp" />
 
             <Button
                 android:id="@+id/about_btn2"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="35dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginBottom="10dp"
+                android:background="#ffffff"
+                android:gravity="center"
                 android:text="문의하기"
                 android:visibility="gone" />
 
             <Button
                 android:id="@+id/about_btn3"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="개발자에게 문의하기"
+                android:layout_width="120dp"
+                android:layout_height="35dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginBottom="10dp"
+                android:background="#ffffff"
+                android:gravity="center"
+                android:text="개발자 정보"
                 android:visibility="gone" />
         </LinearLayout>
 
