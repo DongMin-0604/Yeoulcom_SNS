@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PersistableBundle;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -92,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
     //리스트 지정
     final List<Data> dataList = new ArrayList<>();
 
+    //로딩창
+    ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +111,24 @@ public class MainActivity extends AppCompatActivity {
 //        }
         getPost();
         onclick();
+        RunProgressDialog();
 
+    }
+    public void RunProgressDialog(){
+        dialog = new ProgressDialog(MainActivity.this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setMessage("게시물 로드 중. . .");
+
+        dialog.show();
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+            }
+        },1500);
     }
 
     public void init() {
@@ -243,13 +264,14 @@ public class MainActivity extends AppCompatActivity {
         ValueEventListener mValueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                dataList.clear();
                 for (DataSnapshot Snapshot : snapshot.getChildren()) {
                     key = Snapshot.getKey();
                     getPost = Snapshot.getValue(getPost.class);
                     dataList.add(new Data(getPost.getTitle(), getPost.getMain_text(), getPost.getImgURL()));
-
-                    adapter.notifyDataSetChanged();
                 }
+                
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -276,6 +298,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        //위에서 부터 쌓기위한 코드
         ((LinearLayoutManager) layoutManager).setReverseLayout(true);
         ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);

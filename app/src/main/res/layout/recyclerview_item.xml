@@ -20,6 +20,7 @@
             android:layout_width="200px"
             android:layout_height="200px"
             android:layout_marginLeft="10dp"
+            android:scaleType="centerCrop"
             android:layout_gravity="center_vertical" />
 
         <LinearLayout

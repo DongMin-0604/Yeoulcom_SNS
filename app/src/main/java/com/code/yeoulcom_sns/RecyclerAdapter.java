@@ -1,5 +1,6 @@
 package com.code.yeoulcom_sns;
 
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -13,7 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.yeoulcom_sns.R;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,13 +56,22 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
         final Data data = mList.get(position);
         holder.title.setText(data.getTitle());
         holder.main_text.setText(data.getMain_text());
-        Glide.with(holder.itemView.getContext())
-                .load(data.getImgUrl())
-                .placeholder(R.drawable.common_google_signin_btn_icon_dark_focused)// 이미지 로드중 잠시 띄울 이미지
-                .error(R.drawable.common_google_signin_btn_icon_dark_normal)//이미지 로드 실패 시 보여줄 이미지
-                .fallback(R.drawable.common_google_signin_btn_icon_dark_normal_background)//uri가 null일 때
-                .into(holder.imageView);
 
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageReference = storage.getReference();
+        StorageReference pathReference = storageReference.child("img/"+data.getImgUrl());
+        pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(holder.itemView.getContext())
+                        .load(uri)
+                        .placeholder(R.drawable.common_google_signin_btn_icon_dark)// 이미지 로드중 잠시 띄울 이미지
+                        .error(R.drawable.common_google_signin_btn_icon_dark_normal)//이미지 로드 실패 시 보여줄 이미지
+                        .fallback(R.drawable.common_google_signin_btn_icon_dark_normal_background)//uri이 null일 때
+                        .into(holder.imageView);
+//        Picasso.get().load(data.getImgUrl()).into(holder.imageView);//피카소 라이브러이리 이용
+            }
+        });
     }
 
     @Override

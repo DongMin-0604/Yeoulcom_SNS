@@ -1,16 +1,20 @@
 package com.code.yeoulcom_sns;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,6 +38,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -66,6 +71,11 @@ public class WritePostActivity extends AppCompatActivity {
 
     //갤러리 접근 권한
     private final int GALLERY_CODE = 10;
+    //테스트
+    Bitmap img;
+
+    //로딩 알려주는 위젯
+    ProgressDialog dialog;
 
 
 //    게시글 작성 화면 자바
@@ -92,6 +102,8 @@ public class WritePostActivity extends AppCompatActivity {
         //파이어베이스 스토리지
         storage = FirebaseStorage.getInstance();
 
+
+
     }
 //    private String getTime(){
 //        //현재 날짜 받아오기
@@ -108,10 +120,23 @@ public class WritePostActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (img_test.getDrawable() == null){
                     write_post(name,generation,et_title.getText().toString(),et_main_text.getText().toString());
+                }else{
+                    write_post_img(name,generation,et_title.getText().toString(),et_main_text.getText().toString(),file.toString());
                 }
-                write_post_img(name,generation,et_title.getText().toString(),et_main_text.getText().toString(),file.toString());
-                Intent intent_view_change = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent_view_change);
+                dialog = new ProgressDialog(WritePostActivity.this);
+                dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                dialog.setMessage("게시물 작성중. . .");
+
+                dialog.show();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent_view_change = new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(intent_view_change);
+                        dialog.dismiss();
+                    }
+                },600);
             }
         });
         IV_image_select.setOnClickListener(new View.OnClickListener() {
@@ -142,12 +167,13 @@ public class WritePostActivity extends AppCompatActivity {
         if (requestCode == GALLERY_CODE){
             if (data != null){
             file = data.getData();
+            Log.d("file",file.toString());
             StorageReference storageRef = storage.getReference();
-            StorageReference reversRef = storageRef.child("img/"+file.getLastPathSegment());
+            StorageReference reversRef = storageRef.child("img/"+file);
             UploadTask uploadTask = reversRef.putFile(file);
             try {
                 InputStream in = getContentResolver().openInputStream(data.getData());
-                Bitmap img = BitmapFactory.decodeStream(in);
+                img = BitmapFactory.decodeStream(in);
                 in.close();
                 img_test.setImageBitmap(img);
             } catch (Exception e) {
@@ -159,7 +185,7 @@ public class WritePostActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Toast.makeText(getApplicationContext(), "사진이 정상적으로 업로드 되지 않았습니다.",Toast.LENGTH_SHORT).show();
-
+                    e.printStackTrace();
                 }
             }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override

@@ -63,7 +63,7 @@ public class addPostSaveImg {
 //        this.Time = Time;
 //    }
 
-        //값을 추가할 때 쓸 함수
+        //이미지를 포함한 값을 추가할 때 쓸 함수]
         public addPostSaveImg(String name, String generation, String title, String main_text,String imgURL) {
             this.name = name;
             this.generation = generation;
