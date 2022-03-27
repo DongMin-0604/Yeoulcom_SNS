@@ -22,6 +22,7 @@ import android.widget.Button;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -71,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
     // 게시물 받아오는 클래스 참조
     getPost getPost;
 
+    ImageButton IV_onBack;
+
     //레이아웃 터치시 큰 화면으로 전환을 위한 레이아웃 정의
     LinearLayout post_short, post_long;
     LinearLayout main_layout;
@@ -88,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
 
     //리스트 지정
     final List<Data> dataList = new ArrayList<>();
-
 
 
     @Override
@@ -121,7 +123,10 @@ public class MainActivity extends AppCompatActivity {
         post_title = (TextView) findViewById(R.id.post_title);
         post_time = (TextView) findViewById(R.id.post_time);
 
-        main_layout = (LinearLayout)findViewById(R.id.main_layout);
+        // 뒤로가기 버튼
+        IV_onBack = (ImageButton) findViewById(R.id.IV_onBack);
+
+        main_layout = (LinearLayout) findViewById(R.id.main_layout);
 
         //이전 엑티비티에서 넘어온 기수,이름 받기
         Intent intent = getIntent();
@@ -150,6 +155,14 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), conference.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+            }
+        });
+
+        // 게시물창에서 뒤로가기 누르면 메인 화면으로 이동
+        IV_onBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
 
@@ -233,11 +246,12 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot Snapshot : snapshot.getChildren()) {
                     key = Snapshot.getKey();
                     getPost = Snapshot.getValue(getPost.class);
-                    dataList.add(new Data(getPost.getTitle(), getPost.getMain_text(),getPost.getImgURL()));
+                    dataList.add(new Data(getPost.getTitle(), getPost.getMain_text(), getPost.getImgURL()));
 
                     adapter.notifyDataSetChanged();
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(getApplicationContext(), "오류가 발생했습니다.", Toast.LENGTH_SHORT);
