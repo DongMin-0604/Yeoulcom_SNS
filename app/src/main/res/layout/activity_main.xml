@@ -83,7 +83,7 @@
                         android:layout_marginBottom="10dp"
                         android:background="#ffffff"
                         android:gravity="center"
-                        android:text="개발자 정보"
+                        android:text="내 정보"
                         android:visibility="gone" />
 
                     <Button

@@ -44,16 +44,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginTop="40dp"
-            android:orientation="vertical"
-            android:layout_marginRight="20dp">
+            android:layout_marginRight="20dp"
+            android:orientation="vertical">
 
             <!-- 속성 버튼 -->
             <Button
                 android:id="@+id/about_btn"
-                android:background="@drawable/plusbtn"
                 android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="right"
-                android:layout_height="50dp" />
+                android:layout_marginBottom="7dp"
+                android:background="@drawable/plusbtn" />
 
             <Button
                 android:id="@+id/about_btn2"
@@ -74,7 +75,18 @@
                 android:layout_marginBottom="10dp"
                 android:background="#ffffff"
                 android:gravity="center"
-                android:text="개발자 정보"
+                android:text="내 정보"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/bt_write_vote"
+                android:layout_width="120dp"
+                android:layout_height="35dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginBottom="25dp"
+                android:background="#ffffff"
+                android:gravity="center"
+                android:text="투표 작성"
                 android:visibility="gone" />
         </LinearLayout>
 
@@ -174,6 +186,7 @@
 
                 <Button
                     android:layout_width="70dp"
+                    android:id="@+id/yes_btn"
                     android:layout_height="70dp"
                     android:background="#80FF00"
                     android:layout_marginRight="50dp"
@@ -181,6 +194,7 @@
 
                 <Button
                     android:layout_width="70dp"
+                    android:id="@+id/no_btn"
                     android:layout_height="70dp"
                     android:background="#ff0000"
                     android:layout_marginLeft="50px"
@@ -188,37 +202,59 @@
                     android:text="반대하기" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                 <!-- 부가 설명 -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_marginTop="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="    5명\n참가자 수"
+                        android:id="@+id/get_vote_yes"
+                        android:text="0"
                         android:textSize="13dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="15dp"/>
+                        android:layout_gravity="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:textSize="13dp"
-                        android:text="    3명\n찬성 득표"
-                        android:layout_marginRight="15dp"/>
+                        android:text="찬성득표"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/get_vote_no"
+                        android:text="0"
                         android:textSize="13dp"
-                        android:text="    2명\n반대 득표"/>
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textSize="13dp"
+                        android:text="반대득표"/>
 
                 </LinearLayout>
             </LinearLayout>
-
+            </LinearLayout>
             <!-- 2 번째 게시물-->
             <LinearLayout
                 android:layout_width="900px"

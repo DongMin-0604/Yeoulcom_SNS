@@ -10,6 +10,7 @@ import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.yeoulcom_sns.R;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +36,8 @@ public class InputInformationActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_information);
+        // 다크모드 비활성화
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         init();
         onClick();
 
