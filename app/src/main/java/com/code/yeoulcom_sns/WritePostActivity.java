@@ -2,11 +2,8 @@ package com.code.yeoulcom_sns;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,31 +13,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.content.CursorLoader;
-
 import com.example.yeoulcom_sns.R;
-import com.google.android.gms.fido.fido2.api.common.RequestOptions;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -52,8 +39,6 @@ public class WritePostActivity extends AppCompatActivity {
     private FirebaseStorage storage;
 
     Uri file;
-
-
     EditText et_title, et_main_text;
     Button bt_write;
     String name;
@@ -107,13 +92,13 @@ public class WritePostActivity extends AppCompatActivity {
 
 
     }
-//    private String getTime(){
-//        //현재 날짜 받아오기
-//        mNow = System.currentTimeMillis();
-//        mDate = new Date(mNow);
-//
-//        return format.format(mDate);
-//    }
+    private String getTime(){
+        //현재 날짜 받아오기
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
+
+        return format.format(mDate);
+    }
 
     public void onClick(){
         //onClick 모아놓는 메소드
@@ -123,11 +108,11 @@ public class WritePostActivity extends AppCompatActivity {
                 if (img_test.getDrawable() == null){
                     //디폴트 하얀 화면 파이어베이스 storage 주소
                     String WhiteImage ="content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F33/ORIGINAL/NONE/image%2Fjpeg/998580531";
-                    write_post_img(name,generation,et_title.getText().toString(),et_main_text.getText().toString(),WhiteImage);
+                    write_post_img(name,generation,et_title.getText().toString(),et_main_text.getText().toString(),WhiteImage,getTime());
                     Log.d("1","디폴트"+WhiteImage);
 //                    write_post(name,generation,et_title.getText().toString(),et_main_text.getText().toString());
                 }else{
-                        write_post_img(name,generation,et_title.getText().toString(),et_main_text.getText().toString(),file.toString());
+                        write_post_img(name,generation,et_title.getText().toString(),et_main_text.getText().toString(),file.toString(),getTime());
                         Log.d("1",file.toString());
                 }
                 dialog = new ProgressDialog(WritePostActivity.this);
@@ -204,9 +189,9 @@ public class WritePostActivity extends AppCompatActivity {
             }
         }
     }
-    public void write_post_img(String name, String generation, String title, String text, String file){
+    public void write_post_img(String name, String generation, String title, String text, String file, String Time){
         //이미지 포함 파이어베이스에 올리는 메소드
-        addPostSaveImg addPostSaveImg = new addPostSaveImg(name,generation,title,text,file);
+        addPostSaveImg addPostSaveImg = new addPostSaveImg(name,generation,title,text,file,Time);
         databaseReference.child("post_save").push().setValue(addPostSaveImg);
         uploadCheck = true;
     }

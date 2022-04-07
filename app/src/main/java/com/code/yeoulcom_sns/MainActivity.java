@@ -12,9 +12,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -34,7 +36,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
 import com.example.yeoulcom_sns.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,6 +46,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -59,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
     //파이어 베이스 연동
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageReference = storage.getReference();
 
     // 새로고침
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -70,8 +77,10 @@ public class MainActivity extends AppCompatActivity {
     String name, generation, key, Time;
 
     //큰 게시물 TextView
-    TextView post_title, post_main_text, post_name_generation, post_time;
-    String post_name, post_generation;
+    TextView post_long_title, post_long_main_text, post_long_name_generation, post_long_time;
+    ImageView post_long_IV;
+    String post_long_name, post_long_generation;
+
     // 게시물 받아오는 클래스 참조
     getPost getPost;
 
@@ -142,10 +151,11 @@ public class MainActivity extends AppCompatActivity {
         bt_write_post = (Button) findViewById(R.id.bt_write_post);
 
         post_long = (LinearLayout) findViewById(R.id.post_long);
-        post_main_text = (TextView) findViewById(R.id.post_main_text);
-        post_name_generation = (TextView) findViewById(R.id.post_name_generation);
-        post_title = (TextView) findViewById(R.id.post_title);
-        post_time = (TextView) findViewById(R.id.post_time);
+        post_long_main_text = (TextView) findViewById(R.id.post_long_main_text);
+        post_long_name_generation = (TextView) findViewById(R.id.post_long_name_generation);
+        post_long_title = (TextView) findViewById(R.id.post_long_title);
+        post_long_time = (TextView) findViewById(R.id.post_long_time);
+        post_long_IV = (ImageView)findViewById(R.id.post_long_IV);
 
         // 뒤로가기 버튼
         IV_onBack = (ImageButton) findViewById(R.id.IV_onBack);
@@ -272,7 +282,12 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot Snapshot : snapshot.getChildren()) {
                     key = Snapshot.getKey();
                     getPost = Snapshot.getValue(getPost.class);
-                    dataList.add(new Data(getPost.getTitle(), getPost.getMain_text(), getPost.getImgURL()));
+                    dataList.add(new Data(getPost.getTitle(),
+                            getPost.getMain_text(),
+                            getPost.getImgURL(),
+                            getPost.getTime(),
+                            getPost.getName(),
+                            getPost.getGeneration()));
                 }
 
                 adapter.notifyDataSetChanged();
@@ -294,8 +309,23 @@ public class MainActivity extends AppCompatActivity {
                 final Data data = dataList.get(position);
                 main_layout.setVisibility(View.GONE);
                 post_long.setVisibility(View.VISIBLE);
-                post_title.setText(data.getTitle());
-                post_main_text.setText(data.getMain_text());
+                post_long_title.setText(data.getTitle());
+                post_long_main_text.setText(data.getMain_text());
+                post_long_time.setText(data.getTime());
+                post_long_name_generation.setText(data.getGeneration()+" "+data.getName());
+                
+                //게시물 안에 있는 이미지 이름으로 파이어베이스에서 가져오기
+                StorageReference pathReference = storageReference.child("img/"+data.getImgUrl());
+                pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Glide.with(getApplicationContext())
+                                .load(uri)
+                                .error(R.drawable.yeoul)//이미지 로드 실패 시 보여줄 이미지
+                                .fallback(R.drawable.common_google_signin_btn_icon_dark_normal_background)//uri이 null일 때
+                                .into(post_long_IV);
+                    }
+                });
             }
         });
 

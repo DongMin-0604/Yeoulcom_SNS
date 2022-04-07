@@ -77,7 +77,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
                     Glide.with(holder.itemView.getContext())
                             .load(uri)
                             .override(200,200)
-                            .placeholder(R.drawable.common_google_signin_btn_icon_dark)// 이미지 로드중 잠시 띄울 이미지
                             .error(R.drawable.common_google_signin_btn_icon_dark)//이미지 로드 실패 시 보여줄 이미지
                             .fallback(R.drawable.common_google_signin_btn_icon_dark_normal_background)//uri이 null일 때
                             .into(holder.imageView);
