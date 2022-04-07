@@ -3,6 +3,7 @@ package com.code.yeoulcom_sns;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.yeoulcom_sns.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -26,6 +28,10 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemViewHolder>{
 
     //리스트에 든 값 RecyclerView에 넣는 자바
+    
+    //파이어베이스 스토리지 접근 권한
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageReference = storage.getReference();
 
     //온 클릭 지정
     public interface OnItemClickListener{
@@ -48,30 +54,38 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_item, parent, false);
+
         return new ItemViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
-        final Data data = mList.get(position);
-        holder.title.setText(data.getTitle());
-        holder.main_text.setText(data.getMain_text());
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
 
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageReference = storage.getReference();
-        StorageReference pathReference = storageReference.child("img/"+data.getImgUrl());
-        pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Glide.with(holder.itemView.getContext())
-                        .load(uri)
-                        .placeholder(R.drawable.common_google_signin_btn_icon_dark)// 이미지 로드중 잠시 띄울 이미지
-                        .error(R.drawable.common_google_signin_btn_icon_dark_normal)//이미지 로드 실패 시 보여줄 이미지
-                        .fallback(R.drawable.common_google_signin_btn_icon_dark_normal_background)//uri이 null일 때
-                        .into(holder.imageView);
+    @Override
+    public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
+        Log.d("1","onBind 실행됨");
+        final Data data = mList.get(position);
+        if (data.getImgUrl() != null){
+            holder.title.setText(data.getTitle());
+            holder.main_text.setText(data.getMain_text());
+            StorageReference pathReference = storageReference.child("img/"+data.getImgUrl());
+            pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(holder.itemView.getContext())
+                            .load(uri)
+                            .override(200,200)
+                            .placeholder(R.drawable.common_google_signin_btn_icon_dark)// 이미지 로드중 잠시 띄울 이미지
+                            .error(R.drawable.common_google_signin_btn_icon_dark)//이미지 로드 실패 시 보여줄 이미지
+                            .fallback(R.drawable.common_google_signin_btn_icon_dark_normal_background)//uri이 null일 때
+                            .into(holder.imageView);
+
 //        Picasso.get().load(data.getImgUrl()).into(holder.imageView);//피카소 라이브러이리 이용
-            }
-        });
+                }
+            });
+        }
     }
 
     @Override

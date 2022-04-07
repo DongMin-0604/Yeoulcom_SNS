@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void RunProgressDialog(){
+        //게시물 불러올 동안 뜨는 로딩 Dialog
         dialog = new ProgressDialog(MainActivity.this);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.setMessage("게시물 로드 중. . .");
@@ -166,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
 
         //recyclerView 영역
         recyclerView = findViewById(R.id.main_recyclerview);
+        recyclerView.setItemAnimator(null);
 
     }
 
@@ -272,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
                     getPost = Snapshot.getValue(getPost.class);
                     dataList.add(new Data(getPost.getTitle(), getPost.getMain_text(), getPost.getImgURL()));
                 }
-                
+
                 adapter.notifyDataSetChanged();
             }
 

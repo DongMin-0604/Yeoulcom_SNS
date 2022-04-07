@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -119,9 +121,14 @@ public class WritePostActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (img_test.getDrawable() == null){
-                    write_post(name,generation,et_title.getText().toString(),et_main_text.getText().toString());
+                    //디폴트 하얀 화면 파이어베이스 storage 주소
+                    String WhiteImage ="content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F33/ORIGINAL/NONE/image%2Fjpeg/998580531";
+                    write_post_img(name,generation,et_title.getText().toString(),et_main_text.getText().toString(),WhiteImage);
+                    Log.d("1","디폴트"+WhiteImage);
+//                    write_post(name,generation,et_title.getText().toString(),et_main_text.getText().toString());
                 }else{
-                    write_post_img(name,generation,et_title.getText().toString(),et_main_text.getText().toString(),file.toString());
+                        write_post_img(name,generation,et_title.getText().toString(),et_main_text.getText().toString(),file.toString());
+                        Log.d("1",file.toString());
                 }
                 dialog = new ProgressDialog(WritePostActivity.this);
                 dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -195,14 +202,6 @@ public class WritePostActivity extends AppCompatActivity {
                 }
             });
             }
-        }
-    }
-
-    public void write_post(String name, String generation, String title, String text){
-        //파이어베이스에 저장하기
-        if (uploadCheck != true){
-            addPostSave addPostSave = new addPostSave(name,generation,title,text);
-            databaseReference.child("post_save").push().setValue(addPostSave);
         }
     }
     public void write_post_img(String name, String generation, String title, String text, String file){
