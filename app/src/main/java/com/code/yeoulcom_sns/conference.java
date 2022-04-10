@@ -35,6 +35,7 @@ public class conference extends AppCompatActivity {
         Button postBtn = (Button) findViewById(R.id.postBtn);
         Button conferenceBtn = (Button) findViewById(R.id.conferenceBtn);
         Button voteBtn = (Button) findViewById(R.id.voteBtn);
+        Button Chairman_Btn = (Button) findViewById(R.id.Chairman_Btn);
 
         // + 버튼 누르면 버튼 생성
         Button addBtn = (Button) findViewById(R.id.about_btn);
@@ -63,6 +64,16 @@ public class conference extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), vote.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+            }
+        });
+
+        // 회장페이지 버튼 클릭 시 이동 (오직 임원에게만 Active)
+        Chairman_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LeadersActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }

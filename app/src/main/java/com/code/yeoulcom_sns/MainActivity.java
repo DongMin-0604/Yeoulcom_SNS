@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     // + 버튼 누르면 버튼 생성
     Button addBtn, addBtn2, addBtn3;
 
-    Button postBtn, conferenceBtn, voteBtn, bt_write_post;
+    Button postBtn, conferenceBtn, voteBtn, bt_write_post, Chairman_Btn;
     String name, generation, key, Time;
 
     //큰 게시물 TextView
@@ -148,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
         postBtn = (Button) findViewById(R.id.postBtn);
         conferenceBtn = (Button) findViewById(R.id.conferenceBtn);
         voteBtn = (Button) findViewById(R.id.voteBtn);
+        Chairman_Btn = (Button) findViewById(R.id.Chairman_Btn);
         bt_write_post = (Button) findViewById(R.id.bt_write_post);
 
         post_long = (LinearLayout) findViewById(R.id.post_long);
@@ -210,6 +211,17 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         });
+
+        // 회장페이지 버튼 클릭 시 이동 (오직 임원에게만 Active)
+        Chairman_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LeadersActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+            }
+        });
+
         //게시물 작성 클릭 시 이동
         bt_write_post.setOnClickListener(new View.OnClickListener() {
             @Override

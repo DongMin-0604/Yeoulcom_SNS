@@ -132,6 +132,16 @@
             android:text="투표"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/Chairman_Btn"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="260dp"
+            android:layout_marginTop="20dp"
+            android:textSize="35px"
+            android:background="#00ff0000"
+            android:text="회장페이지" />
+
         <!-- 현재 선택되있는 nav바에 밑줄 -->
         <View
             android:layout_width="50dp"
