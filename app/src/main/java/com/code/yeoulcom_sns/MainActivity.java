@@ -318,6 +318,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnClickListener(new RecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View a_v, int position) {
+                RunProgressDialog();//게시물 클릭 시 이미지 로딩 Dialog
+
                 final Data data = dataList.get(position);
                 main_layout.setVisibility(View.GONE);
                 post_long.setVisibility(View.VISIBLE);
@@ -325,6 +327,7 @@ public class MainActivity extends AppCompatActivity {
                 post_long_main_text.setText(data.getMain_text());
                 post_long_time.setText(data.getTime());
                 post_long_name_generation.setText(data.getGeneration()+" "+data.getName());
+                post_long_IV.setImageResource(R.drawable.whiteimage);
                 
                 //게시물 안에 있는 이미지 이름으로 파이어베이스에서 가져오기
                 StorageReference pathReference = storageReference.child("img/"+data.getImgUrl());
