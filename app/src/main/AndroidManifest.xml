@@ -17,6 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Yeoulcom_SNS">
+<!--   com.code.yeoulcom_sns.MainActivity     -->
         <activity
             android:name="com.code.yeoulcom_sns.InputInformationActivity"
             android:exported="true">

@@ -12,6 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -107,6 +108,14 @@ public class MainActivity extends AppCompatActivity {
     //로딩창
     ProgressDialog dialog;
 
+    //뒤로가기 두번 입력 체크용
+    private long backKeyPressedTime;
+    Toast toast;
+    
+    //기수,이름 핸드폰에 저장
+    SharedPreferences sp;
+    boolean FirstCheck;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,18 +123,20 @@ public class MainActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         init();
-        //기수 이름이 없을 시 첫 화면으로
+//        //기수 이름이 없을 시 첫 화면으로
 //        if (name == "" || generation == ""){
 //            Toast.makeText(getApplicationContext(),"승인되지 않은 사용자입니다.",Toast.LENGTH_SHORT);
 //            Intent intent_view_change = new Intent(getApplicationContext(),InputInformationActivity.class);
 //            startActivity(intent_view_change);
 //        }
+
         getPost();
         onclick();
         RunProgressDialog();
 
     }
-    public void RunProgressDialog(){
+
+    public void RunProgressDialog() {
         //게시물 불러올 동안 뜨는 로딩 Dialog
         dialog = new ProgressDialog(MainActivity.this);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -140,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 dialog.dismiss();
             }
-        },1500);
+        }, 1500);
     }
 
     public void init() {
@@ -156,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         post_long_name_generation = (TextView) findViewById(R.id.post_long_name_generation);
         post_long_title = (TextView) findViewById(R.id.post_long_title);
         post_long_time = (TextView) findViewById(R.id.post_long_time);
-        post_long_IV = (ImageView)findViewById(R.id.post_long_IV);
+        post_long_IV = (ImageView) findViewById(R.id.post_long_IV);
 
         // 뒤로가기 버튼
         IV_onBack = (ImageButton) findViewById(R.id.IV_onBack);
@@ -326,11 +337,11 @@ public class MainActivity extends AppCompatActivity {
                 post_long_title.setText(data.getTitle());
                 post_long_main_text.setText(data.getMain_text());
                 post_long_time.setText(data.getTime());
-                post_long_name_generation.setText(data.getGeneration()+" "+data.getName());
+                post_long_name_generation.setText(data.getGeneration() + " " + data.getName());
                 post_long_IV.setImageResource(R.drawable.whiteimage);
-                
+
                 //게시물 안에 있는 이미지 이름으로 파이어베이스에서 가져오기
-                StorageReference pathReference = storageReference.child("img/"+data.getImgUrl());
+                StorageReference pathReference = storageReference.child("img/" + data.getImgUrl());
                 pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
@@ -355,14 +366,30 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
         //만약 게시물 큰 화면이 켜져있다면 뒤로가기 눌렀을때 큰 화면이 꺼지게
         int result = post_long.getVisibility();
         if (result == View.VISIBLE) {
             post_long.setVisibility(View.GONE);
             main_layout.setVisibility(View.VISIBLE);
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
+            if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+                backKeyPressedTime = System.currentTimeMillis();
+                toast = Toast.makeText(this, "\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT);
+                toast.show();
+                return;
+            }
+            if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+                moveTaskToBack(true);
+                finish();
+                toast.cancel();
+            }
         }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

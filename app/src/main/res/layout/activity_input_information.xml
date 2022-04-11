@@ -1,97 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/ic_launcher_foreground">
-
-
-    <!-- 메인 소개 Text -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:orientation="vertical" />
-
-<!--     정보 입력창  -->
-<!--    <ImageView-->
-<!--        android:layout_width="100dp"-->
-<!--        android:layout_height="100dp"-->
-<!--        android:src="@drawable/shape"-->
-<!--        android:layout_gravity="center"/>-->
-
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/yeoul" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Welcome Aboard"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:layout_marginBottom="10dp"
-        android:layout_gravity="center"
-        android:textSize="30dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="It's Yeoulcom!!"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:textColor="@color/black"
-        android:textSize="20dp" />
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="500px"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:background="@drawable/line"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
 
+        <!-- 메인 소개 Text -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical" />
 
-        <Spinner
-            android:id="@+id/sp_generation"
-            android:layout_width="300px"
-            android:textStyle="bold"
-            android:layout_height="120px" />
+        <!--     정보 입력창  -->
+        <!--    <ImageView-->
+        <!--        android:layout_width="100dp"-->
+        <!--        android:layout_height="100dp"-->
+        <!--        android:src="@drawable/shape"-->
+        <!--        android:layout_gravity="center"/>-->
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/yeoul" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="이름:"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="Welcome Aboard"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="50px" />
+            android:textSize="30dp"
+            android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/et_name"
-            android:layout_width="300px"
-            android:layout_height="50dp"
-            android:textStyle="bold"
-            android:ems="4"
-            android:maxLength="4"
-            android:maxLines="1" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="It's Yeoulcom!!"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="500px"
+            android:background="@drawable/line"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:textStyle="bold">
+
+
+            <Spinner
+                android:id="@+id/sp_generation"
+                android:layout_width="300px"
+                android:layout_height="120px"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이름:"
+                android:textColor="@color/black"
+                android:textSize="50px"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="300px"
+                android:layout_height="50dp"
+                android:maxLines="1"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/bt_Apply"
+            android:layout_width="match_parent"
+            android:layout_height="200px"
+            android:text="신청하기"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
-    <View
+    <LinearLayout
+        android:id="@+id/info_check_Layout"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"
+        android:background="#A6323131"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
 
-    <Button
-        android:id="@+id/bt_Apply"
-        android:layout_width="match_parent"
-        android:layout_height="200px"
-        android:textStyle="bold"
-        android:text="신청하기" />
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/border_layout">
+            <TextView
+                android:id="@+id/name_generation_check_TV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:textColor="#FFCD4A"
+                android:textSize="70px"
+                android:text="기수,이름"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                android:text="※기수, 이름을 다시 한번 확인해주세요.※"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/cancel_BT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="취소"
+                    />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/request_BT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="신청"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
