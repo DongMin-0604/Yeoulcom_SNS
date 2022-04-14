@@ -114,14 +114,14 @@ public class InputInformationActivity extends AppCompatActivity {
                 //이름,기수 변수에 값 넣어주기
                 st_name = et_name.getText().toString();
                 st_generation = sp_generation.getSelectedItem().toString();
-
-//               addUser(st_name,st_generation); 게시물 테스트를 위한 잠깐 막아놓기
                 //화면 전환, 기수,이름 다음 엑티비티로 넘기기
                 editor.putString("name",st_name);
                 editor.putString("generation",st_generation);
                 editor.apply();
                 Intent intent_view_change = new Intent(getApplicationContext(), MainActivity.class);
                 intent_view_change.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                // 게시물 테스트를 위한 잠깐 막아놓기,파이어베이스 업로드
+                addUser(st_name,st_generation);
                 startActivity(intent_view_change);
             }
         });
@@ -129,7 +129,7 @@ public class InputInformationActivity extends AppCompatActivity {
 
     public void addUser(String name, String generation) {
         //파이어베이스에 업로드
-//        databaseReference.child("user").child(st_generation).push().setValue(st_name);
+        databaseReference.child("user").child(st_generation).push().setValue(st_name);
     }
 
     public InputFilter filterKor = new InputFilter() {

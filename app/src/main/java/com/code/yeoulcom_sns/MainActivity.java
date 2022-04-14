@@ -175,8 +175,8 @@ public class MainActivity extends AppCompatActivity {
 
         //이전 엑티비티에서 넘어온 기수,이름 받기
         SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
-        name = SP.getString("name","Null");
-        generation = SP.getString("generation","null");
+        name = SP.getString("name","");
+        generation = SP.getString("generation","");
 
         // + 버튼 누르면 버튼 생성
         addBtn = (Button) findViewById(R.id.about_btn);
