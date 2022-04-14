@@ -1,6 +1,8 @@
 package com.code.yeoulcom_sns;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.Spanned;
@@ -30,6 +32,10 @@ public class InputInformationActivity extends AppCompatActivity {
     //파이어 베이스 연동
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
+
+    //SharedPreferences
+    SharedPreferences SP;
+    SharedPreferences.Editor editor;
     //기수 선택 스피너
     Spinner sp_generation;
 
@@ -73,11 +79,14 @@ public class InputInformationActivity extends AppCompatActivity {
         InputFilter lengthFilter = new InputFilter.LengthFilter(4);
         InputFilter[] filters = new InputFilter[]{filterKor,lengthFilter};
         et_name.setFilters(filters);
+
+        //SharedPreferences
+        SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
+        editor = SP.edit();
     }
 
     public void onClick() {
         //onClick 모아놓는 메소드
-
         bt_Apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,9 +117,10 @@ public class InputInformationActivity extends AppCompatActivity {
 
 //               addUser(st_name,st_generation); 게시물 테스트를 위한 잠깐 막아놓기
                 //화면 전환, 기수,이름 다음 엑티비티로 넘기기
+                editor.putString("name",st_name);
+                editor.putString("generation",st_generation);
+                editor.apply();
                 Intent intent_view_change = new Intent(getApplicationContext(), MainActivity.class);
-                intent_view_change.putExtra("generation", st_generation);
-                intent_view_change.putExtra("name", st_name);
                 intent_view_change.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent_view_change);
             }

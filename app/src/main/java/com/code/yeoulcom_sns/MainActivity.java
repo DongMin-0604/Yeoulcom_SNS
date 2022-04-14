@@ -112,9 +112,8 @@ public class MainActivity extends AppCompatActivity {
     private long backKeyPressedTime;
     Toast toast;
     
-    //기수,이름 핸드폰에 저장
-    SharedPreferences sp;
-    boolean FirstCheck;
+    //기수,이름 핸드폰에 저장 SharedPreferences
+    SharedPreferences SP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,12 +122,12 @@ public class MainActivity extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         init();
-//        //기수 이름이 없을 시 첫 화면으로
-//        if (name == "" || generation == ""){
-//            Toast.makeText(getApplicationContext(),"승인되지 않은 사용자입니다.",Toast.LENGTH_SHORT);
-//            Intent intent_view_change = new Intent(getApplicationContext(),InputInformationActivity.class);
-//            startActivity(intent_view_change);
-//        }
+        //기수 이름이 없을 시 첫 화면으로
+        if (name == "" || generation == ""){
+            Toast.makeText(getApplicationContext(),"승인되지 않은 사용자입니다.",Toast.LENGTH_SHORT);
+            Intent intent_view_change = new Intent(getApplicationContext(),InputInformationActivity.class);
+            startActivity(intent_view_change);
+        }
 
         getPost();
         onclick();
@@ -175,9 +174,9 @@ public class MainActivity extends AppCompatActivity {
         main_layout = (LinearLayout) findViewById(R.id.main_layout);
 
         //이전 엑티비티에서 넘어온 기수,이름 받기
-        Intent intent = getIntent();
-        name = intent.getStringExtra("name");
-        generation = intent.getStringExtra("generation");
+        SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
+        name = SP.getString("name","Null");
+        generation = SP.getString("generation","null");
 
         // + 버튼 누르면 버튼 생성
         addBtn = (Button) findViewById(R.id.about_btn);
