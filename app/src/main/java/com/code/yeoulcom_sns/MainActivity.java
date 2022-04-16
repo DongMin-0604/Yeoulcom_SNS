@@ -62,6 +62,7 @@ import android.widget.Spinner;
 
 
 public class MainActivity extends AppCompatActivity {
+
     //파이어 베이스 연동
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
@@ -118,22 +119,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView (R.layout.activity_main);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        init();
         //기수 이름이 없을 시 첫 화면으로
-        if (name == "" || generation == ""){
-            Toast.makeText(getApplicationContext(),"승인되지 않은 사용자입니다.",Toast.LENGTH_SHORT);
-            Intent intent_view_change = new Intent(getApplicationContext(),InputInformationActivity.class);
+        if (name == "" || generation == "") {
+            Toast.makeText(getApplicationContext(), "승인되지 않은 사용자입니다.", Toast.LENGTH_SHORT);
+            Intent intent_view_change = new Intent(getApplicationContext(), InputInformationActivity.class);
             startActivity(intent_view_change);
         }
-
         getPost();
         onclick();
         RunProgressDialog();
-
     }
+
 
     public void RunProgressDialog() {
         //게시물 불러올 동안 뜨는 로딩 Dialog
@@ -187,11 +186,10 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.swiperefreshlayout);
 
         //recyclerView 영역
-        recyclerView = findViewById(R.id.main_recyclerview);
         recyclerView.setItemAnimator(null);
+        recyclerView = findViewById(R.id.main_recyclerview);
 
     }
-
     public void onclick() {
         //onclick 모아 놓는 함수
         // 컨퍼런스 클릭 시 이동
@@ -283,6 +281,20 @@ public class MainActivity extends AppCompatActivity {
                 // 03/11(수정완료)
             }
         });
+
+        // 문의하기 클릭하면 이메일 띄우기
+        addBtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addBtn2 = new Intent(Intent.ACTION_SEND);
+                addBtn2.setType("Plain/text");
+                String[] address = {"leeseojun0927@gmail.com"};
+                addBtn2.putExtra(Intent.EXTRA_EMAIL, address);
+                addBtn2.putExtra(Intent.EXTRA_SUBJECT, "test@test");
+                addBtn2.putExtra(Intent.EXTRA_TEXT, "내용 미리보기 (미리 적을 수 있음");
+                startActivity(addBtn2);
+            }
+        });
     }
 
 //    private String getTime() {
@@ -311,7 +323,6 @@ public class MainActivity extends AppCompatActivity {
                             getPost.getName(),
                             getPost.getGeneration()));
                 }
-
                 adapter.notifyDataSetChanged();
             }
 
@@ -353,14 +364,12 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-
-        recyclerView.setAdapter(adapter);
-
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         //위에서 부터 쌓기위한 코드
         ((LinearLayoutManager) layoutManager).setReverseLayout(true);
         ((LinearLayoutManager) layoutManager).setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override

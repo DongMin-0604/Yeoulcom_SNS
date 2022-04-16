@@ -39,11 +39,35 @@
         android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/shape"
-            android:layout_gravity="center"/>
+        <!-- 유저의 기수, 이름을 불러오기 위한 리니어 레이아웃 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:background="@drawable/line">
+
+            <!-- 이미지 빼고 이름/기수 넣기-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="OO기 / " />
+
+            <!-- 이미지 빼고 이름/기수 넣기-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="최지민" />
+        </LinearLayout>
 
         <!-- 카테고리 분류 -->
         <LinearLayout
