@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent_view_change = new Intent(getApplicationContext(), InputInformationActivity.class);
             startActivity(intent_view_change);
         }
+        init();
         getPost();
         onclick();
         RunProgressDialog();
@@ -186,8 +187,8 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.swiperefreshlayout);
 
         //recyclerView 영역
-        recyclerView.setItemAnimator(null);
         recyclerView = findViewById(R.id.main_recyclerview);
+        recyclerView.setItemAnimator(null);
 
     }
     public void onclick() {
