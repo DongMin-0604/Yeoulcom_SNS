@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView (R.layout.activity_main);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
+        init();
         //기수 이름이 없을 시 첫 화면으로
         if (name == "" || generation == "") {
             Toast.makeText(getApplicationContext(), "승인되지 않은 사용자입니다.", Toast.LENGTH_SHORT);
@@ -182,12 +183,13 @@ public class MainActivity extends AppCompatActivity {
         addBtn2 = (Button) findViewById(R.id.about_btn2);
         addBtn3 = (Button) findViewById(R.id.about_btn3);
 
+        //recyclerView 영역
+        recyclerView = findViewById(R.id.main_recyclerview);
+        recyclerView.setItemAnimator(null);
+
+
         //새로고침
         swipeRefreshLayout = findViewById(R.id.swiperefreshlayout);
-
-        //recyclerView 영역
-        recyclerView.setItemAnimator(null);
-        recyclerView = findViewById(R.id.main_recyclerview);
 
     }
     public void onclick() {
@@ -364,6 +366,8 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         //위에서 부터 쌓기위한 코드
         ((LinearLayoutManager) layoutManager).setReverseLayout(true);
