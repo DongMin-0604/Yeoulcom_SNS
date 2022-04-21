@@ -63,7 +63,6 @@
             android:orientation="horizontal"
             android:textStyle="bold">
 
-
             <Spinner
                 android:id="@+id/sp_generation"
                 android:layout_width="300px"
@@ -85,7 +84,30 @@
                 android:maxLines="1"
                 android:textStyle="bold" />
         </LinearLayout>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/line"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="120px"
+                android:text="권한 번호:\n(회장,선생님,개발자)"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="30px"
+                android:textColor="@color/black"
+                />
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="300px"
+                android:layout_height="50dp"
+                android:maxLines="1"
+                android:inputType="number"
+                android:maxLength="6"
+                android:textStyle="bold" />
+        </LinearLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
