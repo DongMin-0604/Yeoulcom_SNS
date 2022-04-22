@@ -1,14 +1,11 @@
 package com.code.yeoulcom_sns;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,31 +13,19 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PersistableBundle;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.yeoulcom_sns.R;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -69,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageReference = storage.getReference();
 
+
+
     // 새로고침
     private SwipeRefreshLayout swipeRefreshLayout;
 
@@ -77,19 +64,18 @@ public class MainActivity extends AppCompatActivity {
 
     Button postBtn, conferenceBtn, voteBtn, bt_write_post, Chairman_Btn;
     String name, generation, key, Time;
+    boolean adminCheck;
 
     //큰 게시물 TextView
     TextView post_long_title, post_long_main_text, post_long_name_generation, post_long_time;
     ImageView post_long_IV;
-    String post_long_name, post_long_generation;
 
     // 게시물 받아오는 클래스 참조
     getPost getPost;
-
     ImageButton IV_onBack;
 
     //레이아웃 터치시 큰 화면으로 전환을 위한 레이아웃 정의
-    LinearLayout post_short, post_long;
+    LinearLayout post_long;
     LinearLayout main_layout;
 
     //오늘 날짜 가져오기 위한 코드
@@ -101,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
     //recyclerView 영역
     RecyclerView recyclerView;
     private RecyclerAdapter adapter;
-    TextView Post1_title_1, Post1_main_text_1;
 
     //리스트 지정
     final List<Data> dataList = new ArrayList<>();
@@ -124,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
         //기수 이름이 없을 시 첫 화면으로
         if (name == "" || generation == "") {
-            Toast.makeText(getApplicationContext(), "승인되지 않은 사용자입니다.", Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), "승인되지 않은 사용자입니다.", Toast.LENGTH_SHORT).show();
             Intent intent_view_change = new Intent(getApplicationContext(), InputInformationActivity.class);
             startActivity(intent_view_change);
         }
@@ -177,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
         SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
         name = SP.getString("name","");
         generation = SP.getString("generation","");
+        adminCheck = SP.getBoolean("admin",false);
 
         // + 버튼 누르면 버튼 생성
         addBtn = (Button) findViewById(R.id.about_btn);
@@ -190,6 +176,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.main_recyclerview);
         recyclerView.setItemAnimator(null);
 
+        //권한 있을 시
+        if (adminCheck == true){
+            Chairman_Btn.setVisibility(View.VISIBLE);
+        }
     }
     public void onclick() {
         //onclick 모아 놓는 함수

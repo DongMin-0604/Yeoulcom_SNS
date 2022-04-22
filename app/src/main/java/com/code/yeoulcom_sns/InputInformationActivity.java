@@ -39,11 +39,13 @@ public class InputInformationActivity extends AppCompatActivity {
     //기수 선택 스피너
     Spinner sp_generation;
 
+    //회장,선생님,개발자 권한 체크
+    boolean adminCheck = false;
 
-    Button bt_Apply,cancel_BT,request_BT;
+    Button bt_Apply, cancel_BT, request_BT;
     TextView name_generation_check_TV;
     LinearLayout info_check_Layout;
-    EditText et_name;
+    EditText et_name, et_password;
     String st_generation, st_name;
 
     @Override
@@ -74,10 +76,11 @@ public class InputInformationActivity extends AppCompatActivity {
         cancel_BT = findViewById(R.id.cancel_BT);
         name_generation_check_TV = findViewById(R.id.name_generation_check_TV);
         info_check_Layout = findViewById(R.id.info_check_Layout);
+        et_password = findViewById(R.id.et_password);
 
         //글자 길이와 한글만 입력되게 하는 필터
         InputFilter lengthFilter = new InputFilter.LengthFilter(4);
-        InputFilter[] filters = new InputFilter[]{filterKor,lengthFilter};
+        InputFilter[] filters = new InputFilter[]{filterKor, lengthFilter};
         et_name.setFilters(filters);
 
         //SharedPreferences
@@ -91,10 +94,10 @@ public class InputInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (et_name.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(),"이름을 입력해주세요.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "이름을 입력해주세요.", Toast.LENGTH_SHORT).show();
                 } else {
                     info_check_Layout.setVisibility(View.VISIBLE);
-                    name_generation_check_TV.setText(sp_generation.getSelectedItem().toString() +" "+et_name.getText().toString() );
+                    name_generation_check_TV.setText(sp_generation.getSelectedItem().toString() + " " + et_name.getText().toString());
                     bt_Apply.setEnabled(false);
                 }
             }
@@ -109,25 +112,53 @@ public class InputInformationActivity extends AppCompatActivity {
         request_BT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                info_check_Layout.setVisibility(View.GONE);
-                bt_Apply.setEnabled(true);
-                //이름,기수 변수에 값 넣어주기
-                st_name = et_name.getText().toString();
-                st_generation = sp_generation.getSelectedItem().toString();
-                //화면 전환, 기수,이름 다음 엑티비티로 넘기기
-                editor.putString("name",st_name);
-                editor.putString("generation",st_generation);
-                editor.apply();
-                Intent intent_view_change = new Intent(getApplicationContext(), MainActivity.class);
-                intent_view_change.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                // 게시물 테스트를 위한 잠깐 막아놓기,파이어베이스 업로드
-                addUser(st_name,st_generation);
-                startActivity(intent_view_change);
+                if (et_password.getText().toString().equals("1111")) {
+                    //권한코드가 맞을 시
+                    adminCheck = true;
+                    info_check_Layout.setVisibility(View.GONE);
+                    bt_Apply.setEnabled(true);
+
+                    //이름,기수 변수에 값 넣어주기
+                    st_name = et_name.getText().toString();
+                    st_generation = sp_generation.getSelectedItem().toString();
+
+                    //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
+                    editor.putString("name", st_name);
+                    editor.putString("generation", st_generation);
+                    editor.putBoolean("admin", adminCheck);
+                    editor.apply();
+                    Intent intent_view_change = new Intent(getApplicationContext(), MainActivity.class);
+                    intent_view_change.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                    // 게시물 테스트를 위한 잠깐 막아놓기,파이어베이스 업로드
+                    addUser(st_name, st_generation,adminCheck);
+                    startActivity(intent_view_change);
+
+                } else {
+                    info_check_Layout.setVisibility(View.GONE);
+                    bt_Apply.setEnabled(true);
+                    //이름,기수 변수에 값 넣어주기
+
+                    st_name = et_name.getText().toString();
+                    st_generation = sp_generation.getSelectedItem().toString();
+
+                    //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
+                    editor.putString("name", st_name);
+                    editor.putString("generation", st_generation);
+                    editor.apply();
+                    Intent intent_view_change = new Intent(getApplicationContext(), MainActivity.class);
+                    intent_view_change.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                    // 게시물 테스트를 위한 잠깐 막아놓기,파이어베이스 업로드
+                    addUser(st_name, st_generation,adminCheck);
+                    startActivity(intent_view_change);
+
+                }
             }
         });
     }
 
-    public void addUser(String name, String generation) {
+    public void addUser(String name, String generation, boolean adminCheck) {
         //파이어베이스에 업로드
         databaseReference.child("user").child(st_generation).push().setValue(st_name);
     }
