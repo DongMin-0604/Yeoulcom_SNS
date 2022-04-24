@@ -47,6 +47,14 @@
                 android:text="졸업하시는 선배님들께 졸업 선물을\n 드릴 때 롤링페이퍼를 ....... "
                 android:textSize="13dp" />
         </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_delete"
+            android:layout_width="150px"
+            android:layout_height="100px"
+            android:layout_marginLeft="50px"
+            android:text="삭제"
+            android:visibility="gone"
+            android:textColor="@color/black" />
     </LinearLayout>
 
 </LinearLayout>

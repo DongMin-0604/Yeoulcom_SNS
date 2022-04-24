@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -100,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
     
     //기수,이름 핸드폰에 저장 SharedPreferences
     SharedPreferences SP;
+//
+    Button bt_delete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,10 +178,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.main_recyclerview);
         recyclerView.setItemAnimator(null);
 
-        //권한 있을 시
+        //권한 있을 시 관리페이지 접근 가능
         if (adminCheck == true){
             Chairman_Btn.setVisibility(View.VISIBLE);
         }
+        //
+        bt_delete = findViewById(R.id.bt_delete);
     }
     public void onclick() {
         //onclick 모아 놓는 함수
@@ -313,12 +318,15 @@ public class MainActivity extends AppCompatActivity {
                             getPost.getName(),
                             getPost.getGeneration()));
                 }
+
+                Log.d("name,generation", getPost.getGeneration() + getPost.getName());
+                Log.d("name,generation", generation + name);
                 adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getApplicationContext(), "오류가 발생했습니다.", Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(), "오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
             }
         };
         databaseReference.child("post_save").addValueEventListener(mValueEventListener);
@@ -354,6 +362,7 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         //위에서 부터 쌓기위한 코드
         ((LinearLayoutManager) layoutManager).setReverseLayout(true);
@@ -383,6 +392,10 @@ public class MainActivity extends AppCompatActivity {
                 toast.cancel();
             }
         }
+
+    }
+
+    public void delete(){
 
     }
 
