@@ -106,14 +106,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView (R.layout.activity_main);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-
+        init();
         //기수 이름이 없을 시 첫 화면으로
         if (name == "" || generation == "") {
             Toast.makeText(getApplicationContext(), "승인되지 않은 사용자입니다.", Toast.LENGTH_SHORT).show();
             Intent intent_view_change = new Intent(getApplicationContext(), InputInformationActivity.class);
             startActivity(intent_view_change);
         }
-        init();
         getPost();
         onclick();
         RunProgressDialog();
