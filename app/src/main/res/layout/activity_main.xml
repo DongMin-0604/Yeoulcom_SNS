@@ -147,7 +147,6 @@
                     android:layout_marginTop="20dp"
                     android:textSize="35px"
                     android:background="#00ff0000"
-                    android:visibility="gone"
                     android:text="관리페이지" />
 
                 <!-- 현재 선택되있는 nav바에 밑줄 -->

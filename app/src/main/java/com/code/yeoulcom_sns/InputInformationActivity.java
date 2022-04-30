@@ -115,7 +115,6 @@ public class InputInformationActivity extends AppCompatActivity {
                 if (et_password.getText().toString().equals("1111")) {
                     //권한코드가 맞을 시
                     adminCheck = true;
-                    info_check_Layout.setVisibility(View.GONE);
                     bt_Apply.setEnabled(true);
 
                     //이름,기수 변수에 값 넣어주기

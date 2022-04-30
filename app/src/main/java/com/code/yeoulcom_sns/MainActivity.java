@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button postBtn, conferenceBtn, voteBtn, bt_write_post, Chairman_Btn;
     String name, generation, key, Time;
+    Boolean adminCheck = false;
 
     //큰 게시물 TextView
     TextView post_long_title, post_long_main_text, post_long_name_generation, post_long_time;
@@ -115,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
     
     //기수,이름 핸드폰에 저장 SharedPreferences
     SharedPreferences SP;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,10 +175,15 @@ public class MainActivity extends AppCompatActivity {
 
         main_layout = (LinearLayout) findViewById(R.id.main_layout);
 
+        //SharedPreferences
+        SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
+        editor = SP.edit();
+
         //이전 엑티비티에서 넘어온 기수,이름 받기
         SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
         name = SP.getString("name","");
         generation = SP.getString("generation","");
+        adminCheck = SP.getBoolean("admin",false);
 
         // + 버튼 누르면 버튼 생성
         addBtn = (Button) findViewById(R.id.about_btn);
@@ -198,6 +205,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), conference.class);
+                //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
+                editor.putString("name", name);
+                editor.putString("generation", generation);
+                editor.putBoolean("admin", adminCheck);
+                editor.apply();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
@@ -216,6 +229,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), vote.class);
+                //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
+                editor.putString("name", name);
+                editor.putString("generation", generation);
+                editor.putBoolean("admin", adminCheck);
+                editor.apply();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
@@ -225,9 +244,14 @@ public class MainActivity extends AppCompatActivity {
         Chairman_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LeadersActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                if (adminCheck == true){
+                    Intent intent = new Intent(getApplicationContext(), LeadersActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                }else {
+                    Toast.makeText(getApplicationContext(),"권한이 없습니다.",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +33,12 @@ public class vote extends AppCompatActivity {
     SharedPreferences pref;          // 프리퍼런스
     SharedPreferences.Editor editor; // 에디터
 
+    String name, generation, key, Time;
+    boolean adminCheck;
+
+    //기수,이름 핸드폰에 저장 SharedPreferences
+    SharedPreferences SP;
+    SharedPreferences.Editor editorsp;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,6 +69,7 @@ public class vote extends AppCompatActivity {
 //        monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        monthSpinner.setAdapter(monthAdapter);
 
+        init();
 
         // 게시물 클릭 시 이동
         postBtn.setOnClickListener(new View.OnClickListener() {
@@ -98,9 +106,15 @@ public class vote extends AppCompatActivity {
         Chairman_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LeadersActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                //관리자 권한 체크 후 관리페이지 활성화
+                if (adminCheck == true){
+                    Intent intent = new Intent(getApplicationContext(), LeadersActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                }else {
+                    Toast.makeText(getApplicationContext(),"권한이 없습니다.",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -154,6 +168,14 @@ public class vote extends AppCompatActivity {
                 editor.apply(); // 저장
             }
         });
+
+    }
+    public void init(){
+        //이전 엑티비티에서 넘어온 기수,이름 받기
+        SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
+        name = SP.getString("name","");
+        generation = SP.getString("generation","");
+        adminCheck = SP.getBoolean("admin",false);
 
     }
 }
