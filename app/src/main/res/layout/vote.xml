@@ -224,12 +224,12 @@
                     android:layout_marginTop="15dp">
 
                     <TextView
+                        android:id="@+id/get_vote_yes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/get_vote_yes"
+                        android:layout_gravity="center"
                         android:text="0"
-                        android:textSize="13dp"
-                        android:layout_gravity="center"/>
+                        android:textSize="13dp" />
 
                     <TextView
                         android:layout_width="wrap_content"

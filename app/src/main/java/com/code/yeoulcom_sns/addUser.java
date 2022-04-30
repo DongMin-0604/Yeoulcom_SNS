@@ -39,6 +39,4 @@ public class addUser{
         this.generation = generation;
         this.adminCheck  = adminCheck;
     }
-
-
 }

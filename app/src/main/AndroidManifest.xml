@@ -34,6 +34,7 @@
         <activity android:name="com.code.yeoulcom_sns.InputInformationActivity"/>
         <activity android:name="com.code.yeoulcom_sns.WritePostActivity"/>
         <activity android:name="com.code.yeoulcom_sns.LeadersActivity"/>
+        <activity android:name="com.code.yeoulcom_sns.aboutMe"/>
 
 
     </application>

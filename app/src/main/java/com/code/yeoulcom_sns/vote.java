@@ -1,6 +1,8 @@
 package com.code.yeoulcom_sns;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,10 +20,18 @@ public class vote extends AppCompatActivity {
 
     // + 버튼 누르면 버튼 생성
     Button addBtn, addBtn2, addBtn3;
-    
+
+    // 변수
+    int count1;
+    int count2;
+
     // 투표창 --> 득표 셀때 사용하는 기능
     private int yes_count = 0;
     private int no_count = 0;
+
+    SharedPreferences pref;          // 프리퍼런스
+    SharedPreferences.Editor editor; // 에디터
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,6 +84,16 @@ public class vote extends AppCompatActivity {
 
         });
 
+        // 내 정보 클릭 시 이동
+        addBtn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), aboutMe.class);
+                startActivity(intent);
+            }
+        });
+
+
         // 회장페이지 버튼 클릭 시 이동 (오직 임원에게만 Active)
         Chairman_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +119,14 @@ public class vote extends AppCompatActivity {
             }
         });
 
-        
+        // 1. Shared Preference 초기화
+        pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+        editor = pref.edit();
+
+        // 2. 저장해둔 값 불러오기 ("식별값", 초기값) -> 식별값과 초기값은 직접 원하는 이름과 값으로 작성.
+        yes_count = pref.getInt("Yes", 0);        // int 불러오기 (저장해둔 값 없으면 초기값인 0으로 불러옴)
+        no_count = pref.getInt("No", 0);   // int 불러오기 (저장해둔 값 없으면 초기값인 0으로 불러옴)
+
         // 각 상황에 맞는 버튼을 클릭하면 득표수 증가
         get_vote_yes.setText(yes_count+"");
         get_vote_no.setText(no_count+"");
@@ -110,6 +137,9 @@ public class vote extends AppCompatActivity {
                 yes_count ++;
                 get_vote_yes.setText(yes_count+"");
                 yesBtn.setEnabled(false);
+                // 클릭 횟수 저장
+                editor.putInt("Yes", yes_count);
+                editor.apply(); // 저장
             }
         });
 
@@ -119,7 +149,11 @@ public class vote extends AppCompatActivity {
                 no_count ++;
                 get_vote_no.setText(no_count+"");
                 noBtn.setEnabled(false);
+                // 클릭 횟수 저장
+                editor.putInt("No", no_count);
+                editor.apply(); // 저장
             }
         });
+
     }
 }

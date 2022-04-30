@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.code.yeoulcom_sns.WritePostActivity"
+    tools:context="com.code.yeoulcom_sns.aboutMe"
     android:orientation="vertical">
 
     <LinearLayout

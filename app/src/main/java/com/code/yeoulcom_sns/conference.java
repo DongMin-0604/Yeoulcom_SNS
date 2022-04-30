@@ -69,6 +69,16 @@ public class conference extends AppCompatActivity {
             }
         });
 
+        // 내 정보 클릭 시 이동
+        addBtn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), aboutMe.class);
+                startActivity(intent);
+            }
+        });
+
+
         // 회장페이지 버튼 클릭 시 이동 (오직 임원에게만 Active)
         Chairman_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
