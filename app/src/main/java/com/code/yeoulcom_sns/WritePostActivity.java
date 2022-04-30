@@ -107,9 +107,9 @@ public class WritePostActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (img_test.getDrawable() == null){
                     //디폴트 하얀 화면 파이어베이스 storage 주소
-                    String WhiteImage ="content://com.google.android.apps.photos.contentprovider/-1/1/content%3A%2F%2Fmedia%2Fexternal%2Fimages%2Fmedia%2F33/ORIGINAL/NONE/image%2Fjpeg/998580531";
-                    write_post_img(name,generation,et_title.getText().toString(),et_main_text.getText().toString(),WhiteImage,getTime());
-                    Log.d("1","디폴트"+WhiteImage);
+                    String default_img ="content://media/external/images/media/4167";
+                    write_post_img(name,generation,et_title.getText().toString(),et_main_text.getText().toString(),default_img,getTime());
+                    Log.d("1","디폴트"+default_img);
 //                    write_post(name,generation,et_title.getText().toString(),et_main_text.getText().toString());
                 }else{
                         write_post_img(name,generation,et_title.getText().toString(),et_main_text.getText().toString(),file.toString(),getTime());

@@ -86,6 +86,12 @@ public class vote extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), conference.class);
+                //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
+                editor.putString("name", name);
+                editor.putString("generation", generation);
+                editor.putBoolean("admin", adminCheck);
+                editor.apply();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }

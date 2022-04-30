@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     Button addBtn, addBtn2, addBtn3;
 
     Button postBtn, conferenceBtn, voteBtn, bt_write_post, Chairman_Btn;
-    String name, generation, key, Time;
+    String name = "", generation = "", key, Time;
     Boolean adminCheck = false;
 
     //큰 게시물 TextView
@@ -122,15 +122,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView (R.layout.activity_main);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        init();
         //기수 이름이 없을 시 첫 화면으로
         if (name == "" || generation == "") {
-            Toast.makeText(getApplicationContext(), "승인되지 않은 사용자입니다.", Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), "승인되지 않은 사용자입니다.", Toast.LENGTH_SHORT).show();
             Intent intent_view_change = new Intent(getApplicationContext(), InputInformationActivity.class);
             startActivity(intent_view_change);
         }
-        init();
         getPost();
         onclick();
         RunProgressDialog();
@@ -382,7 +382,7 @@ public class MainActivity extends AppCompatActivity {
                 post_long_main_text.setText(data.getMain_text());
                 post_long_time.setText(data.getTime());
                 post_long_name_generation.setText(data.getGeneration() + " " + data.getName());
-                post_long_IV.setImageResource(R.drawable.whiteimage);
+                post_long_IV.setImageResource(R.drawable.defult_img);
 
                 //게시물 안에 있는 이미지 이름으로 파이어베이스에서 가져오기
                 StorageReference pathReference = storageReference.child("img/" + data.getImgUrl());

@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:orientation="vertical">
 
     <LinearLayout
@@ -113,11 +114,13 @@
             android:layout_height="1dp"
             android:layout_weight="1" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/bt_Apply"
             android:layout_width="match_parent"
             android:layout_height="200px"
             android:text="신청하기"
+            android:background="#C8C6C6"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
     </LinearLayout>

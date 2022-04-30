@@ -102,41 +102,41 @@
         <!-- 카테고리 nav바 -->
         <Button
             android:id="@+id/postBtn"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
+            android:background="#00ff0000"
             android:text="게시물"
-            android:textSize="35px"
-            android:background="#00ff0000" />
-
-        <Button
-            android:id="@+id/conferenceBtn"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="95dp"
-            android:layout_marginTop="20dp"
-            android:textSize="35px"
-            android:background="#00ff0000"
-            android:text="컨퍼런스" />
-
-        <Button
-            android:id="@+id/voteBtn"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="190dp"
-            android:layout_marginTop="20dp"
-            android:textSize="35px"
-            android:background="#00ff0000"
             android:textColor="#005566"
-            android:text="투표"
+            android:textSize="35px"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/Chairman_Btn"
-            android:layout_width="70dp"
+            android:id="@+id/conferenceBtn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="260dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="20dp"
+            android:background="#00ff0000"
+            android:text="컨퍼런스"
+            android:textSize="35px" />
+
+        <Button
+            android:id="@+id/voteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="20dp"
+            android:background="#00ff0000"
+            android:text="투표"
+            android:textSize="35px" />
+        <!--권한 있는 사람만 볼 수 있음-->
+        <Button
+            android:id="@+id/Chairman_Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
             android:layout_marginTop="20dp"
             android:textSize="35px"
             android:background="#00ff0000"
@@ -147,7 +147,7 @@
             android:layout_width="50dp"
             android:layout_height="0.8dp"
             android:layout_marginTop="60dp"
-            android:layout_marginLeft="190dp"
+            android:layout_marginLeft="160dp"
             android:background="#4682B4" />
 
         <!-- 게시물(main) Design -->

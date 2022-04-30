@@ -76,6 +76,12 @@ public class conference extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), vote.class);
+                //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
+                editorsp.putString("name", name);
+                editorsp.putString("generation", generation);
+                editorsp.putBoolean("admin", adminCheck);
+                editorsp.apply();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }

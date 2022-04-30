@@ -71,7 +71,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
             holder.title.setText(data.getTitle());
             holder.main_text.setText(data.getMain_text());
             StorageReference pathReference = storageReference.child("img/"+data.getImgUrl());
-            holder.imageView.setImageResource(R.drawable.whiteimage);
+            holder.imageView.setImageResource(R.drawable.defult_img);
             pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
