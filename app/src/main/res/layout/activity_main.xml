@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.code.yeoulcom_sns.MainActivity">
 
+    <!-- 전체를 감싸는 FRAME LAYOUT -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
