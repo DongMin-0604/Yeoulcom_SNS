@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 dialog.dismiss();
             }
-        }, 1500);
+        }, 2000);
     }
 
     public void init() {
@@ -382,7 +382,7 @@ public class MainActivity extends AppCompatActivity {
                 post_long_main_text.setText(data.getMain_text());
                 post_long_time.setText(data.getTime());
                 post_long_name_generation.setText(data.getGeneration() + " " + data.getName());
-                post_long_IV.setImageResource(R.drawable.defult_img);
+                post_long_IV.setImageResource(R.drawable.whiteimage);
 
                 //게시물 안에 있는 이미지 이름으로 파이어베이스에서 가져오기
                 StorageReference pathReference = storageReference.child("img/" + data.getImgUrl());

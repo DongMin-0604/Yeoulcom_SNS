@@ -145,7 +145,7 @@ public class InputInformationActivity extends AppCompatActivity {
                     editor.putString("name", st_name);
                     editor.putString("generation", st_generation);
                     editor.apply();
-                    Intent intent_view_change = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent_view_change = new Intent(getApplicationContext(), WaitingOkayActivity.class);
                     intent_view_change.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                     // 게시물 테스트를 위한 잠깐 막아놓기,파이어베이스 업로드

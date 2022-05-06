@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
 <!--  승인 대기창  -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="승인 대기중입니다."
+        android:textColor="@color/black"
+        android:textSize="60px"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="40px"
+        android:text="관련 문의는 여울컴 회장에게 문의하세요\n전화번호: 010-0000-0000"
+        android:textColor="@color/black"
+        android:textSize="45px"/>
 </LinearLayout>
