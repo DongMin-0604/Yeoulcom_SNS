@@ -9,7 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/profile">
 
         <!-- 사용자 이름 받아와서 setText 해야함 -->
         <TextView
@@ -23,11 +24,11 @@
             android:textStyle="bold"
             android:textSize="20dp"/>
 
-        <ImageView
+        <ImageButton
             android:id="@+id/IV_onBack"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/x"
+            android:background="@drawable/x"
             android:layout_gravity="center"
             android:layout_marginLeft="120dp" />
 
@@ -77,24 +78,24 @@
             android:gravity="center"
             android:layout_marginTop="20dp">
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="70dp"
+            android:layout_marginRight="50dp"
             android:textColor="@color/black"
             android:text="게시물 관리" />
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/black"
             android:text="컨퍼런스 관리" />
 
-        <TextView
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="70dp"
+            android:layout_marginLeft="50dp"
             android:textColor="@color/black"
             android:text="투표 관리" />
 

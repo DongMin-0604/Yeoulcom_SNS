@@ -36,7 +36,7 @@ public class conference extends AppCompatActivity {
 
     //기수,이름 핸드폰에 저장 SharedPreferences
     SharedPreferences SP;
-    SharedPreferences.Editor editor;
+    SharedPreferences.Editor editorsp;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,6 +68,7 @@ public class conference extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         });
 
@@ -77,14 +78,13 @@ public class conference extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), vote.class);
                 //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
-                Log.d("SP",name);
-                editor.putString("name", name);
-                editor.putString("generation", generation);
-                editor.putBoolean("admin", adminCheck);
-                editor.apply();
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+//                editorsp.putString("name", name); 오류부분
+//                editorsp.putString("generation", generation);
+//                editorsp.putBoolean("admin", adminCheck);
+//                editorsp.apply();
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(intent);
+//                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
             }
         });
 
@@ -144,16 +144,11 @@ public class conference extends AppCompatActivity {
         });
     }
     public void init(){
-        //SharedPreferences
-        SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
-        editor = SP.edit();
-
         //이전 엑티비티에서 넘어온 기수,이름 받기
         SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
         name = SP.getString("name","");
         generation = SP.getString("generation","");
         adminCheck = SP.getBoolean("admin",false);
-        Log.d("SP",name);
     }
 
 }
