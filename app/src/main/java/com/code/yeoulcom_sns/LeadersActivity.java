@@ -34,6 +34,7 @@ public class LeadersActivity extends AppCompatActivity {
     // 게시물 받아오는 클래스 참조
     GetCheckUser GetCheckUser;
     String name = "", generation = "", key, Time;
+    Boolean adminCheck = false;
 
     //리스트 지정
     final List<UserCheckData> dataList = new ArrayList<>();
