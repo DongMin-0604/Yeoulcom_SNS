@@ -157,9 +157,10 @@ public class InputInformationActivity extends AppCompatActivity {
         });
     }
 
-    public void addUser(String name, String generation, boolean adminCheck) {
+    public void addUser(String st_name, String st_generation, boolean adminCheck) {
         //파이어베이스에 업로드
-        databaseReference.child("user").child(st_generation).push().setValue(st_name);
+        addUser addUser = new addUser(st_name,st_generation,adminCheck);
+        databaseReference.child("Check_user_List").push().setValue(addUser);
     }
 
     public InputFilter filterKor = new InputFilter() {

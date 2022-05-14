@@ -196,6 +196,8 @@ public class MainActivity extends AppCompatActivity {
         //recyclerView 영역
         recyclerView = findViewById(R.id.main_recyclerview);
         recyclerView.setItemAnimator(null);
+        //recyclerView 기존 성능 강화?
+        recyclerView.setHasFixedSize(true);
 
     }
     public void onclick() {
