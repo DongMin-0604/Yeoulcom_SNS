@@ -6,19 +6,28 @@
     android:gravity="center">
 <!--  승인 대기창  -->
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="승인 대기중입니다."
-        android:textColor="@color/black"
-        android:textSize="60px"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="40px"
-        android:text="관련 문의는 여울컴 회장에게 문의하세요\n전화번호: 010-0000-0000"
-        android:textColor="@color/black"
-        android:textSize="45px"/>
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:background="@drawable/yeoul"
+        android:layout_marginBottom="80dp">
+    </ImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="승인 대기중입니다."
+            android:textColor="@color/black"
+            android:textSize="60px"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="40px"
+            android:text="관련 문의는 여울컴 회장에게 문의하세요\n전화번호: 010-0000-0000"
+            android:textColor="@color/black"
+            android:textSize="45px"
+            android:layout_marginBottom="70dp"/>
 </LinearLayout>
