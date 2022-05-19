@@ -44,8 +44,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="100dp"
-                    android:text=" 회원님,\n 오늘 2건의 알림이\n 있습니다."
+                    android:text=" 반갑습니다.\n 이곳은 Yeoulcom SNS \n 입니다."
                     android:textColor="@color/black"
+                    android:fontFamily="sans-serif-black"
                     android:textSize="25dp" />
 
                 <LinearLayout

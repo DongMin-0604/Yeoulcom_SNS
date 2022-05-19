@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.yeoulcom_sns.R;
 import com.google.firebase.database.DatabaseReference;
@@ -40,12 +39,13 @@ public class InputInformationActivity extends AppCompatActivity {
     Spinner sp_generation;
 
     //회장,선생님,개발자 권한 체크
-    boolean adminCheck = false;
+    boolean adminCheck = false, OkayCheck = false;
 
     Button bt_Apply, cancel_BT, request_BT;
     TextView name_generation_check_TV;
     LinearLayout info_check_Layout;
     EditText et_name, et_password;
+    String name,generation;
     String st_generation, st_name;
 
     @Override
@@ -61,7 +61,6 @@ public class InputInformationActivity extends AppCompatActivity {
 
     public void init() {
         //기본 세팅 메소드
-
         sp_generation = findViewById(R.id.sp_generation);
         //Spinner 관련 세팅
         List<String> array_generation = Arrays.asList(getResources().getStringArray(R.array.generation));
@@ -98,6 +97,9 @@ public class InputInformationActivity extends AppCompatActivity {
                 } else {
                     info_check_Layout.setVisibility(View.VISIBLE);
                     name_generation_check_TV.setText(sp_generation.getSelectedItem().toString() + " " + et_name.getText().toString());
+                    sp_generation.setEnabled(false);
+                    et_name.setEnabled(false);
+                    et_password.setEnabled(false);
                     bt_Apply.setEnabled(false);
                 }
             }
@@ -107,6 +109,9 @@ public class InputInformationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 info_check_Layout.setVisibility(View.GONE);
                 bt_Apply.setEnabled(true);
+                sp_generation.setEnabled(true);
+                et_name.setEnabled(true);
+                et_password.setEnabled(true);
             }
         });
         request_BT.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +121,12 @@ public class InputInformationActivity extends AppCompatActivity {
                     //권한코드가 맞을 시
                     adminCheck = true;
                     bt_Apply.setEnabled(true);
+                    bt_Apply.setEnabled(true);
+                    sp_generation.setEnabled(true);
+                    et_name.setEnabled(true);
+                    et_password.setEnabled(true);
+
+                    info_check_Layout.setVisibility(View.GONE);
 
                     //이름,기수 변수에 값 넣어주기
                     st_name = et_name.getText().toString();
@@ -136,6 +147,11 @@ public class InputInformationActivity extends AppCompatActivity {
                 } else {
                     info_check_Layout.setVisibility(View.GONE);
                     bt_Apply.setEnabled(true);
+                    bt_Apply.setEnabled(true);
+                    sp_generation.setEnabled(true);
+                    et_name.setEnabled(true);
+                    et_password.setEnabled(true);
+
                     //이름,기수 변수에 값 넣어주기
 
                     st_name = et_name.getText().toString();
