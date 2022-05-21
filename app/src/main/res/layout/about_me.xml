@@ -70,44 +70,63 @@
                 android:text="최지민" />
         </LinearLayout>
 
-        <!-- 카테고리 분류 -->
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginTop="20dp">
+            android:layout_height="0.8dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/black" />
 
+        <!-- 카테고리 ui 만들기 -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp">
+
+        <!-- 카테고리 nav바 -->
         <Button
+            android:id="@+id/postBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="50dp"
-            android:textColor="@color/black"
-            android:text="게시물 관리" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="#00ff0000"
+            android:text="게시물"
+            android:textColor="#005566"
+            android:textSize="35px"
+            android:textStyle="bold" />
 
         <Button
+            android:id="@+id/conferenceBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:text="컨퍼런스 관리" />
+            android:layout_marginTop="10dp"
+            android:background="#00ff0000"
+            android:text="컨퍼런스"
+            android:textSize="35px" />
 
         <Button
+            android:id="@+id/voteBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:textColor="@color/black"
-            android:text="투표 관리" />
+            android:layout_gravity="right"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="20dp"
+            android:background="#00ff0000"
+            android:text="투표"
+            android:textSize="35px" />
 
-        </LinearLayout>
+            <!-- 현재 선택되있는 nav바에 밑줄 -->
+            <View
+                android:layout_width="50dp"
+                android:layout_height="0.8dp"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="60dp"
+                android:background="#4682B4" />
+        </FrameLayout>
+
     </LinearLayout>
 
-    <!-- 현재 선택되있는 nav바에 밑줄 -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.8dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/black" />
 
     <!-- 내 정보 창 -->
 

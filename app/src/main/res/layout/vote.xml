@@ -108,9 +108,7 @@
             android:layout_marginTop="20dp"
             android:background="#00ff0000"
             android:text="게시물"
-            android:textColor="#005566"
-            android:textSize="35px"
-            android:textStyle="bold" />
+            android:textSize="35px" />
 
         <Button
             android:id="@+id/conferenceBtn"
@@ -129,7 +127,9 @@
             android:layout_marginLeft="140dp"
             android:layout_marginTop="20dp"
             android:background="#00ff0000"
+            android:textColor="#005566"
             android:text="투표"
+            android:textStyle="bold"
             android:textSize="35px" />
         <!--권한 있는 사람만 볼 수 있음-->
         <Button
