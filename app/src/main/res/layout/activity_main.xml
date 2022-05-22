@@ -176,89 +176,96 @@
         </LinearLayout>
 
         <!--  게시물 클릭 시 켜질 게시물 내용 레이아웃  -->
-        <LinearLayout
-            android:id="@+id/post_long"
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/post_long_scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:visibility="gone">
-
+            android:visibility="visible"
+            >
             <LinearLayout
+                android:id="@+id/post_long"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:background="#FFCD4A">
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:visibility="visible">
 
-                <ImageButton
-                    android:id="@+id/IV_onBack"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/out"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:background="#FFCD4A">
+
+                    <ImageButton
+                        android:id="@+id/IV_onBack"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/out"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="10dp" />
+
+                    <TextView
+                        android:id="@+id/post_long_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="제목"
+                        android:layout_marginLeft="130dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="20dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/post_long_name_generation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:text="기수,이름"
+                        android:textColor="@color/black"
+                        android:textSize="25dp" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/post_long_title"
+                    android:id="@+id/post_long_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="제목"
-                    android:layout_marginLeft="130dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="시간"
+                    android:textColor="#635D5D"
+                    android:textSize="15dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.8dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#808080" />
+                <TextView
+                    android:id="@+id/post_long_main_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="150px"
+                    android:text="본문"
+                    android:layout_marginLeft="10dp"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="20dp"/>
+                    android:textSize="20dp" />
+
+                <ImageView
+                    android:id="@+id/post_long_IV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/whiteimage" />
             </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:orientation="horizontal">
-            <ImageView
-                android:id="@+id/post_long_IV"
-                android:layout_width="150px"
-                android:layout_height="150px"
-                android:src="@drawable/whiteimage" />
-
-            <TextView
-                android:id="@+id/post_long_name_generation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginLeft="10dp"
-                android:gravity="center"
-                android:text="기수,이름"
-                android:textColor="@color/black"
-                android:textSize="25dp" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/post_long_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginLeft="15dp"
-                android:gravity="center"
-                android:text="시간"
-                android:textColor="#635D5D"
-                android:textSize="15dp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.8dp"
-                android:layout_marginTop="20dp"
-                android:background="#808080" />
-
-            <TextView
-                android:id="@+id/post_long_main_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="150px"
-                android:text="본문"
-                android:textColor="@color/black"
-                android:textSize="25dp" />
-
-
-        </LinearLayout>
     </FrameLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

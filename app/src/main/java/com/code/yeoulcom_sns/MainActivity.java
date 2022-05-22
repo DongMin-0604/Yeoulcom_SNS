@@ -3,6 +3,7 @@ package com.code.yeoulcom_sns;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -15,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 
+import android.util.Log;
 import android.view.View;
 
 import android.widget.Button;
@@ -24,6 +26,7 @@ import android.app.Activity;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
     ImageButton IV_onBack;
 
     //레이아웃 터치시 큰 화면으로 전환을 위한 레이아웃 정의
-    LinearLayout post_short, post_long;
+    NestedScrollView post_long_scrollview;
+    LinearLayout post_long;
     LinearLayout main_layout;
 
     //오늘 날짜 가져오기 위한 코드
@@ -146,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
         post_long_title = (TextView) findViewById(R.id.post_long_title);
         post_long_time = (TextView) findViewById(R.id.post_long_time);
         post_long_IV = (ImageView) findViewById(R.id.post_long_IV);
+        post_long_scrollview = (NestedScrollView) findViewById(R.id.post_long_scrollview);
 
         // 뒤로가기 버튼
         IV_onBack = (ImageButton) findViewById(R.id.IV_onBack);
@@ -275,10 +280,15 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                //만약 게시물 큰 화면이 켜져있다면 새로고침 기능 막기
+                int result = post_long.getVisibility();
+                if (result == View.VISIBLE) {
+                    swipeRefreshLayout.setRefreshing(false);
+                }else {
+                    updateLayoutView();
 
-                updateLayoutView();
-
-                swipeRefreshLayout.setRefreshing(false);
+                    swipeRefreshLayout.setRefreshing(false);
+                }
             }
 
             // 새로고침 하면 스피너 창 닫기 변경 영역
@@ -289,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
                     bt_write_post.setVisibility(View.GONE);
                 }
                 // 게시물 위로 올리기
-                LinearLayoutManager mlayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+//                LinearLayoutManager mlayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
                 recyclerView.smoothScrollToPosition(dataList.size()); // 개시물의 갯수대로 적어야 최상위로 올라가는 것 같은데 이부분은 조만간 수정해야됨.
                 // 03/11(수정완료)
             }
@@ -357,24 +367,32 @@ public class MainActivity extends AppCompatActivity {
                 final Data data = dataList.get(position);
                 main_layout.setVisibility(View.GONE);
                 post_long.setVisibility(View.VISIBLE);
+                post_long_scrollview.setVisibility(View.VISIBLE);
+
                 post_long_title.setText(data.getTitle());
                 post_long_main_text.setText(data.getMain_text());
                 post_long_time.setText(data.getTime());
                 post_long_name_generation.setText(data.getGeneration() + " " + data.getName());
                 post_long_IV.setImageResource(R.drawable.whiteimage);
+                Log.d("img",data.getImgUrl());
 
-                //게시물 안에 있는 이미지 이름으로 파이어베이스에서 가져오기
-                StorageReference pathReference = storageReference.child("img/" + data.getImgUrl());
-                pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        Glide.with(getApplicationContext())
-                                .load(uri)
-                                .error(R.drawable.yeoul)//이미지 로드 실패 시 보여줄 이미지
-                                .fallback(R.drawable.common_google_signin_btn_icon_dark_normal_background)//uri이 null일 때
-                                .into(post_long_IV);
-                    }
-                });
+                if (data.getImgUrl().equals("content://media/external/images/media/4167")){
+                    //기본 이미지는 큰 게시물 안쪽에 표시 X
+                }else {
+                    //게시물 안에 있는 이미지 이름으로 파이어베이스에서 가져오기
+                    StorageReference pathReference = storageReference.child("img/" + data.getImgUrl());
+                    pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            Glide.with(getApplicationContext())
+                                    .load(uri)
+                                    .error(R.drawable.yeoul)//이미지 로드 실패 시 보여줄 이미지
+                                    .fallback(R.drawable.common_google_signin_btn_icon_dark_normal_background)//uri이 null일 때
+                                    .into(post_long_IV);
+
+                        }
+                    });
+                }
             }
         });
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -392,6 +410,7 @@ public class MainActivity extends AppCompatActivity {
         if (result == View.VISIBLE) {
             post_long.setVisibility(View.GONE);
             main_layout.setVisibility(View.VISIBLE);
+            post_long_scrollview.setVisibility(View.GONE);
         } else {
             //super.onBackPressed();
             if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
