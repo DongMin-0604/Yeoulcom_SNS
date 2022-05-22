@@ -119,14 +119,13 @@ public class InputInformationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (et_password.getText().toString().equals("1111")) {
                     //권한코드가 맞을 시
+                    info_check_Layout.setVisibility(View.GONE);
                     adminCheck = true;
                     bt_Apply.setEnabled(true);
                     bt_Apply.setEnabled(true);
                     sp_generation.setEnabled(true);
                     et_name.setEnabled(true);
                     et_password.setEnabled(true);
-
-                    info_check_Layout.setVisibility(View.GONE);
 
                     //이름,기수 변수에 값 넣어주기
                     st_name = et_name.getText().toString();
@@ -144,7 +143,7 @@ public class InputInformationActivity extends AppCompatActivity {
                     addUser(st_name, st_generation,adminCheck);
                     startActivity(intent_view_change);
 
-                } else {
+                } else if(et_password.getText().toString().equals("0000")){
                     info_check_Layout.setVisibility(View.GONE);
                     bt_Apply.setEnabled(true);
                     bt_Apply.setEnabled(true);
@@ -153,21 +152,23 @@ public class InputInformationActivity extends AppCompatActivity {
                     et_password.setEnabled(true);
 
                     //이름,기수 변수에 값 넣어주기
-
                     st_name = et_name.getText().toString();
                     st_generation = sp_generation.getSelectedItem().toString();
 
                     //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
                     editor.putString("name", st_name);
                     editor.putString("generation", st_generation);
+                    editor.putBoolean("admin", adminCheck);
                     editor.apply();
-                    Intent intent_view_change = new Intent(getApplicationContext(), WaitingOkayActivity.class);
+                    Intent intent_view_change = new Intent(getApplicationContext(), MainActivity.class);
                     intent_view_change.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                     // 게시물 테스트를 위한 잠깐 막아놓기,파이어베이스 업로드
                     addUser(st_name, st_generation,adminCheck);
                     startActivity(intent_view_change);
 
+                }else {
+                    Toast.makeText(getApplicationContext(),"잘못된 비밀번호 입니다.",Toast.LENGTH_SHORT).show();
                 }
             }
         });

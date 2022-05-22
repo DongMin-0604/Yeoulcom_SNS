@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
 import com.example.yeoulcom_sns.R;
@@ -50,6 +51,10 @@ public class LeadersActivity extends AppCompatActivity {
 
     //로딩창
     ProgressDialog dialog;
+
+    //새로고침
+    SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +68,18 @@ public class LeadersActivity extends AppCompatActivity {
         //recyclerView 영역
         recyclerView = findViewById(R.id.leaders_recyclerview);
         recyclerView.setItemAnimator(null);
+        swipeRefreshLayout = findViewById(R.id.swiperefreshlayout);
+
+        // 새로고침 기능
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //만약 게시물 큰 화면이 켜져있다면 새로고침 기능 막기
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
     }
+
 
     private void getPost() {
         //리스트 지정
@@ -77,8 +93,8 @@ public class LeadersActivity extends AppCompatActivity {
                 for (DataSnapshot Snapshot : snapshot.getChildren()) {
                     key = Snapshot.getKey();
                     GetCheckUser = Snapshot.getValue(GetCheckUser.class);
-                    dataList.add(new UserCheckData(GetCheckUser.getGeneration(),GetCheckUser.getName()));
-                    Log.d("Leaders",GetCheckUser.getGeneration() + GetCheckUser.getName());
+                    dataList.add(new UserCheckData(GetCheckUser.getGeneration(), GetCheckUser.getName()));
+                    Log.d("Leaders", GetCheckUser.getGeneration() + GetCheckUser.getName());
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -92,23 +108,23 @@ public class LeadersActivity extends AppCompatActivity {
 
         adapter = new RecyclerAdapter_Leaders(dataList);
 
-        //게시물 클릭 영역
-        adapter.setOnClickListener(new RecyclerAdapter_Leaders.OnItemClickListener() {
-            @Override
-            public void onItemClick(View a_v, int position) {
-                RunProgressDialog();//게시물 클릭 시 이미지 로딩 Dialog
-
-                final UserCheckData userCheckData = dataList.get(position);
-                //버튼 클릭 구글링 필요
-//                main_layout.setVisibility(View.GONE);
-//                post_long.setVisibility(View.VISIBLE);
-//                post_long_title.setText(data.getTitle());
-//                post_long_main_text.setText(data.getMain_text());
-//                post_long_time.setText(data.getTime());
-//                post_long_name_generation.setText(data.getGeneration() + " " + data.getName());
-//                post_long_IV.setImageResource(R.drawable.whiteimage);
-            }
-        });
+//        //게시물 클릭 영역
+//        adapter.setOnClickListener(new RecyclerAdapter_Leaders.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View a_v, int position) {
+//                RunProgressDialog();//게시물 클릭 시 이미지 로딩 Dialog
+//
+//                final UserCheckData userCheckData = dataList.get(position);
+//                //버튼 클릭 구글링 필요
+////                main_layout.setVisibility(View.GONE);
+////                post_long.setVisibility(View.VISIBLE);
+////                post_long_title.setText(data.getTitle());
+////                post_long_main_text.setText(data.getMain_text());
+////                post_long_time.setText(data.getTime());
+////                post_long_name_generation.setText(data.getGeneration() + " " + data.getName());
+////                post_long_IV.setImageResource(R.drawable.whiteimage);
+//            }
+//        });
         RecyclerView.LayoutManager layoutManager2 = new LinearLayoutManager(this);
         //위에서 부터 쌓기위한 코드
         ((LinearLayoutManager) layoutManager2).setReverseLayout(true);
@@ -116,6 +132,7 @@ public class LeadersActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager2);
         recyclerView.setAdapter(adapter);
     }
+
     public void RunProgressDialog() {
         //게시물 불러올 동안 뜨는 로딩 Dialog
         dialog = new ProgressDialog(LeadersActivity.this);

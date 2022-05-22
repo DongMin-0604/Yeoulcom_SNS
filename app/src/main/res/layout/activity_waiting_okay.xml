@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center">
-<!--  승인 대기창  -->
+<!--  승인 대기창(알파 테스트에는 제거될 화면)  -->
 
     <ImageView
         android:layout_width="300dp"

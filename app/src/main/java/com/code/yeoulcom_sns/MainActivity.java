@@ -112,6 +112,11 @@ public class MainActivity extends AppCompatActivity {
 
 //        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         init();
+        if (name == "" || generation == "") {
+            Toast.makeText(getApplicationContext(), "승인되지 않은 사용자입니다.", Toast.LENGTH_SHORT).show();
+            Intent intent_view_change = new Intent(getApplicationContext(), InputInformationActivity.class);
+            startActivity(intent_view_change);
+        }
         getPost();
         onclick();
         RunProgressDialog();
