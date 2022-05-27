@@ -76,59 +76,83 @@
             android:layout_marginTop="20dp"
             android:background="@color/black" />
 
-        <!-- 카테고리 ui 만들기 -->
-        <FrameLayout
+<!-- 정보 입력 창 -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="0dp">
-
-        <!-- 카테고리 nav바 -->
-        <Button
-            android:id="@+id/postBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:background="#00ff0000"
-            android:text="게시물"
-            android:textColor="#005566"
-            android:textSize="35px"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/conferenceBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#00ff0000"
-            android:text="컨퍼런스"
-            android:textSize="35px" />
-
-        <Button
-            android:id="@+id/voteBtn"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+        <TextView
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="150dp"
-            android:layout_marginTop="20dp"
-            android:background="#00ff0000"
-            android:text="투표"
-            android:textSize="35px" />
+            android:text="보내는 사람 : "
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
 
-            <!-- 현재 선택되있는 nav바에 밑줄 -->
-            <View
-                android:layout_width="50dp"
-                android:layout_height="0.8dp"
-                android:layout_marginLeft="28dp"
-                android:layout_marginTop="60dp"
-                android:background="#4682B4" />
-        </FrameLayout>
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="보내는 사람에 대해 입력해주세요."
+            android:textColor="#808080"/>
 
+        <TextView
+            android:layout_marginTop="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="받는사람 : "
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="받는사람에 대해 입력해주세요."
+            android:textColor="#808080"/>
+
+        <TextView
+            android:layout_marginTop="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="사유 : "
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="문의할 사항을 입력해주세요."
+            android:textColor="#808080"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="30dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="전송하기"
+                android:textSize="20dp"
+                android:layout_marginRight="70dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="취소하기"
+                android:textSize="20dp"/>
+        </LinearLayout>
     </LinearLayout>
-
-
-    <!-- 내 정보 창 -->
-
-
 </LinearLayout>
