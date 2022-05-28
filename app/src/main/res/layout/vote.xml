@@ -124,7 +124,7 @@
             android:id="@+id/voteBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="140dp"
+            android:layout_marginLeft="130dp"
             android:layout_marginTop="20dp"
             android:background="#00ff0000"
             android:textColor="#005566"
@@ -144,7 +144,7 @@
 
         <!-- 현재 선택되있는 nav바에 밑줄 -->
         <View
-            android:layout_width="50dp"
+            android:layout_width="30dp"
             android:layout_height="0.8dp"
             android:layout_marginTop="60dp"
             android:layout_marginLeft="160dp"
