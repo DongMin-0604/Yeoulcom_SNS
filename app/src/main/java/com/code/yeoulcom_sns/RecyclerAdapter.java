@@ -65,19 +65,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
             holder.main_text.setText(data.getMain_text());
             StorageReference pathReference = storageReference.child("img/"+data.getImgUrl());
             holder.imageView.setImageResource(R.drawable.whiteimage);
-//            pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                @Override
-//                public void onSuccess(Uri uri) {
-//                    Glide.with(holder.itemView.getContext())
-//                            .load(uri)
-//                            .override(200,200)
-//                            .error(R.drawable.common_google_signin_btn_icon_dark)//이미지 로드 실패 시 보여줄 이미지
-//                            .fallback(R.drawable.common_google_signin_btn_icon_dark_normal_background)//uri이 null일 때
-//                            .into(holder.imageView);
+            pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(holder.itemView.getContext())
+                            .load(uri)
+                            .override(200,200)
+                            .error(R.drawable.common_google_signin_btn_icon_dark)//이미지 로드 실패 시 보여줄 이미지
+                            .fallback(R.drawable.common_google_signin_btn_icon_dark_normal_background)//uri이 null일 때
+                            .into(holder.imageView);
 
 //        Picasso.get().load(data.getImgUrl()).into(holder.imageView);//피카소 라이브러이리 이용
-//                }
-//            });
+                }
+            });
         }
     }
 
