@@ -57,6 +57,17 @@
                 android:background="@drawable/plusbtn" />
 
             <Button
+                android:id="@+id/about_btn3"
+                android:layout_width="120dp"
+                android:layout_height="35dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginBottom="10dp"
+                android:background="#ffffff"
+                android:gravity="center"
+                android:text="개발자 이메일"
+                android:visibility="gone" />
+
+            <Button
                 android:id="@+id/about_btn2"
                 android:layout_width="120dp"
                 android:layout_height="35dp"
@@ -68,18 +79,7 @@
                 android:visibility="gone" />
 
             <Button
-                android:id="@+id/about_btn3"
-                android:layout_width="120dp"
-                android:layout_height="35dp"
-                android:layout_gravity="bottom|right"
-                android:layout_marginBottom="10dp"
-                android:background="#ffffff"
-                android:gravity="center"
-                android:text="내 정보"
-                android:visibility="gone" />
-
-            <Button
-                android:id="@+id/bt_write_vote"
+                android:id="@+id/bt_write_post"
                 android:layout_width="120dp"
                 android:layout_height="35dp"
                 android:layout_gravity="bottom|right"
@@ -117,14 +117,14 @@
             android:layout_marginLeft="75dp"
             android:layout_marginTop="20dp"
             android:background="#00ff0000"
-            android:text="컨퍼런스"
+            android:text="달력"
             android:textSize="35px" />
 
         <Button
             android:id="@+id/voteBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="140dp"
+            android:layout_marginLeft="130dp"
             android:layout_marginTop="20dp"
             android:background="#00ff0000"
             android:textColor="#005566"
@@ -144,7 +144,7 @@
 
         <!-- 현재 선택되있는 nav바에 밑줄 -->
         <View
-            android:layout_width="50dp"
+            android:layout_width="30dp"
             android:layout_height="0.8dp"
             android:layout_marginTop="60dp"
             android:layout_marginLeft="160dp"

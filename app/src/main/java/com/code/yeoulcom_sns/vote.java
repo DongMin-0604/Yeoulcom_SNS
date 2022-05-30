@@ -175,7 +175,6 @@ public class vote extends AppCompatActivity {
             }
         });
 
-
     }
     public void init(){
         //이전 엑티비티에서 넘어온 기수,이름 받기
