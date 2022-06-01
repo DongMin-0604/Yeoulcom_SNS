@@ -127,7 +127,7 @@
                     android:layout_marginLeft="95dp"
                     android:layout_marginTop="20dp"
                     android:background="#00ff0000"
-                    android:text="게시물 관리"
+                    android:text="알람 보내기"
                     android:textSize="35px" />
 
                 <Button
