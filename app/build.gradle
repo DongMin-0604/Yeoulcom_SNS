@@ -31,6 +31,8 @@ dependencies {
     // 파이어베이스
     implementation platform('com.google.firebase:firebase-bom:29.0.3')
     implementation 'com.google.firebase:firebase-analytics'
+    // 파이어베이스 FCM(푸시알림 시스템)
+    implementation 'com.google.firebase:firebase-messaging:21.1.0'
 
     //파이어베이스 스토리지(이미지)
     implementation platform('com.google.firebase:firebase-bom:26.5.0')
