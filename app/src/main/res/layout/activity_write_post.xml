@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.code.yeoulcom_sns.WritePostActivity"
+    android:background="#ffffff"
     android:orientation="vertical">
 
     <LinearLayout
@@ -52,6 +53,7 @@
             android:hint="제목을 입력하세요"
             android:textSize="16dp"
             android:singleLine="true"
+            android:textColor="@color/black"
             android:maxLength="20"
             android:ems="20"/>
         <ImageView
@@ -68,6 +70,7 @@
         android:layout_height="300dp"
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
+        android:textColor="@color/black"
         android:background="@drawable/border_edit"
         android:ems="500"
         android:gravity="top"
