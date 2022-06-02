@@ -255,6 +255,7 @@
                     android:layout_marginTop="150px"
                     android:text="본문"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="25px"
                     android:textColor="@color/black"
                     android:textSize="20dp" />
 
@@ -262,6 +263,7 @@
                     android:id="@+id/post_long_IV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:src="@drawable/whiteimage" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
