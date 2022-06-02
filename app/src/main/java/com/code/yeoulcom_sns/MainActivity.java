@@ -19,6 +19,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 
@@ -107,6 +108,9 @@ public class MainActivity extends AppCompatActivity {
     //기수,이름 핸드폰에 저장 SharedPreferences
     SharedPreferences SP;
     SharedPreferences.Editor editor;
+
+    //버튼 중복 클릭 막기
+    private long mLastClickTime = 0L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -378,6 +382,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnClickListener(new RecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View a_v, int position) {
+                if(SystemClock.elapsedRealtime() - mLastClickTime > 1000) {
+                mLastClickTime = SystemClock.elapsedRealtime();
                 RunProgressDialog();//게시물 클릭 시 이미지 로딩 Dialog
 
                 final Data data = dataList.get(position);
@@ -409,6 +415,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                 }
+            }
             }
         });
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

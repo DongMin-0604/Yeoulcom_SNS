@@ -22,21 +22,30 @@
 <!--   com.code.yeoulcom_sns.MainActivity     -->
         <activity
             android:name="com.code.yeoulcom_sns.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.code.yeoulcom_sns.IntroActivity"/>
-        <activity android:name="com.code.yeoulcom_sns.vote"/>
-        <activity android:name="com.code.yeoulcom_sns.WaitingOkayActivity"/>
-        <activity android:name="com.code.yeoulcom_sns.conference"/>
-        <activity android:name="com.code.yeoulcom_sns.InputInformationActivity"/>
-        <activity android:name="com.code.yeoulcom_sns.WritePostActivity"/>
-        <activity android:name="com.code.yeoulcom_sns.LeadersActivity"/>
-        <activity android:name="com.code.yeoulcom_sns.aboutMe"/>
+        <activity android:name="com.code.yeoulcom_sns.IntroActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.code.yeoulcom_sns.vote"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.code.yeoulcom_sns.WaitingOkayActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.code.yeoulcom_sns.conference"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.code.yeoulcom_sns.InputInformationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.code.yeoulcom_sns.WritePostActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.code.yeoulcom_sns.LeadersActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.code.yeoulcom_sns.aboutMe"
+            android:screenOrientation="portrait"/>
 
         <!--  파이어베이스 FCM 부분      -->
         <service android:name="com.code.yeoulcom_sns.FirebaseMessagingService"
