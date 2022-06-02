@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="100dp"
-                    android:text=" 회원님,\n 오늘 2건의 알림이\n 있습니다."
+                    android:text=" 반갑습니다.\n 이곳은 Yeoulcom SNS \n 입니다."
                     android:textColor="@color/black"
                     android:textSize="25dp" />
 
@@ -57,14 +57,14 @@
                     android:orientation="vertical">
 
                     <!-- 속성 버튼 -->
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/about_btn"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_gravity="right"
                         android:background="@drawable/plusbtn" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/about_btn3"
                         android:layout_width="120dp"
                         android:layout_height="35dp"
@@ -75,7 +75,7 @@
                         android:text="개발자 이메일"
                         android:visibility="gone" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/about_btn2"
                         android:layout_width="120dp"
                         android:layout_height="35dp"
