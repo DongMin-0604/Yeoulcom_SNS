@@ -89,7 +89,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
     class ItemViewHolder extends RecyclerView.ViewHolder{
 
         private TextView title, main_text;
-
         private ImageView imageView;
 
         public ItemViewHolder(@NonNull View itemView) {
@@ -106,7 +105,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ItemVi
                     }
                 }
             });
-
             title = itemView.findViewById(R.id.post_title_item);
             main_text = itemView.findViewById(R.id.post_main_text_item);
             imageView = itemView.findViewById(R.id.post_img_item);

@@ -117,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView (R.layout.activity_main);
 
-//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         if (isConnected(getApplicationContext()) == false){
             Toast.makeText(getApplicationContext(), "인터넷 연결을 확인해주세요.", Toast.LENGTH_SHORT).show();
             finishAndRemoveTask();
@@ -350,7 +349,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void getPost() {
         //리스트 지정
-
         //게시물 정보 파이어베이스에서 받아오기
         ValueEventListener mValueEventListener = new ValueEventListener() {
             @Override
@@ -377,6 +375,7 @@ public class MainActivity extends AppCompatActivity {
         databaseReference.child("post_save").addValueEventListener(mValueEventListener);
 
         adapter = new RecyclerAdapter(dataList);
+
 
         //게시물 클릭 영역
         adapter.setOnClickListener(new RecyclerAdapter.OnItemClickListener() {
