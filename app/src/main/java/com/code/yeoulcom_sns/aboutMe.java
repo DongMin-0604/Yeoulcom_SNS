@@ -1,12 +1,7 @@
 package com.code.yeoulcom_sns;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
@@ -21,7 +16,7 @@ public class aboutMe extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.about_me);
+        setContentView(R.layout.activity_contact_us);
 
         ImageButton back_btn = (ImageButton) findViewById(R.id.IV_onBack);
 

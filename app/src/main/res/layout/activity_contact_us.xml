@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.code.yeoulcom_sns.aboutMe"
+    android:background="#ffffff"
     android:orientation="vertical">
 
     <LinearLayout
@@ -95,8 +96,9 @@
 
         <EditText
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
+            android:background="@drawable/border_edit"
             android:hint="보내는 사람에 대해 입력해주세요."
             android:textColor="#808080"/>
 
@@ -111,8 +113,9 @@
 
         <EditText
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
+            android:background="@drawable/border_edit"
             android:hint="받는사람에 대해 입력해주세요."
             android:textColor="#808080"/>
 
@@ -127,8 +130,9 @@
 
         <EditText
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
+            android:background="@drawable/border_edit"
             android:hint="문의할 사항을 입력해주세요."
             android:textColor="#808080"/>
         </LinearLayout>
@@ -141,14 +145,14 @@
             android:gravity="center"
             android:layout_marginTop="30dp">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="전송하기"
                 android:textSize="20dp"
                 android:layout_marginRight="70dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="취소하기"

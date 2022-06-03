@@ -65,7 +65,7 @@
                         android:layout_marginBottom="7dp"
                         android:background="@drawable/plusbtn" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/about_btn3"
                         android:layout_width="120dp"
                         android:layout_height="35dp"
@@ -74,9 +74,10 @@
                         android:background="#ffffff"
                         android:gravity="center"
                         android:text="개발자 이메일"
+                        android:textColor="@color/black"
                         android:visibility="gone" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/about_btn2"
                         android:layout_width="120dp"
                         android:layout_height="35dp"
@@ -85,9 +86,10 @@
                         android:background="#ffffff"
                         android:gravity="center"
                         android:text="문의하기"
+                        android:textColor="@color/black"
                         android:visibility="gone" />
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/bt_write_post"
                         android:layout_width="120dp"
                         android:layout_height="35dp"
@@ -96,6 +98,7 @@
                         android:background="#ffffff"
                         android:gravity="center"
                         android:text="게시물 작성"
+                        android:textColor="@color/black"
                         android:visibility="gone" />
                 </LinearLayout>
 
@@ -108,7 +111,7 @@
                 android:background="@drawable/edge">
 
                 <!-- 카테고리 nav바 -->
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/postBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -120,22 +123,24 @@
                     android:textSize="35px"
                     android:textStyle="bold" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/conferenceBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="75dp"
                     android:layout_marginTop="20dp"
                     android:background="#00ff0000"
+                    android:textColor="@color/black"
                     android:text="달력"
                     android:textSize="35px" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/voteBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="130dp"
                     android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
                     android:background="#00ff0000"
                     android:text="투표"
                     android:textSize="35px" />
@@ -147,6 +152,7 @@
                     android:layout_marginLeft="200dp"
                     android:layout_marginTop="20dp"
                     android:textSize="35px"
+                    android:textColor="@color/black"
                     android:background="#00ff0000"
                     android:text="회장페이지" />
 
