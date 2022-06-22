@@ -46,6 +46,7 @@
                     android:layout_marginTop="100dp"
                     android:text=" 반갑습니다.\n 이곳은 Yeoulcom SNS \n 입니다."
                     android:textColor="@color/black"
+                    android:textStyle="normal"
                     android:textSize="25dp" />
 
                 <LinearLayout
@@ -222,7 +223,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="30dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -242,7 +243,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="11dp"
                     android:gravity="center"
                     android:text="시간"
                     android:textColor="#635D5D"
@@ -252,22 +253,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="0.8dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     android:background="#808080" />
                 <TextView
                     android:id="@+id/post_long_main_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="150px"
                     android:text="본문"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="25px"
+                    android:layout_margin="10dp"
                     android:textColor="@color/black"
-                    android:textSize="20dp" />
+                    android:textSize="18dp" />
 
                 <ImageView
                     android:id="@+id/post_long_IV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
                     android:layout_gravity="center"
                     android:src="@drawable/whiteimage" />
             </LinearLayout>

@@ -50,12 +50,12 @@ public class vote extends AppCompatActivity {
         Button Chairman_Btn = (Button) findViewById(R.id.Chairman_Btn);
 
         // 투표 버튼
-        Button yesBtn = (Button) findViewById(R.id.yes_btn);
-        Button noBtn = (Button) findViewById(R.id.no_btn);
+//        Button yesBtn = (Button) findViewById(R.id.yes_btn);
+//        Button noBtn = (Button) findViewById(R.id.no_btn);
 
-        // 득표 현황
-        TextView get_vote_no = (TextView) findViewById(R.id.get_vote_no);
-        TextView get_vote_yes = (TextView) findViewById(R.id.get_vote_yes);
+//        // 득표 현황
+//        TextView get_vote_no = (TextView) findViewById(R.id.get_vote_no);
+//        TextView get_vote_yes = (TextView) findViewById(R.id.get_vote_yes);
 
         // + 버튼 누르면 버튼 생성
         Button addBtn = (Button) findViewById(R.id.about_btn);
@@ -148,32 +148,32 @@ public class vote extends AppCompatActivity {
         no_count = pref.getInt("No", 0);   // int 불러오기 (저장해둔 값 없으면 초기값인 0으로 불러옴)
 
         // 각 상황에 맞는 버튼을 클릭하면 득표수 증가
-        get_vote_yes.setText(yes_count+"");
-        get_vote_no.setText(no_count+"");
+//        get_vote_yes.setText(yes_count+"");
+//        get_vote_no.setText(no_count+"");
 
-        yesBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                yes_count ++;
-                get_vote_yes.setText(yes_count+"");
-                yesBtn.setEnabled(false);
-                // 클릭 횟수 저장
-                editor.putInt("Yes", yes_count);
-                editor.apply(); // 저장
-            }
-        });
-
-        noBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                no_count ++;
-                get_vote_no.setText(no_count+"");
-                noBtn.setEnabled(false);
-                // 클릭 횟수 저장
-                editor.putInt("No", no_count);
-                editor.apply(); // 저장
-            }
-        });
+//        yesBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                yes_count ++;
+//                get_vote_yes.setText(yes_count+"");
+//                yesBtn.setEnabled(false);
+//                // 클릭 횟수 저장
+//                editor.putInt("Yes", yes_count);
+//                editor.apply(); // 저장
+//            }
+//        });
+//
+//        noBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                no_count ++;
+//                get_vote_no.setText(no_count+"");
+//                noBtn.setEnabled(false);
+//                // 클릭 횟수 저장
+//                editor.putInt("No", no_count);
+//                editor.apply(); // 저장
+//            }
+//        });
 
     }
     public void init(){

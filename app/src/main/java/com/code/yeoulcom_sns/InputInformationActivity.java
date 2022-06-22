@@ -45,7 +45,7 @@ public class InputInformationActivity extends AppCompatActivity {
     TextView name_generation_check_TV;
     LinearLayout info_check_Layout;
     EditText et_name, et_password;
-    String name,generation;
+    String name, generation;
     String st_generation, st_name;
 
     @Override
@@ -118,7 +118,7 @@ public class InputInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (et_password.getText().toString().equals("1111")) {
-                    //권한코드가 맞을 시
+                    //회장 권한코드가 맞을 시
                     info_check_Layout.setVisibility(View.GONE);
                     adminCheck = true;
                     bt_Apply.setEnabled(true);
@@ -140,10 +140,63 @@ public class InputInformationActivity extends AppCompatActivity {
                     intent_view_change.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                     // 게시물 테스트를 위한 잠깐 막아놓기,파이어베이스 업로드
-                    addUser(st_name, st_generation,adminCheck);
+                    addUser(st_name, st_generation, adminCheck);
                     startActivity(intent_view_change);
 
-                } else if(et_password.getText().toString().equals("0000")){
+                } else if (et_password.getText().toString().equals("2222")) {
+                    //개발자 코드
+                    //회장 권한코드가 맞을 시
+                    info_check_Layout.setVisibility(View.GONE);
+                    adminCheck = true;
+                    bt_Apply.setEnabled(true);
+                    bt_Apply.setEnabled(true);
+                    sp_generation.setEnabled(true);
+                    et_name.setEnabled(true);
+                    et_password.setEnabled(true);
+
+                    //이름,기수 변수에 값 넣어주기
+                    st_name = et_name.getText().toString();
+                    st_generation = "개발자";
+
+                    //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
+                    editor.putString("name", st_name);
+                    editor.putString("generation", st_generation);
+                    editor.putBoolean("admin", adminCheck);
+                    editor.apply();
+                    Intent intent_view_change = new Intent(getApplicationContext(), MainActivity.class);
+                    intent_view_change.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                    // 게시물 테스트를 위한 잠깐 막아놓기,파이어베이스 업로드
+                    addUser(st_name, st_generation, adminCheck);
+                    startActivity(intent_view_change);
+                } else if (et_password.getText().toString().equals("3333")) {
+                    //선생님 코드
+                    //회장 권한코드가 맞을 시
+                    info_check_Layout.setVisibility(View.GONE);
+                    adminCheck = true;
+                    bt_Apply.setEnabled(true);
+                    bt_Apply.setEnabled(true);
+                    sp_generation.setEnabled(true);
+                    et_name.setEnabled(true);
+                    et_password.setEnabled(true);
+
+                    //이름,기수 변수에 값 넣어주기
+                    st_name = et_name.getText().toString();
+                    st_generation = "선생님";
+
+                    //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
+                    editor.putString("name", st_name);
+                    editor.putString("generation", st_generation);
+                    editor.putBoolean("admin", adminCheck);
+                    editor.apply();
+                    Intent intent_view_change = new Intent(getApplicationContext(), MainActivity.class);
+                    intent_view_change.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                    // 게시물 테스트를 위한 잠깐 막아놓기,파이어베이스 업로드
+                    addUser(st_name, st_generation, adminCheck);
+                    startActivity(intent_view_change);
+                }else if (et_password.getText().toString().equals("0000")) {
+                    //일반 학생 코드
                     info_check_Layout.setVisibility(View.GONE);
                     bt_Apply.setEnabled(true);
                     bt_Apply.setEnabled(true);
@@ -164,11 +217,11 @@ public class InputInformationActivity extends AppCompatActivity {
                     intent_view_change.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                     // 게시물 테스트를 위한 잠깐 막아놓기,파이어베이스 업로드
-                    addUser(st_name, st_generation,adminCheck);
+                    addUser(st_name, st_generation, adminCheck);
                     startActivity(intent_view_change);
 
-                }else {
-                    Toast.makeText(getApplicationContext(),"잘못된 비밀번호 입니다.",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "잘못된 비밀번호 입니다.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -176,7 +229,7 @@ public class InputInformationActivity extends AppCompatActivity {
 
     public void addUser(String st_name, String st_generation, boolean adminCheck) {
         //파이어베이스에 업로드
-        addUser addUser = new addUser(st_name,st_generation,adminCheck);
+        addUser addUser = new addUser(st_name, st_generation, adminCheck);
         databaseReference.child("Check_user_List").push().setValue(addUser);
     }
 
