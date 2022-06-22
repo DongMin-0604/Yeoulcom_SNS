@@ -100,7 +100,7 @@
         android:background="@drawable/edge">
 
         <!-- 카테고리 nav바 -->
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/postBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
             android:text="게시물"
             android:textSize="35px" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/conferenceBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,235 +120,252 @@
             android:text="달력"
             android:textSize="35px" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/voteBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="130dp"
             android:layout_marginTop="20dp"
             android:background="#00ff0000"
-            android:textColor="#005566"
             android:text="투표"
-            android:textStyle="bold"
-            android:textSize="35px" />
+            android:textColor="#005566"
+            android:textSize="35px"
+            android:textStyle="bold" />
         <!--권한 있는 사람만 볼 수 있음-->
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/Chairman_Btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="200dp"
             android:layout_marginTop="20dp"
-            android:textSize="35px"
             android:background="#00ff0000"
-            android:text="회장페이지" />
+            android:text="회장페이지"
+            android:textSize="35px" />
 
         <!-- 현재 선택되있는 nav바에 밑줄 -->
         <View
             android:layout_width="30dp"
             android:layout_height="0.8dp"
-            android:layout_marginTop="60dp"
             android:layout_marginLeft="160dp"
+            android:layout_marginTop="60dp"
             android:background="#4682B4" />
 
         <!-- 게시물(main) Design -->
 
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:orientation="vertical">-->
+
+        <!--            &lt;!&ndash; 1 번째 게시물&ndash;&gt;-->
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="900px"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:orientation="vertical"-->
+        <!--                android:background="@drawable/line"-->
+        <!--                android:paddingTop="5dp"-->
+        <!--                android:paddingLeft="10dp"-->
+        <!--                android:paddingRight="10dp"-->
+        <!--                android:paddingBottom="20dp"-->
+        <!--                android:layout_marginTop="85dp">-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="합/불 (12TH 최지민)"-->
+        <!--                    android:textColor="#3d484e"-->
+        <!--                    android:layout_marginTop="10dp"-->
+        <!--                    android:gravity="left"/>-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:text="1학년1반 OOO 합격시킬까요?"-->
+        <!--                    android:textColor="@color/black"-->
+        <!--                    android:textStyle="bold"-->
+        <!--                    android:layout_marginTop="10dp"/>-->
+
+        <!--                &lt;!&ndash; 투표 버튼 &ndash;&gt;-->
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:orientation="horizontal"-->
+        <!--                    android:layout_gravity="center"-->
+        <!--                    android:layout_marginTop="25dp">-->
+
+        <!--                <Button-->
+        <!--                    android:layout_width="70dp"-->
+        <!--                    android:id="@+id/yes_btn"-->
+        <!--                    android:layout_height="70dp"-->
+        <!--                    android:background="#80FF00"-->
+        <!--                    android:layout_marginRight="50dp"-->
+        <!--                    android:text="찬성하기" />-->
+
+        <!--                <Button-->
+        <!--                    android:layout_width="70dp"-->
+        <!--                    android:id="@+id/no_btn"-->
+        <!--                    android:layout_height="70dp"-->
+        <!--                    android:background="#ff0000"-->
+        <!--                    android:layout_marginLeft="50px"-->
+        <!--                    android:textColor="@color/white"-->
+        <!--                    android:text="반대하기" />-->
+        <!--                </LinearLayout>-->
+
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:orientation="horizontal">-->
+        <!--                &lt;!&ndash; 부가 설명 &ndash;&gt;-->
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:orientation="vertical"-->
+        <!--                    android:layout_marginTop="15dp">-->
+
+        <!--                    <TextView-->
+        <!--                        android:id="@+id/get_vote_yes"-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_gravity="center"-->
+        <!--                        android:text="0"-->
+        <!--                        android:textSize="13dp" />-->
+
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_gravity="center"-->
+        <!--                        android:textSize="13dp"-->
+        <!--                        android:text="찬성득표"/>-->
+
+        <!--                </LinearLayout>-->
+
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:orientation="vertical"-->
+        <!--                    android:layout_marginLeft="20dp"-->
+        <!--                    android:layout_marginTop="15dp">-->
+
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:id="@+id/get_vote_no"-->
+        <!--                        android:text="0"-->
+        <!--                        android:textSize="13dp"-->
+        <!--                        android:layout_gravity="center"/>-->
+
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_gravity="center"-->
+        <!--                        android:textSize="13dp"-->
+        <!--                        android:text="반대득표"/>-->
+
+        <!--                </LinearLayout>-->
+        <!--            </LinearLayout>-->
+        <!--            </LinearLayout>-->
+        <!--            &lt;!&ndash; 2 번째 게시물&ndash;&gt;-->
+        <!--            <LinearLayout-->
+        <!--                android:layout_width="900px"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_gravity="center"-->
+        <!--                android:layout_marginTop="85dp"-->
+        <!--                android:background="@drawable/line"-->
+        <!--                android:orientation="vertical"-->
+        <!--                android:paddingLeft="10dp"-->
+        <!--                android:paddingTop="5dp"-->
+        <!--                android:paddingRight="10dp"-->
+        <!--                android:paddingBottom="20dp">-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginTop="10dp"-->
+        <!--                    android:gravity="left"-->
+        <!--                    android:text="합/불 (12TH 최지민)"-->
+        <!--                    android:textColor="#3d484e" />-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginTop="10dp"-->
+        <!--                    android:text="1학년1반 OOO 합격시킬까요?"-->
+        <!--                    android:textColor="@color/black"-->
+        <!--                    android:textStyle="bold" />-->
+
+        <!--                &lt;!&ndash; 투표 버튼 &ndash;&gt;-->
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_gravity="center"-->
+        <!--                    android:layout_marginTop="25dp"-->
+        <!--                    android:orientation="horizontal">-->
+
+        <!--                    <Button-->
+        <!--                        android:layout_width="70dp"-->
+        <!--                        android:layout_height="70dp"-->
+        <!--                        android:layout_marginRight="50dp"-->
+        <!--                        android:background="#80FF00"-->
+        <!--                        android:text="찬성하기" />-->
+
+        <!--                    <Button-->
+        <!--                        android:layout_width="70dp"-->
+        <!--                        android:layout_height="70dp"-->
+        <!--                        android:layout_marginLeft="50px"-->
+        <!--                        android:background="#ff0000"-->
+        <!--                        android:text="반대하기"-->
+        <!--                        android:textColor="@color/white" />-->
+        <!--                </LinearLayout>-->
+
+        <!--                &lt;!&ndash; 부가 설명 &ndash;&gt;-->
+        <!--                <LinearLayout-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginTop="15dp"-->
+        <!--                    android:orientation="horizontal">-->
+
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_marginLeft="10dp"-->
+        <!--                        android:layout_marginRight="15dp"-->
+        <!--                        android:text="    5명\n참가자 수"-->
+        <!--                        android:textSize="13dp" />-->
+
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:layout_marginRight="15dp"-->
+        <!--                        android:text="    3명\n찬성 득표"-->
+        <!--                        android:textSize="13dp" />-->
+
+        <!--                    <TextView-->
+        <!--                        android:layout_width="wrap_content"-->
+        <!--                        android:layout_height="wrap_content"-->
+        <!--                        android:text="    2명\n반대 득표"-->
+        <!--                        android:textSize="13dp" />-->
+
+        <!--                </LinearLayout>-->
+        <!--            </LinearLayout>-->
+        <!--        </LinearLayout>-->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="vertical">
-
-            <!-- 1 번째 게시물-->
-            <LinearLayout
-                android:layout_width="900px"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:background="@drawable/line"
-                android:paddingTop="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="20dp"
-                android:layout_marginTop="85dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="합/불 (12TH 최지민)"
-                    android:textColor="#3d484e"
-                    android:layout_marginTop="10dp"
-                    android:gravity="left"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1학년1반 OOO 합격시킬까요?"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"/>
-
-                <!-- 투표 버튼 -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="25dp">
-
-                <Button
-                    android:layout_width="70dp"
-                    android:id="@+id/yes_btn"
-                    android:layout_height="70dp"
-                    android:background="#80FF00"
-                    android:layout_marginRight="50dp"
-                    android:text="찬성하기" />
-
-                <Button
-                    android:layout_width="70dp"
-                    android:id="@+id/no_btn"
-                    android:layout_height="70dp"
-                    android:background="#ff0000"
-                    android:layout_marginLeft="50px"
-                    android:textColor="@color/white"
-                    android:text="반대하기" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                <!-- 부가 설명 -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="15dp">
-
-                    <TextView
-                        android:id="@+id/get_vote_yes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="0"
-                        android:textSize="13dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textSize="13dp"
-                        android:text="찬성득표"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="15dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/get_vote_no"
-                        android:text="0"
-                        android:textSize="13dp"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textSize="13dp"
-                        android:text="반대득표"/>
-
-                </LinearLayout>
-            </LinearLayout>
-            </LinearLayout>
-            <!-- 2 번째 게시물-->
-            <LinearLayout
-                android:layout_width="900px"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="85dp"
-                android:background="@drawable/line"
-                android:orientation="vertical"
-                android:paddingLeft="10dp"
-                android:paddingTop="5dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="left"
-                    android:text="합/불 (12TH 최지민)"
-                    android:textColor="#3d484e" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="1학년1반 OOO 합격시킬까요?"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <!-- 투표 버튼 -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="25dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_marginRight="50dp"
-                        android:background="#80FF00"
-                        android:text="찬성하기" />
-
-                    <Button
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_marginLeft="50px"
-                        android:background="#ff0000"
-                        android:text="반대하기"
-                        android:textColor="@color/white" />
-                </LinearLayout>
-
-                <!-- 부가 설명 -->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="15dp"
-                        android:text="    5명\n참가자 수"
-                        android:textSize="13dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
-                        android:text="    3명\n찬성 득표"
-                        android:textSize="13dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="    2명\n반대 득표"
-                        android:textSize="13dp" />
-
-                </LinearLayout>
-            </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_baseline_settings_suggest_24"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#191919"
+            android:textSize="19dp"
+            android:text="추후 업데이트 예정입니다.\n -개발자-"/>
         </LinearLayout>
     </FrameLayout>
-
 </LinearLayout>
