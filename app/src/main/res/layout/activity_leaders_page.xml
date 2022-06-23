@@ -5,6 +5,7 @@
     android:id="@+id/swiperefreshlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.code.yeoulcom_sns.MainActivity">
 
     <FrameLayout
@@ -119,6 +120,7 @@
                     android:layout_marginTop="20dp"
                     android:background="#00ff0000"
                     android:text="인원"
+                    android:fontFamily="@font/nanumgothicbold"
                     android:textColor="#005566"
                     android:textSize="35px"
                     android:textStyle="bold" />
@@ -132,6 +134,7 @@
                     android:textColor="@color/black"
                     android:background="#00ff0000"
                     android:text="알람 보내기"
+                    android:fontFamily="@font/nanumgothicbold"
                     android:textSize="35px" />
 
                 <!-- 현재 선택되있는 nav바에 밑줄 -->

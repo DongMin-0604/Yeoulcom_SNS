@@ -5,6 +5,7 @@
     android:id="@+id/swiperefreshlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.code.yeoulcom_sns.MainActivity">
 
     <!-- 전체를 감싸는 FRAME LAYOUT -->
@@ -118,6 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/nanumgothicbold"
                     android:background="#00ff0000"
                     android:text="게시물"
                     android:textColor="#005566"
@@ -130,6 +132,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="75dp"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/nanumgothicbold"
                     android:background="#00ff0000"
                     android:textColor="@color/black"
                     android:text="달력"
@@ -141,17 +144,19 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="130dp"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/nanumgothicbold"
                     android:textColor="@color/black"
                     android:background="#00ff0000"
                     android:text="투표"
                     android:textSize="35px" />
             <!--권한 있는 사람만 볼 수 있음-->
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/Chairman_Btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="200dp"
                     android:layout_marginTop="20dp"
+                    android:fontFamily="@font/nanumgothicbold"
                     android:textSize="35px"
                     android:textColor="@color/black"
                     android:background="#00ff0000"
@@ -185,6 +190,7 @@
             android:id="@+id/post_long_scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/white"
             android:visibility="gone"
             >
             <LinearLayout
@@ -273,6 +279,5 @@
                     android:src="@drawable/whiteimage" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-
     </FrameLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

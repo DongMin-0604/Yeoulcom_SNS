@@ -5,6 +5,7 @@
     android:id="@+id/conference"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="com.code.yeoulcom_sns.MainActivity">
 
     <FrameLayout
@@ -95,7 +96,7 @@
                 android:layout_marginTop="-20dp"
                 android:background="@drawable/edge">
                 <!-- 카테고리 nav바 -->
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/postBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -103,9 +104,10 @@
                     android:layout_marginTop="20dp"
                     android:background="#00ff0000"
                     android:text="게시물"
+                    android:fontFamily="@font/nanumgothicbold"
                     android:textSize="35px" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/conferenceBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -113,11 +115,12 @@
                     android:layout_marginTop="20dp"
                     android:background="#00ff0000"
                     android:text="달력"
+                    android:fontFamily="@font/nanumgothicbold"
                     android:textSize="35px"
                     android:textColor="#005566"
                     android:textStyle="bold" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/voteBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -125,15 +128,17 @@
                     android:layout_marginTop="20dp"
                     android:background="#00ff0000"
                     android:text="투표"
+                    android:fontFamily="@font/nanumgothicbold"
                     android:textSize="35px" />
                 <!--권한 있는 사람만 볼 수 있음-->
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/Chairman_Btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="200dp"
                     android:layout_marginTop="20dp"
                     android:textSize="35px"
+                    android:fontFamily="@font/nanumgothicbold"
                     android:background="#00ff0000"
                     android:text="회장페이지" />
 
