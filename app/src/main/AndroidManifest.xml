@@ -46,6 +46,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name="com.code.yeoulcom_sns.aboutMe"
             android:screenOrientation="portrait"/>
+        <activity android:name="com.code.yeoulcom_sns.ContactUsActivity"
+            android:screenOrientation="portrait"/>
 
         <!--  파이어베이스 FCM 부분      -->
         <service android:name="com.code.yeoulcom_sns.FirebaseMessagingService"
