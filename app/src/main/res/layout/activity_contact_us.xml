@@ -32,59 +32,21 @@
             android:background="@drawable/x"
             android:layout_gravity="center"
             android:layout_marginLeft="120dp" />
-
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
-
-        <!-- 유저의 기수, 이름을 불러오기 위한 리니어 레이아웃 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:background="@drawable/line">
-
-            <!-- 이미지 빼고 이름/기수 넣기-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:text="OO기 / " />
-
-            <!-- 이미지 빼고 이름/기수 넣기-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:text="최지민" />
-        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.8dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:background="@color/black" />
 
 <!-- 정보 입력 창 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginTop="10dp">
+            android:gravity="center">
         <TextView
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
@@ -136,27 +98,25 @@
             android:hint="문의할 사항을 입력해주세요."
             android:textColor="#808080"/>
         </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:background="#E1C82C"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginTop="30dp">
+            android:gravity="center">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="전송하기"
-                android:textSize="20dp"
-                android:layout_marginRight="70dp"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="취소하기"
-                android:textSize="20dp"/>
+                android:textColor="@color/black"
+                android:textSize="20dp" />
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>

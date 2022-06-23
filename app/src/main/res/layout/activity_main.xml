@@ -75,7 +75,7 @@
                         android:layout_marginBottom="10dp"
                         android:background="#ffffff"
                         android:gravity="center"
-                        android:text="개발자 이메일"
+                        android:text="문의하기"
                         android:textColor="@color/black"
                         android:visibility="gone" />
 
@@ -87,7 +87,7 @@
                         android:layout_marginBottom="10dp"
                         android:background="#ffffff"
                         android:gravity="center"
-                        android:text="문의하기"
+                        android:text="개발자 이메일"
                         android:textColor="@color/black"
                         android:visibility="gone" />
 

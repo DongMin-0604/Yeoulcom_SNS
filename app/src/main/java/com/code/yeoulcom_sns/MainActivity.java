@@ -357,7 +357,8 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot Snapshot : snapshot.getChildren()) {
                     key = Snapshot.getKey();
                     getPost = Snapshot.getValue(getPost.class);
-                    dataList.add(new Data(getPost.getTitle(),
+                    dataList.add(new Data(
+                            getPost.getTitle(),
                             getPost.getMain_text(),
                             getPost.getImgURL(),
                             getPost.getTime(),
