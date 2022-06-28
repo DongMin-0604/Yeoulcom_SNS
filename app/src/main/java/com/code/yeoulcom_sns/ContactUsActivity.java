@@ -99,13 +99,13 @@ public class ContactUsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 text = TV_category_info.getText().toString();
-
+                write_contact_us(name,generation,category,text);
             }
         });
     }
-    public void write_post_img(String name, String generation, String category, String text){
+    public void write_contact_us(String name, String generation, String category, String text){
         //이미지 포함 파이어베이스에 올리는 메소드
-
-        databaseReference.child("문의사항").child(category).push().setValue(addPostSaveImg);
+        addContactUs addContactUs = new addContactUs(name,generation,category,text);
+        databaseReference.child("문의사항").child(category).push().setValue(addContactUs);
     }
     }
