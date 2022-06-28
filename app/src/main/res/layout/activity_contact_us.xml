@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
-    tools:context="com.code.yeoulcom_sns.aboutMe">
+    tools:context="com.code.yeoulcom_sns.ContactUsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,13 +44,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
+        android:gravity="start"
+        android:padding="10dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -59,15 +61,41 @@
                 android:text="카테고리 : "
                 android:layout_gravity="center_vertical"
                 android:textColor="@color/black"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/sp_category"
-                android:layout_width="300px"
+                android:layout_width="400px"
                 android:layout_height="120px"
                 android:textStyle="bold" />
         </LinearLayout>
+        <TextView
+            android:id="@+id/TV_category_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="카테고리별 설명"
+            android:textSize="12dp"
+            android:layout_marginTop="30px"
+            android:gravity="center"/>
+        <EditText
+            android:id="@+id/et_main_text"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="35dp"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:background="@drawable/border_edit"
+            android:padding="15px"
+            android:ems="500"
+            android:gravity="top"
+            android:hint="내용을 입력하세요"
+            android:textColorHint="#959595"
+            android:maxLength="500"
+            android:textSize="14dp" />
 
     </LinearLayout>
 
@@ -85,6 +113,7 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/BT_send"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:text="문의하기"

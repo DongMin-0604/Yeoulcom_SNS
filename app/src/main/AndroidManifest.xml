@@ -44,8 +44,6 @@
             android:screenOrientation="portrait"/>
         <activity android:name="com.code.yeoulcom_sns.LeadersActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name="com.code.yeoulcom_sns.aboutMe"
-            android:screenOrientation="portrait"/>
         <activity android:name="com.code.yeoulcom_sns.ContactUsActivity"
             android:screenOrientation="portrait"/>
 

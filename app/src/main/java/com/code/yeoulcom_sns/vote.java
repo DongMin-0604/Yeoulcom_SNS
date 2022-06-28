@@ -102,7 +102,7 @@ public class vote extends AppCompatActivity {
         addBtn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), aboutMe.class);
+                Intent intent = new Intent(getApplicationContext(), ContactUsActivity.class);
                 startActivity(intent);
             }
         });
@@ -130,7 +130,7 @@ public class vote extends AppCompatActivity {
                 if (addBtn2.getVisibility() == View.GONE && addBtn3.getVisibility() == View.GONE) {
                     addBtn2.setVisibility(View.VISIBLE); // or GONE
                     addBtn3.setVisibility(View.VISIBLE); // or GONE
-                    bt_write_vote.setVisibility(View.VISIBLE); // or GONE
+//                    bt_write_vote.setVisibility(View.VISIBLE); // or GONE
                 } else {
                     addBtn2.setVisibility(View.GONE);
                     addBtn3.setVisibility(View.GONE);

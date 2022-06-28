@@ -18,13 +18,4 @@
         <item>1기</item>
     </string-array>
 
-    <string-array name="category">
-        <item>평가</item>
-        <item>버그 제보(버그가 어떠한 상황에서 일어났는지)</item>
-        <item>기능 추가 제안</item>
-        <item>개발자 제안(같이 이 서비스를 완성할 개발자를 찾습니다.)</item>
-        <item>개발자에게 하고 싶은 말</item>
-        <item>기타</item>
-    </string-array>
-
 </resources>
