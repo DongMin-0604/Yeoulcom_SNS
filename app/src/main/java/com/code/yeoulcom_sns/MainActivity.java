@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
         editor = SP.edit();
 
-        //이전 엑티비티에서 넘어온 기수,이름 받기
+        //SharedPreferences 기수,이름 받기
         SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
         name = SP.getString("name","");
         generation = SP.getString("generation","");
@@ -265,15 +265,18 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent_view_change = new Intent(getApplicationContext(), WritePostActivity.class);
                 intent_view_change.putExtra("generation", generation);
                 intent_view_change.putExtra("name", name);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 startActivity(intent_view_change);
             }
         });
 
-        // 내 정보 클릭 시 이동
+        // 문의하기 클릭 시 이동
         addBtn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //화면 전환
                 Intent intent = new Intent(getApplicationContext(), ContactUsActivity.class);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
                 startActivity(intent);
             }
         });

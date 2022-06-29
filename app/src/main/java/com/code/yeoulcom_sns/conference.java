@@ -38,6 +38,10 @@ public class conference extends AppCompatActivity {
     SharedPreferences SP;
     SharedPreferences.Editor editor;
 
+    //뒤로가기 두번 입력 체크용
+    private long backKeyPressedTime;
+    Toast toast;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +54,8 @@ public class conference extends AppCompatActivity {
 
         // + 버튼 누르면 버튼 생성
         Button addBtn = (Button) findViewById(R.id.about_btn);
+        Button addBtn1 = (Button) findViewById(R.id.about_btn1);
         Button addBtn2 = (Button) findViewById(R.id.about_btn2);
-        Button addBtn3 = (Button) findViewById(R.id.about_btn3);
 
         //새로고침
         swipeRefreshLayout = findViewById(R.id.conference);
@@ -77,10 +81,6 @@ public class conference extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), vote.class);
 //                화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
-                editor.putString("name", name);
-                editor.putString("generation", generation);
-                editor.putBoolean("admin", adminCheck);
-                editor.apply();
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fadein, R.anim.fadeout);
@@ -88,7 +88,7 @@ public class conference extends AppCompatActivity {
         });
 
         // 내 정보 클릭 시 이동
-        addBtn3.setOnClickListener(new View.OnClickListener() {
+        addBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), ContactUsActivity.class);
@@ -115,12 +115,12 @@ public class conference extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (addBtn2.getVisibility() == View.GONE && addBtn3.getVisibility() == View.GONE) {
+                if (addBtn1.getVisibility() == View.GONE && addBtn2.getVisibility() == View.GONE) {
+                    addBtn1.setVisibility(View.VISIBLE); // or GONE
                     addBtn2.setVisibility(View.VISIBLE); // or GONE
-                    addBtn3.setVisibility(View.VISIBLE); // or GONE
                 } else {
+                    addBtn1.setVisibility(View.GONE);
                     addBtn2.setVisibility(View.GONE);
-                    addBtn3.setVisibility(View.GONE);
                 }
             }
         });
@@ -134,20 +134,33 @@ public class conference extends AppCompatActivity {
             }
 
             private void updateLayoutView() {
-                if (addBtn2.getVisibility() + addBtn3.getVisibility() == View.VISIBLE) {
+                if (addBtn1.getVisibility() + addBtn2.getVisibility() == View.VISIBLE) {
+                    addBtn1.setVisibility(View.GONE);
                     addBtn2.setVisibility(View.GONE);
-                    addBtn3.setVisibility(View.GONE);
                 }
 
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis();
+            toast = Toast.makeText(this, "\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
+        if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+            moveTaskToBack(true);
+            finish();
+            toast.cancel();
+        }
+    }
     public void init(){
         //SharedPreferences
-        SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
-        editor = SP.edit();
 
-        //이전 엑티비티에서 넘어온 기수,이름 받기
+        //SharedPreferences 기수,이름 받기
         SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
         name = SP.getString("name","");
         generation = SP.getString("generation","");

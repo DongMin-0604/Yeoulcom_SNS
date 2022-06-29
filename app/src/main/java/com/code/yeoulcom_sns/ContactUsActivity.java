@@ -1,11 +1,15 @@
 package com.code.yeoulcom_sns;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,7 +31,10 @@ public class ContactUsActivity extends AppCompatActivity {
     String[] items = {"버그신고", "문의", "기능추가제안", "개발자 신청" ,"기타"};
     ImageButton back_btn;
     TextView TV_category_info;
+    EditText et_main_text;
     Button BT_send;
+
+    SharedPreferences SP;
 
     //파이어 베이스 연동
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -47,6 +54,7 @@ public class ContactUsActivity extends AppCompatActivity {
         back_btn = (ImageButton) findViewById(R.id.IV_onBack);
         TV_category_info = findViewById(R.id.TV_category_info);
         BT_send = findViewById(R.id.BT_send);
+        et_main_text = findViewById(R.id.et_main_text);
 
         //문의하기 Spinner 설정
         ArrayAdapter<String> adapter_generation = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_spinner, items);
@@ -98,13 +106,23 @@ public class ContactUsActivity extends AppCompatActivity {
         BT_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                text = TV_category_info.getText().toString();
+                //SharedPreferences 기수,이름 받기
+                SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
+                String name = SP.getString("name","");
+                String generation = SP.getString("generation","");
+
+                text = et_main_text.getText().toString();
+
                 write_contact_us(name,generation,category,text);
+
+                Intent intent_view_change = new Intent(getApplicationContext(), MainActivity.class);
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                startActivity(intent_view_change);
             }
         });
     }
     public void write_contact_us(String name, String generation, String category, String text){
-        //이미지 포함 파이어베이스에 올리는 메소드
+        //파이어베이스에 문의사항 올리는 메소드
         addContactUs addContactUs = new addContactUs(name,generation,category,text);
         databaseReference.child("문의사항").child(category).push().setValue(addContactUs);
     }

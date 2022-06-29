@@ -25,6 +25,21 @@ public class addContactUs {
         this.generation = generation;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getMain_text() {
+        return main_text;
+    }
+
+    public void setMain_text(String main_text) {
+        this.main_text = main_text;
+    }
 
     //이미지를 포함한 값을 추가할 때 쓸 함수]
     public addContactUs(String name, String generation, String category,String main_text) {
