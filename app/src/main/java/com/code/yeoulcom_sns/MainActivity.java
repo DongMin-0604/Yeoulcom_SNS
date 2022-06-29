@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button postBtn, conferenceBtn, voteBtn, bt_write_post, Chairman_Btn;
     String name = "", generation = "", key, Time;
-    Boolean adminCheck = false,OkayCheck = false;
+    Boolean adminCheck = false, OkayCheck = false;
 
     //큰 게시물 TextView
     TextView post_long_title, post_long_main_text, post_long_name_generation, post_long_time;
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     //뒤로가기 두번 입력 체크용
     private long backKeyPressedTime;
     Toast toast;
-    
+
     //기수,이름 핸드폰에 저장 SharedPreferences
     SharedPreferences SP;
     SharedPreferences.Editor editor;
@@ -115,14 +115,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView (R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
-        if (isConnected(getApplicationContext()) == false){
+        if (isConnected(getApplicationContext()) == false) {
             Toast.makeText(getApplicationContext(), "인터넷 연결을 확인해주세요.", Toast.LENGTH_SHORT).show();
             finishAndRemoveTask();
             onDestroy();
             android.os.Process.killProcess(android.os.Process.myTid());
-        }else {
+        } else {
 
         }
         init();
@@ -154,6 +154,23 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 2000);
     }
+    public void RunSaveDialog() {
+        //게시물 불러올 동안 뜨는 로딩 Dialog
+        dialog = new ProgressDialog(MainActivity.this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setMessage("데이터 베이스 안정화 중 \n추후 최적화가 되면 이 Dialog는 사라질겁니다. . .");
+
+        dialog.show();
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 3500);
+    }
 
     public void init() {
         //기본 세팅 함수
@@ -182,9 +199,9 @@ public class MainActivity extends AppCompatActivity {
 
         //SharedPreferences 기수,이름 받기
         SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
-        name = SP.getString("name","");
-        generation = SP.getString("generation","");
-        adminCheck = SP.getBoolean("admin",false);
+        name = SP.getString("name", "");
+        generation = SP.getString("generation", "");
+        adminCheck = SP.getBoolean("admin", false);
 
         // + 버튼 누르면 버튼 생성
         addBtn = (Button) findViewById(R.id.about_btn);
@@ -201,21 +218,24 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
     }
+
     public void onclick() {
         //onclick 모아 놓는 함수
         // 컨퍼런스 클릭 시 이동
         conferenceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), conference.class);
-                //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
-                editor.putString("name", name);
-                editor.putString("generation", generation);
-                editor.putBoolean("admin", adminCheck);
-                editor.apply();
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                RunSaveDialog();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(getApplicationContext(), conference.class);
+                        //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                    }
+                }, 3500);
             }
         });
 
@@ -231,15 +251,18 @@ public class MainActivity extends AppCompatActivity {
         voteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), vote.class);
-                //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
-                editor.putString("name", name);
-                editor.putString("generation", generation);
-                editor.putBoolean("admin", adminCheck);
-                editor.apply();
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                RunSaveDialog();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(getApplicationContext(), vote.class);
+                        //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                    }
+                }, 3500);
+
             }
         });
 
@@ -247,14 +270,19 @@ public class MainActivity extends AppCompatActivity {
         Chairman_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (adminCheck == true){
-                    Intent intent = new Intent(getApplicationContext(), LeadersActivity.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-                }else {
-                    Toast.makeText(getApplicationContext(),"권한이 없습니다.",Toast.LENGTH_SHORT).show();
-                }
-
+                RunSaveDialog();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (adminCheck == true) {
+                            Intent intent = new Intent(getApplicationContext(), LeadersActivity.class);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "권한이 없습니다.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, 3500);
             }
         });
 
@@ -306,7 +334,7 @@ public class MainActivity extends AppCompatActivity {
                 int result = post_long.getVisibility();
                 if (result == View.VISIBLE) {
                     swipeRefreshLayout.setRefreshing(false);
-                }else {
+                } else {
                     updateLayoutView();
 
                     swipeRefreshLayout.setRefreshing(false);
@@ -327,7 +355,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // 문의하기 클릭하면 이메일 띄우기
+        // 이메일 클릭하면 이메일 띄우기
         addBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -385,40 +413,40 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnClickListener(new RecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View a_v, int position) {
-                if(SystemClock.elapsedRealtime() - mLastClickTime > 1000) {
-                mLastClickTime = SystemClock.elapsedRealtime();
-                RunProgressDialog();//게시물 클릭 시 이미지 로딩 Dialog
+                if (SystemClock.elapsedRealtime() - mLastClickTime > 1000) {
+                    mLastClickTime = SystemClock.elapsedRealtime();
+                    RunProgressDialog();//게시물 클릭 시 이미지 로딩 Dialog
 
-                final Data data = dataList.get(position);
-                main_layout.setVisibility(View.GONE);
-                post_long.setVisibility(View.VISIBLE);
-                post_long_scrollview.setVisibility(View.VISIBLE);
+                    final Data data = dataList.get(position);
+                    main_layout.setVisibility(View.GONE);
+                    post_long.setVisibility(View.VISIBLE);
+                    post_long_scrollview.setVisibility(View.VISIBLE);
 
-                post_long_title.setText(data.getTitle());
-                post_long_main_text.setText(data.getMain_text());
-                post_long_time.setText(data.getTime());
-                post_long_name_generation.setText(data.getGeneration() + " " + data.getName());
-                post_long_IV.setImageResource(R.drawable.whiteimage);
-                Log.d("img",data.getImgUrl());
+                    post_long_title.setText(data.getTitle());
+                    post_long_main_text.setText(data.getMain_text());
+                    post_long_time.setText(data.getTime());
+                    post_long_name_generation.setText(data.getGeneration() + " " + data.getName());
+                    post_long_IV.setImageResource(R.drawable.whiteimage);
+                    Log.d("img", data.getImgUrl());
 
-                if (data.getImgUrl().equals("content://media/external/images/media/4167")){
-                    //기본 이미지는 큰 게시물 안쪽에 표시 X
-                }else {
-                    //게시물 안에 있는 이미지 이름으로 파이어베이스에서 가져오기
-                    StorageReference pathReference = storageReference.child("img/" + data.getImgUrl());
-                    pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            Glide.with(getApplicationContext())
-                                    .load(uri)
-                                    .error(R.drawable.yeoul)//이미지 로드 실패 시 보여줄 이미지
-                                    .fallback(R.drawable.common_google_signin_btn_icon_dark_normal_background)//uri이 null일 때
-                                    .into(post_long_IV);
+                    if (data.getImgUrl().equals("content://media/external/images/media/4167")) {
+                        //기본 이미지는 큰 게시물 안쪽에 표시 X
+                    } else {
+                        //게시물 안에 있는 이미지 이름으로 파이어베이스에서 가져오기
+                        StorageReference pathReference = storageReference.child("img/" + data.getImgUrl());
+                        pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Glide.with(getApplicationContext())
+                                        .load(uri)
+                                        .error(R.drawable.yeoul)//이미지 로드 실패 시 보여줄 이미지
+                                        .fallback(R.drawable.common_google_signin_btn_icon_dark_normal_background)//uri이 null일 때
+                                        .into(post_long_IV);
 
-                        }
-                    });
+                            }
+                        });
+                    }
                 }
-            }
             }
         });
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -435,6 +463,7 @@ public class MainActivity extends AppCompatActivity {
 
         return ni != null && ni.isConnected();
     }
+
     @Override
     public void onBackPressed() {
         //만약 게시물 큰 화면이 켜져있다면 뒤로가기 눌렀을때 큰 화면이 꺼지게

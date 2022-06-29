@@ -120,7 +120,7 @@
             android:id="@+id/bt_Apply"
             android:layout_width="match_parent"
             android:layout_height="200px"
-            android:text="신청하기"
+            android:text="가입하기"
             android:background="#C8C6C6"
             android:textColor="@color/black"
             android:textStyle="bold" />
@@ -171,6 +171,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
+                    android:background="#C8C6C6"
                     android:text="취소"
                     />
                 <androidx.appcompat.widget.AppCompatButton
@@ -178,7 +179,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="신청"
+                    android:background="#C8C6C6"
+                    android:text="가입"
                     />
             </LinearLayout>
         </LinearLayout>

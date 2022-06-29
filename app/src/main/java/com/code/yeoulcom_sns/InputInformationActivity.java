@@ -48,6 +48,10 @@ public class InputInformationActivity extends AppCompatActivity {
     String name, generation;
     String st_generation, st_name;
 
+    //뒤로가기 두번 입력 체크용
+    private long backKeyPressedTime;
+    Toast toast;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -243,4 +247,21 @@ public class InputInformationActivity extends AppCompatActivity {
             return null;
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis();
+            toast = Toast.makeText(this, "\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
+        if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+            moveTaskToBack(true);
+            finish();
+            finishAffinity();
+            toast.cancel();
+        }
+    }
 }

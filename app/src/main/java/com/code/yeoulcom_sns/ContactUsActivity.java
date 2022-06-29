@@ -30,7 +30,7 @@ public class ContactUsActivity extends AppCompatActivity {
     Spinner SP_category;
     String[] items = {"버그신고", "문의", "기능추가제안", "개발자 신청" ,"기타"};
     ImageButton back_btn;
-    TextView TV_category_info;
+    TextView TV_category_info,TV_top_Name;
     EditText et_main_text;
     Button BT_send;
 
@@ -40,7 +40,7 @@ public class ContactUsActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
-    String category,generation,name,text;
+    String generation,name,category,text;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,11 +55,19 @@ public class ContactUsActivity extends AppCompatActivity {
         TV_category_info = findViewById(R.id.TV_category_info);
         BT_send = findViewById(R.id.BT_send);
         et_main_text = findViewById(R.id.et_main_text);
+        TV_top_Name = findViewById(R.id.TV_top_Name);
 
         //문의하기 Spinner 설정
         ArrayAdapter<String> adapter_generation = new ArrayAdapter<String>(getApplicationContext(), R.layout.custom_spinner, items);
         adapter_generation.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         SP_category.setAdapter(adapter_generation);
+
+        //SharedPreferences 기수,이름 받기
+        SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
+        name = SP.getString("name","");
+        generation = SP.getString("generation","");
+
+        TV_top_Name.setText(generation +" "+name);
 
     }
     void onClick(){
@@ -80,7 +88,7 @@ public class ContactUsActivity extends AppCompatActivity {
                         category = items[position];
                         break;
                     case "개발자 신청":
-                        TV_category_info.setText("이 프로젝트를 함께 완수할 새로운 개발자를 모집합니다.\n포부와 하고싶은 말을 기재해주세요.");
+                        TV_category_info.setText("이 프로젝트를 함께 완수할 새로운 개발자를 모집합니다.\n지원동기와 하고싶은 말을 기재해주세요.");
                         category = items[position];
                         break;
                     case "기타":
@@ -106,13 +114,7 @@ public class ContactUsActivity extends AppCompatActivity {
         BT_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //SharedPreferences 기수,이름 받기
-                SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
-                String name = SP.getString("name","");
-                String generation = SP.getString("generation","");
-
                 text = et_main_text.getText().toString();
-
                 write_contact_us(name,generation,category,text);
 
                 Intent intent_view_change = new Intent(getApplicationContext(), MainActivity.class);
