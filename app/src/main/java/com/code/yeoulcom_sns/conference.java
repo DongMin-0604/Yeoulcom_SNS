@@ -111,6 +111,20 @@ public class conference extends AppCompatActivity {
             }
         });
 
+        // 개발자 이메일 클릭하면 이메일 띄우기
+        addBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addBtn2 = new Intent(Intent.ACTION_SEND);
+                addBtn2.setType("Plain/text");
+                String[] address = {"dongmin3147@gmail.com"};
+                addBtn2.putExtra(Intent.EXTRA_EMAIL, address);
+                addBtn2.putExtra(Intent.EXTRA_SUBJECT, "오류 피드백입니다.");
+                addBtn2.putExtra(Intent.EXTRA_TEXT, "내용 미리보기 (미리 적을 수 있음");
+                startActivity(addBtn2);
+            }
+        });
+
         // + 버튼 누르면 속성 버튼 생성
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override

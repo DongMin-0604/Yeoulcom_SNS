@@ -361,7 +361,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent addBtn2 = new Intent(Intent.ACTION_SEND);
                 addBtn2.setType("Plain/text");
-                String[] address = {"leeseojun0927@gmail.com"};
+                String[] address = {"dongmin3147@gmail.com"};
                 addBtn2.putExtra(Intent.EXTRA_EMAIL, address);
                 addBtn2.putExtra(Intent.EXTRA_SUBJECT, "오류 피드백입니다.");
                 addBtn2.putExtra(Intent.EXTRA_TEXT, "내용 미리보기 (미리 적을 수 있음");
