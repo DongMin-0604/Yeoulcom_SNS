@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         //게시물 불러올 동안 뜨는 로딩 Dialog
         dialog = new ProgressDialog(MainActivity.this);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.setMessage("데이터 베이스 안정화 중 \n추후 최적화가 되면 이 Dialog는 사라질겁니다. . .");
+        dialog.setMessage("데이터 베이스 안정화 코드 적용중. . .");
 
         dialog.show();
         dialog.setCanceledOnTouchOutside(false);
