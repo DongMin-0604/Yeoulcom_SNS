@@ -65,6 +65,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="#ffffff"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:text="개발자 이메일"
                 android:visibility="gone" />
 
@@ -76,6 +77,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="#ffffff"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:text="문의하기"
                 android:visibility="gone" />
 

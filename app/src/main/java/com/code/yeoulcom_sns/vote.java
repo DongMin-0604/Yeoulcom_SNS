@@ -132,7 +132,7 @@ public class vote extends AppCompatActivity {
                 } else {
                     addBtn1.setVisibility(View.GONE);
                     addBtn2.setVisibility(View.GONE);
-                    bt_write_vote.setVisibility(View.GONE);
+//                    bt_write_vote.setVisibility(View.GONE);
                 }
             }
         });

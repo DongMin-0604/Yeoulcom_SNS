@@ -73,6 +73,7 @@
                         android:layout_marginBottom="10dp"
                         android:background="#ffffff"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:text="개발자 이메일"
                         android:visibility="gone" />
 
@@ -84,6 +85,7 @@
                         android:layout_marginBottom="10dp"
                         android:background="#ffffff"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:text="문의하기"
                         android:visibility="gone" />
                 </LinearLayout>
@@ -104,6 +106,7 @@
                     android:layout_marginTop="20dp"
                     android:background="#00ff0000"
                     android:text="게시물"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/nanumgothicbold"
                     android:textSize="35px" />
 
@@ -128,6 +131,7 @@
                     android:layout_marginTop="20dp"
                     android:background="#00ff0000"
                     android:text="투표"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/nanumgothicbold"
                     android:textSize="35px" />
                 <!--권한 있는 사람만 볼 수 있음-->
@@ -138,6 +142,7 @@
                     android:layout_marginLeft="200dp"
                     android:layout_marginTop="20dp"
                     android:textSize="35px"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/nanumgothicbold"
                     android:background="#00ff0000"
                     android:text="회장페이지" />
@@ -155,6 +160,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/calendar"
+                        android:textColor="@color/black"
                         android:layout_gravity="center"
                         android:layout_marginTop="25dp"/>
 

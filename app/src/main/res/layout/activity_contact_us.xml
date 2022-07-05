@@ -67,8 +67,9 @@
             <Spinner
                 android:id="@+id/sp_category"
                 android:layout_width="400px"
+                android:background="@drawable/spinner_back"
                 android:layout_height="120px"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
         </LinearLayout>
         <TextView
             android:id="@+id/TV_category_info"

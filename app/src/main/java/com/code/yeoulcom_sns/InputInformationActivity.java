@@ -121,7 +121,7 @@ public class InputInformationActivity extends AppCompatActivity {
         request_BT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (et_password.getText().toString().equals("1111")) {
+                if (et_password.getText().toString().equals("0810")) {
                     //회장 권한코드가 맞을 시
                     info_check_Layout.setVisibility(View.GONE);
                     adminCheck = true;
@@ -147,9 +147,9 @@ public class InputInformationActivity extends AppCompatActivity {
                     addUser(st_name, st_generation, adminCheck);
                     startActivity(intent_view_change);
 
-                } else if (et_password.getText().toString().equals("2222")) {
+                } else if (et_password.getText().toString().equals("0927")) {
                     //개발자 코드
-                    //회장 권한코드가 맞을 시
+                    //개발자 권한코드가 맞을 시
                     info_check_Layout.setVisibility(View.GONE);
                     adminCheck = true;
                     bt_Apply.setEnabled(true);
@@ -173,9 +173,9 @@ public class InputInformationActivity extends AppCompatActivity {
                     // 게시물 테스트를 위한 잠깐 막아놓기,파이어베이스 업로드
                     addUser(st_name, st_generation, adminCheck);
                     startActivity(intent_view_change);
-                } else if (et_password.getText().toString().equals("3333")) {
+                } else if (et_password.getText().toString().equals("2000")) {
                     //선생님 코드
-                    //회장 권한코드가 맞을 시
+                    //선생님 권한코드가 맞을 시
                     info_check_Layout.setVisibility(View.GONE);
                     adminCheck = true;
                     bt_Apply.setEnabled(true);
@@ -199,7 +199,7 @@ public class InputInformationActivity extends AppCompatActivity {
                     // 게시물 테스트를 위한 잠깐 막아놓기,파이어베이스 업로드
                     addUser(st_name, st_generation, adminCheck);
                     startActivity(intent_view_change);
-                }else if (et_password.getText().toString().equals("0000")) {
+                }else if (et_password.getText().toString().equals("1992")) {
                     //일반 학생 코드
                     info_check_Layout.setVisibility(View.GONE);
                     bt_Apply.setEnabled(true);
@@ -225,7 +225,7 @@ public class InputInformationActivity extends AppCompatActivity {
                     startActivity(intent_view_change);
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "잘못된 비밀번호 입니다.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "잘못된 권한번호 입니다.", Toast.LENGTH_SHORT).show();
                 }
             }
         });

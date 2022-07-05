@@ -28,9 +28,9 @@ import java.util.List;
 public class ContactUsActivity extends AppCompatActivity {
 
     Spinner SP_category;
-    String[] items = {"버그신고", "문의", "기능추가제안", "개발자 신청" ,"기타"};
+    String[] items = {"버그신고", "문의", "기능추가제안", "개발자 신청", "기타"};
     ImageButton back_btn;
-    TextView TV_category_info,TV_top_Name;
+    TextView TV_category_info, TV_top_Name;
     EditText et_main_text;
     Button BT_send;
 
@@ -40,7 +40,8 @@ public class ContactUsActivity extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
-    String generation,name,category,text;
+    String generation, name, category, text;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +50,7 @@ public class ContactUsActivity extends AppCompatActivity {
         onClick();
     }
 
-    public void init(){
+    public void init() {
         SP_category = findViewById(R.id.sp_category);
         back_btn = (ImageButton) findViewById(R.id.IV_onBack);
         TV_category_info = findViewById(R.id.TV_category_info);
@@ -64,17 +65,18 @@ public class ContactUsActivity extends AppCompatActivity {
 
         //SharedPreferences 기수,이름 받기
         SP = getSharedPreferences("SP", Activity.MODE_PRIVATE);
-        name = SP.getString("name","");
-        generation = SP.getString("generation","");
+        name = SP.getString("name", "");
+        generation = SP.getString("generation", "");
 
-        TV_top_Name.setText(generation +" "+name);
+        TV_top_Name.setText(generation + " " + name);
 
     }
-    void onClick(){
+
+    void onClick() {
         SP_category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (items[position]){
+                switch (items[position]) {
                     case "버그신고":
                         TV_category_info.setText("버그가 일어났던 상황,발생조건을 상세히 기재해주세요.");
                         category = items[position];
@@ -114,18 +116,23 @@ public class ContactUsActivity extends AppCompatActivity {
         BT_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                text = et_main_text.getText().toString();
-                write_contact_us(name,generation,category,text);
-
-                Intent intent_view_change = new Intent(getApplicationContext(), MainActivity.class);
-                overridePendingTransition(R.anim.fadein, R.anim.fadeout);
-                startActivity(intent_view_change);
+                if (et_main_text.getText().toString().equals("")) {
+                    Toast.makeText(ContactUsActivity.this, "문의내용을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                } else {
+                    text = et_main_text.getText().toString();
+                    write_contact_us(name, generation, category, text);
+                    Toast.makeText(ContactUsActivity.this, "문의가 정상적으로 전송되었습니다.", Toast.LENGTH_SHORT).show();
+                    Intent intent_view_change = new Intent(getApplicationContext(), MainActivity.class);
+                    overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+                    startActivity(intent_view_change);
+                }
             }
         });
     }
-    public void write_contact_us(String name, String generation, String category, String text){
+
+    public void write_contact_us(String name, String generation, String category, String text) {
         //파이어베이스에 문의사항 올리는 메소드
-        addContactUs addContactUs = new addContactUs(name,generation,category,text);
+        addContactUs addContactUs = new addContactUs(name, generation, category, text);
         databaseReference.child("문의사항").child(category).push().setValue(addContactUs);
     }
-    }
+}

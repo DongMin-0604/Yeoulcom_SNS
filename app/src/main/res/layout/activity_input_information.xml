@@ -57,7 +57,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="120px"
             android:layout_marginTop="400px"
             android:background="@drawable/line"
             android:gravity="center"
@@ -66,8 +66,10 @@
 
             <Spinner
                 android:id="@+id/sp_generation"
-                android:layout_width="300px"
-                android:layout_height="120px"
+                android:layout_width="250px"
+                android:layout_height="100px"
+                android:background="@drawable/spinner_back"
+                android:layout_marginRight="10dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -81,8 +83,10 @@
             <EditText
                 android:id="@+id/et_name"
                 android:layout_width="300px"
-                android:layout_height="50dp"
+                android:layout_height="37dp"
+                android:background="@drawable/border_edit_bottom"
                 android:maxLines="1"
+                android:maxLength="4"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -104,8 +108,10 @@
             <EditText
                 android:id="@+id/et_password"
                 android:layout_width="300px"
-                android:layout_height="50dp"
+                android:layout_height="37dp"
+                android:background="@drawable/border_edit_bottom"
                 android:maxLines="1"
+                android:layout_marginLeft="10dp"
                 android:textColor="@color/black"
                 android:inputType="number"
                 android:maxLength="6"
@@ -171,6 +177,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
+                    android:textColor="@color/black"
                     android:background="#C8C6C6"
                     android:text="취소"
                     />
@@ -179,6 +186,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:textColor="@color/black"
                     android:background="#C8C6C6"
                     android:text="가입"
                     />
