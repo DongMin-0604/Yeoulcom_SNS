@@ -1,6 +1,7 @@
 package com.code.yeoulcom_sns;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -38,6 +39,8 @@ public class LeadersActivity extends AppCompatActivity {
     String name = "", generation = "", key, Time;
     Boolean adminCheck = false;
 
+    Button addBtn, addBtn2, addBtn3;
+
     //리스트 지정
     final List<UserCheckData> dataList = new ArrayList<>();
 
@@ -65,6 +68,35 @@ public class LeadersActivity extends AppCompatActivity {
         init();
         getPost();
         onClick();
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (addBtn.getVisibility() == View.GONE && addBtn2.getVisibility() == View.GONE) {
+                    addBtn.setVisibility(View.VISIBLE); // or GONE
+                    addBtn2.setVisibility(View.VISIBLE); // or GONE
+//                    bt_write_vote.setVisibility(View.VISIBLE); // or GONE
+                } else {
+                    addBtn.setVisibility(View.GONE);
+                    addBtn2.setVisibility(View.GONE);
+//                    bt_write_vote.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        // 개발자 이메일 클릭하면 이메일 띄우기
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addBtn2 = new Intent(Intent.ACTION_SEND);
+                addBtn2.setType("Plain/text");
+                String[] address = {"dongmin3147@gmail.com"};
+                addBtn2.putExtra(Intent.EXTRA_EMAIL, address);
+                addBtn2.putExtra(Intent.EXTRA_SUBJECT, "오류 피드백입니다.");
+                addBtn2.putExtra(Intent.EXTRA_TEXT, "내용 미리보기 (미리 적을 수 있음");
+                startActivity(addBtn2);
+            }
+        });
     }
 
     public void init() {
@@ -73,6 +105,10 @@ public class LeadersActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(null);
         swipeRefreshLayout = findViewById(R.id.swiperefreshlayout);
         sendBtn = findViewById(R.id.sendBtn);
+
+        addBtn = findViewById(R.id.about_btn);
+        addBtn2 = findViewById(R.id.about_btn2);
+        addBtn3 = findViewById(R.id.about_btn3);
 
         // 새로고침 기능
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

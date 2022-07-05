@@ -44,7 +44,6 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="#555555"
                 android:text="졸업하시는 선배님들께 졸업 선물을\n 드릴 때 롤링페이퍼를 ....... "
                 android:textSize="13dp" />
         </LinearLayout>

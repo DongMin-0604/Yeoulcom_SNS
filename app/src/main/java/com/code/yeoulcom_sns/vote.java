@@ -26,6 +26,9 @@ public class vote extends AppCompatActivity {
     int count1;
     int count2;
 
+    int no_count1;
+    int yes_count1;
+
     // 투표창 --> 득표 셀때 사용하는 기능
     private int yes_count = 0;
     private int no_count = 0;
