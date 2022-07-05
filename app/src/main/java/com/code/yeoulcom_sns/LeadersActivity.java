@@ -72,12 +72,10 @@ public class LeadersActivity extends AppCompatActivity {
         plus_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (plus_Btn.getVisibility() == View.GONE && addBtn2.getVisibility() == View.GONE) {
-                    plus_Btn.setVisibility(View.VISIBLE); // or GONE
+                if ( addBtn2.getVisibility() == View.GONE) {
                     addBtn2.setVisibility(View.VISIBLE); // or GONE
 //                    bt_write_vote.setVisibility(View.VISIBLE); // or GONE
                 } else {
-                    plus_Btn.setVisibility(View.GONE);
                     addBtn2.setVisibility(View.GONE);
 //                    bt_write_vote.setVisibility(View.GONE);
                 }

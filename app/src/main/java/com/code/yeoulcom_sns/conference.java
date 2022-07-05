@@ -17,16 +17,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.example.yeoulcom_sns.R;
 
 public class conference extends AppCompatActivity {
 
     // + 버튼 누르면 버튼 생성
     Button addBtn, addBtn2, addBtn3;
-
-    // Material Calendar
-    private MaterialCalendarView calendarView;
 
     // 새로고침
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -62,8 +58,6 @@ public class conference extends AppCompatActivity {
 
         //새로고침
         swipeRefreshLayout = findViewById(R.id.conference);
-
-        calendarView = findViewById(R.id.calendar);
 
         init();
 
