@@ -63,7 +63,7 @@ public class conference extends AppCompatActivity {
         //새로고침
         swipeRefreshLayout = findViewById(R.id.conference);
 
-        calendarView = findViewById(R.id.calendarview);
+        calendarView = findViewById(R.id.calendar);
 
         init();
 
