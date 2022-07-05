@@ -39,7 +39,7 @@ public class LeadersActivity extends AppCompatActivity {
     String name = "", generation = "", key, Time;
     Boolean adminCheck = false;
 
-    Button addBtn, addBtn2, addBtn3;
+    Button plus_Btn, addBtn2;
 
     //리스트 지정
     final List<UserCheckData> dataList = new ArrayList<>();
@@ -69,15 +69,15 @@ public class LeadersActivity extends AppCompatActivity {
         getPost();
         onClick();
 
-        addBtn.setOnClickListener(new View.OnClickListener() {
+        plus_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (addBtn.getVisibility() == View.GONE && addBtn2.getVisibility() == View.GONE) {
-                    addBtn.setVisibility(View.VISIBLE); // or GONE
+                if (plus_Btn.getVisibility() == View.GONE && addBtn2.getVisibility() == View.GONE) {
+                    plus_Btn.setVisibility(View.VISIBLE); // or GONE
                     addBtn2.setVisibility(View.VISIBLE); // or GONE
 //                    bt_write_vote.setVisibility(View.VISIBLE); // or GONE
                 } else {
-                    addBtn.setVisibility(View.GONE);
+                    plus_Btn.setVisibility(View.GONE);
                     addBtn2.setVisibility(View.GONE);
 //                    bt_write_vote.setVisibility(View.GONE);
                 }
@@ -85,7 +85,7 @@ public class LeadersActivity extends AppCompatActivity {
         });
 
         // 개발자 이메일 클릭하면 이메일 띄우기
-        addBtn.setOnClickListener(new View.OnClickListener() {
+        addBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent addBtn2 = new Intent(Intent.ACTION_SEND);
@@ -106,9 +106,8 @@ public class LeadersActivity extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.swiperefreshlayout);
         sendBtn = findViewById(R.id.sendBtn);
 
-        addBtn = findViewById(R.id.about_btn);
+        plus_Btn = findViewById(R.id.about_btn);
         addBtn2 = findViewById(R.id.about_btn2);
-        addBtn3 = findViewById(R.id.about_btn3);
 
         // 새로고침 기능
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

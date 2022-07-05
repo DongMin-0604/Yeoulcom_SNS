@@ -77,18 +77,6 @@
                         android:text="문의하기"
                         android:textColor="@color/black"
                         android:visibility="gone" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/about_btn3"
-                        android:layout_width="120dp"
-                        android:layout_height="35dp"
-                        android:layout_gravity="bottom|right"
-                        android:layout_marginBottom="10dp"
-                        android:background="#ffffff"
-                        android:gravity="center"
-                        android:text="개발자 정보"
-                        android:textColor="@color/black"
-                        android:visibility="gone" />
                 </LinearLayout>
 
             </FrameLayout>
