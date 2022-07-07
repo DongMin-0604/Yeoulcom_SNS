@@ -132,7 +132,7 @@ public class InputInformationActivity extends AppCompatActivity {
                     et_password.setEnabled(true);
 
                     //이름,기수 변수에 값 넣어주기
-                    st_name = et_name.getText().toString();
+                    st_name = et_name.getText().toString() +" "+"회장";
                     st_generation = sp_generation.getSelectedItem().toString();
 
                     //화면 전환, 기수,이름,권한 정보 다음 엑티비티로 넘기기
